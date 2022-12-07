@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include "lexer.c"
 
-
 int main() {
     FILE *fptr = fopen("files/test.txt", "r");
     if(fptr == NULL){
