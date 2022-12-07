@@ -100,16 +100,6 @@ void detectTokens(char* str) {
    return;
 }
 
-<<<<<<< Updated upstream
-int main() {
-    // This is a comment
-    int a = 1;
-    printf("This is a test");
-    printf("Hello World!");
-=======
->>>>>>> Stashed changes
-
-
 int main() {
     FILE *fptr = fopen("files/test.txt", "r");
     if(fptr == NULL){
