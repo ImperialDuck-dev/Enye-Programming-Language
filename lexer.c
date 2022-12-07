@@ -35,8 +35,14 @@ bool isValidDelimiter(char ch) {
 }
 bool isValidOperator(char ch){
    if (ch == '+' || ch == '-' || ch == '*' ||
+   ch == '%' || ch == '~' || ch == '^' ||
    ch == '/' || ch == '>' || ch == '<' ||
-   ch == '=')
+   ch == '=' || ch == '+=' || ch == '-=' ||
+   ch == '*=' || ch == '/=' || ch == '%=' ||
+   ch == '~=' || ch == '++' || ch == '--' ||
+   ch == '~DI' || ch == '~O' || ch == '~AT' || 
+   ch == '==' || ch == '~=' || ch == '>=' ||
+   ch == '<=')
    return (true);
    return (false);
 }

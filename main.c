@@ -11,7 +11,8 @@ int main() {
     }
     char contents[1000];
     while(fgets(contents,sizeof(contents), fptr)){
+      detectTokens(contents);
       }
-   detectTokens(contents);
+   
     return 0;
 }
