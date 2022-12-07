@@ -1,0 +1,3 @@
+float x = a + 1b;
+int myFirstInteger = 10;
+float myFirstFloat = 20;
