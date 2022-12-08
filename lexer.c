@@ -4,6 +4,7 @@ bool isEqual(char *str1, char *str2){
    return (!(*str1) && !(*str2))? true : false;
 }
 // Checks if string is equal with keyword array
+// UPDATE LATER
 bool isValidKeyword(char* str) {
    char *const keywords[] = {
       "go to", "return", "while", "break", "do", "switch", "include", "default",
@@ -20,6 +21,23 @@ bool isValidKeyword(char* str) {
    }
    return false;  
  }
+
+ // UPDATE LATER
+ bool isValidReservedWord(char* str) {
+   char *const reservedWords[] = {
+      "false","main","continue","true"};
+
+
+   int size = sizeof(reservedWords) / sizeof(*reservedWords);
+
+   for (int i = 0; i < size; i++){
+      if(isEqual(str, *(reservedWords + i))){
+         return true;
+      }
+   }
+   return false;  
+ }
+
 
 bool isValidDelimiter(char ch) {
    if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' ||
@@ -38,20 +56,7 @@ bool isValidOperator(char ch){
    return (false);
 }
 
-// bool isValidCommentContent(char* str){
-//    if (str[0] == 'A' || str[0] == 'B' || str[0] == 'C' ||
-//    str[0] == 'D' || str[0] == 'E' || str[0] == 'F' ||
-//    str[0] == 'G' || str[0] == 'H' || str[0] == 'I' || 
-//    str[0] == 'J' || str[0] == 'K' || str[0] == 'L' || 
-//    str[0] == 'M' || str[0] == 'N' || str[0] == 'O' ||
-//    str[0] == 'P' || str[0] == 'Q' || str[0] == 'R' || 
-//    str[0] == 'S' || str[0] == 'T' || str[0] == 'U' || 
-//    str[0] == 'V' || str[0] == 'W' || str[0] == 'X' || 
-//    str[0] == 'Y' || str[0] == 'Z'){
-//       return (true);
-//    }else
-//       return (false);
-// }
+
 
 bool isValidCommentContent(char* str){
    if (isupper(str[0])){
@@ -124,14 +129,13 @@ void detectTokens(char* str) {
          printf("Valid operator : '%c'\n", str[right]);
          right++;
          left = right;
-         // if (isUnaryOperator(str[right]) == true)
-         // printf("Valid unary operator : '%c'\n", str[right]);
-         // right++;
-         // left = right;
       } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left != right)) {
          char* subStr = subString(str, left, right - 1);
          if (isValidKeyword(subStr) == true)
             printf("Keyword : '%s'\n", subStr);
+         else if (isValidReservedWord(subStr) == true){
+            printf("Reserved Word : '%s'\n", subStr);
+         }
          else if (isValidComment(subStr) == true)
             printf("Comment : '%s'\n", subStr);
          else if (isValidCommentContent(subStr) == true){
