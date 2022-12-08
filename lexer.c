@@ -40,6 +40,14 @@ bool isValidOperator(char ch){
 
 
 // Returns 'true' if the string is a VALID IDENTIFIER.
+bool isValidComment(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 'e' && str[1] == 'n' && str[2] == 'y' && str[3] == 'e')
+      return (true);
+   }
+   return (false);
+}
 bool isvalidIdentifier(char* str){
    if (str[0] == '0' || str[0] == '1' || str[0] == '2' ||
    str[0] == '3' || str[0] == '4' || str[0] == '5' ||
@@ -93,16 +101,18 @@ void detectTokens(char* str) {
          printf("Valid operator : '%c'\n", str[right]);
          right++;
          left = right;
-         if (isUnaryOperator(str[right]) == true)
-         printf("Valid unary operator : '%c'\n", str[right]);
-         right++;
-         left = right;
+         // if (isUnaryOperator(str[right]) == true)
+         // printf("Valid unary operator : '%c'\n", str[right]);
+         // right++;
+         // left = right;
       } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left != right)) {
          char* subStr = subString(str, left, right - 1);
          if (isValidKeyword(subStr) == true)
             printf("Valid keyword : '%s'\n", subStr);
          else if (isValidInteger(subStr) == true)
             printf("Valid Integer : '%s'\n", subStr);
+         else if (isValidComment(subStr) == true)
+            printf("Valid Comment : '%s'\n", subStr);
          else if (isRealNumber(subStr) == true)
             printf("Real Number : '%s'\n", subStr);
          else if (isvalidIdentifier(subStr) == true
