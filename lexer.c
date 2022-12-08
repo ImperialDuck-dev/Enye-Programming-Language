@@ -7,9 +7,9 @@ bool isEqual(char *str1, char *str2){
 // UPDATE LATER
 bool isValidKeyword(char* str) {
    char *const keywords[] = {
-      "go to", "return", "while", "break", "do", "switch", "include", "default",
-      "boolean", "case", "void", "else", "for", "if", "int", "float", "string",
-      "char", "printf", "scanf" };
+      "pumuta sa", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
+      "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
+      "lipon", "titik", "ipakita", "basahin" };
 
 
    int size = sizeof(keywords) / sizeof(*keywords);
@@ -56,8 +56,6 @@ bool isValidOperator(char ch){
    return (false);
 }
 
-
-
 bool isValidCommentContent(char* str){
    if (isupper(str[0])){
       return (true);
@@ -70,6 +68,14 @@ bool isValidComment(char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
       if (str[0] == 'e' && str[1] == 'n' && str[2] == 'y' && str[3] == 'e')
+      return (true);
+   }
+   return (false);
+}
+bool isValidNoiseWord(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 's' && str[1] == 'a')
       return (true);
    }
    return (false);
@@ -143,6 +149,8 @@ void detectTokens(char* str) {
          }
          else if (isValidInteger(subStr) == true)
             printf("Integer : '%s'\n", subStr);
+         else if (isValidNoiseWord(subStr) == true)
+            printf("Noise Word : '%s'\n", subStr);
          else if (isRealNumber(subStr) == true)
             printf("Number : '%s'\n", subStr);
          else if (isvalidIdentifier(subStr) == true
