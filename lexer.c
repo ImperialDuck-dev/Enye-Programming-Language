@@ -8,7 +8,7 @@ bool isValidKeyword(char* str) {
    char *const keywords[] = {
       "pumuta sa", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
       "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
-      "lipon", "titik", "ipakita" };
+      "lipon", "titik", "ipakita", "basahin" };
 
 
    int size = sizeof(keywords) / sizeof(*keywords);
