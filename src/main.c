@@ -1,12 +1,14 @@
-#include <stdbool.h>
+
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "lexer.c"
+#include <stdbool.h>
+#include "include/lexer.h"
+#include "include/main.h"
 
 int main() {
-    FILE *fptr = fopen("files/test.txt", "r");
+    FILE *fptr = fopen("example/test.txt", "r");
     if(fptr == NULL){
       perror("Unable to open the file");
     }
