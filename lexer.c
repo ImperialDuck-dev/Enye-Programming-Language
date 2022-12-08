@@ -6,9 +6,9 @@ bool isEqual(char *str1, char *str2){
 // Checks if string is equal with keyword array
 bool isValidKeyword(char* str) {
    char *const keywords[] = {
-      "go to", "return", "while", "break", "do", "switch", "include", "default",
-      "boolean", "case", "void", "else", "for", "if", "int", "float", "string",
-      "char", "printf", "scanf" };
+      "pumuta sa", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
+      "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
+      "lipon", "titik", "ipakita" };
 
 
    int size = sizeof(keywords) / sizeof(*keywords);
@@ -37,21 +37,6 @@ bool isValidOperator(char ch){
    return (true);
    return (false);
 }
-
-// bool isValidCommentContent(char* str){
-//    if (str[0] == 'A' || str[0] == 'B' || str[0] == 'C' ||
-//    str[0] == 'D' || str[0] == 'E' || str[0] == 'F' ||
-//    str[0] == 'G' || str[0] == 'H' || str[0] == 'I' || 
-//    str[0] == 'J' || str[0] == 'K' || str[0] == 'L' || 
-//    str[0] == 'M' || str[0] == 'N' || str[0] == 'O' ||
-//    str[0] == 'P' || str[0] == 'Q' || str[0] == 'R' || 
-//    str[0] == 'S' || str[0] == 'T' || str[0] == 'U' || 
-//    str[0] == 'V' || str[0] == 'W' || str[0] == 'X' || 
-//    str[0] == 'Y' || str[0] == 'Z'){
-//       return (true);
-//    }else
-//       return (false);
-// }
 
 bool isValidCommentContent(char* str){
    if (isupper(str[0])){
