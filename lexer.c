@@ -69,6 +69,14 @@ bool isValidComment(char* str){
    }
    return (false);
 }
+bool isValidNoiseWord(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 's' && str[1] == 'a')
+      return (true);
+   }
+   return (false);
+}
 // Returns 'true' if the string is a VALID IDENTIFIER.
 bool isvalidIdentifier(char* str){
    if (str[0] == '0' || str[0] == '1' || str[0] == '2' ||
@@ -139,6 +147,8 @@ void detectTokens(char* str) {
          }
          else if (isValidInteger(subStr) == true)
             printf("Integer : '%s'\n", subStr);
+         else if (isValidNoiseWord(subStr) == true)
+            printf("Noise Word : '%s'\n", subStr);
          else if (isRealNumber(subStr) == true)
             printf("Number : '%s'\n", subStr);
          else if (isvalidIdentifier(subStr) == true
