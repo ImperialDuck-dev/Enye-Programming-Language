@@ -1,4 +1,10 @@
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include "include/lexer.h"
+
 
 // Compares string with the keywords
 bool isEqual(char *str1, char *str2){
