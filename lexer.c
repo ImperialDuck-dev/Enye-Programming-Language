@@ -38,16 +38,23 @@ bool isValidOperator(char ch){
    return (false);
 }
 
+// bool isValidCommentContent(char* str){
+//    if (str[0] == 'A' || str[0] == 'B' || str[0] == 'C' ||
+//    str[0] == 'D' || str[0] == 'E' || str[0] == 'F' ||
+//    str[0] == 'G' || str[0] == 'H' || str[0] == 'I' || 
+//    str[0] == 'J' || str[0] == 'K' || str[0] == 'L' || 
+//    str[0] == 'M' || str[0] == 'N' || str[0] == 'O' ||
+//    str[0] == 'P' || str[0] == 'Q' || str[0] == 'R' || 
+//    str[0] == 'S' || str[0] == 'T' || str[0] == 'U' || 
+//    str[0] == 'V' || str[0] == 'W' || str[0] == 'X' || 
+//    str[0] == 'Y' || str[0] == 'Z'){
+//       return (true);
+//    }else
+//       return (false);
+// }
+
 bool isValidCommentContent(char* str){
-   if (str[0] == 'A' || str[0] == 'B' || str[0] == 'C' ||
-   str[0] == 'D' || str[0] == 'E' || str[0] == 'F' ||
-   str[0] == 'G' || str[0] == 'H' || str[0] == 'I' || 
-   str[0] == 'J' || str[0] == 'K' || str[0] == 'L' || 
-   str[0] == 'M' || str[0] == 'N' || str[0] == 'O' ||
-   str[0] == 'P' || str[0] == 'Q' || str[0] == 'R' || 
-   str[0] == 'S' || str[0] == 'T' || str[0] == 'U' || 
-   str[0] == 'V' || str[0] == 'W' || str[0] == 'X' || 
-   str[0] == 'Y' || str[0] == 'Z'){
+   if (isupper(str[0])){
       return (true);
    }else
       return (false);
@@ -67,9 +74,10 @@ bool isvalidIdentifier(char* str){
    if (str[0] == '0' || str[0] == '1' || str[0] == '2' ||
    str[0] == '3' || str[0] == '4' || str[0] == '5' ||
    str[0] == '6' || str[0] == '7' || str[0] == '8' ||
-   str[0] == '9' || isValidDelimiter(str[0]) == true)
-   return (false);
-   return (true);
+   str[0] == '9' || isValidDelimiter(str[0]) == true){
+       return (false);
+   }else
+      return (true);
 }
 bool isValidInteger(char* str) {
    int i, len = strlen(str);
@@ -126,7 +134,7 @@ void detectTokens(char* str) {
             printf("Keyword : '%s'\n", subStr);
          else if (isValidComment(subStr) == true)
             printf("Comment : '%s'\n", subStr);
-          else if (isValidCommentContent(subStr) == true){
+         else if (isValidCommentContent(subStr) == true){
             printf("Comment Content : '%s'\n", subStr);
          }
          else if (isValidInteger(subStr) == true)
