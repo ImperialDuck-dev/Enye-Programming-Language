@@ -38,15 +38,46 @@ bool isValidOperator(char ch){
    return (false);
 }
 
+// bool isValidCommentContent(char* str){
+//    if (str[0] == 'A' || str[0] == 'B' || str[0] == 'C' ||
+//    str[0] == 'D' || str[0] == 'E' || str[0] == 'F' ||
+//    str[0] == 'G' || str[0] == 'H' || str[0] == 'I' || 
+//    str[0] == 'J' || str[0] == 'K' || str[0] == 'L' || 
+//    str[0] == 'M' || str[0] == 'N' || str[0] == 'O' ||
+//    str[0] == 'P' || str[0] == 'Q' || str[0] == 'R' || 
+//    str[0] == 'S' || str[0] == 'T' || str[0] == 'U' || 
+//    str[0] == 'V' || str[0] == 'W' || str[0] == 'X' || 
+//    str[0] == 'Y' || str[0] == 'Z'){
+//       return (true);
+//    }else
+//       return (false);
+// }
 
+bool isValidCommentContent(char* str){
+   if (isupper(str[0])){
+      return (true);
+   }else
+      return (false);
+}
+
+
+bool isValidComment(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 'e' && str[1] == 'n' && str[2] == 'y' && str[3] == 'e')
+      return (true);
+   }
+   return (false);
+}
 // Returns 'true' if the string is a VALID IDENTIFIER.
 bool isvalidIdentifier(char* str){
    if (str[0] == '0' || str[0] == '1' || str[0] == '2' ||
    str[0] == '3' || str[0] == '4' || str[0] == '5' ||
    str[0] == '6' || str[0] == '7' || str[0] == '8' ||
-   str[0] == '9' || isValidDelimiter(str[0]) == true)
-   return (false);
-   return (true);
+   str[0] == '9' || isValidDelimiter(str[0]) == true){
+       return (false);
+   }else
+      return (true);
 }
 bool isValidInteger(char* str) {
    int i, len = strlen(str);
@@ -93,21 +124,26 @@ void detectTokens(char* str) {
          printf("Valid operator : '%c'\n", str[right]);
          right++;
          left = right;
-         if (isUnaryOperator(str[right]) == true)
-         printf("Valid unary operator : '%c'\n", str[right]);
-         right++;
-         left = right;
+         // if (isUnaryOperator(str[right]) == true)
+         // printf("Valid unary operator : '%c'\n", str[right]);
+         // right++;
+         // left = right;
       } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left != right)) {
          char* subStr = subString(str, left, right - 1);
          if (isValidKeyword(subStr) == true)
-            printf("Valid keyword : '%s'\n", subStr);
+            printf("Keyword : '%s'\n", subStr);
+         else if (isValidComment(subStr) == true)
+            printf("Comment : '%s'\n", subStr);
+         else if (isValidCommentContent(subStr) == true){
+            printf("Comment Content : '%s'\n", subStr);
+         }
          else if (isValidInteger(subStr) == true)
-            printf("Valid Integer : '%s'\n", subStr);
+            printf("Integer : '%s'\n", subStr);
          else if (isRealNumber(subStr) == true)
-            printf("Real Number : '%s'\n", subStr);
+            printf("Number : '%s'\n", subStr);
          else if (isvalidIdentifier(subStr) == true
             && isValidDelimiter(str[right - 1]) == false)
-         printf("Valid Identifier : '%s'\n", subStr);
+         printf("Identifier : '%s'\n", subStr);
          else if (isvalidIdentifier(subStr) == false
             && isValidDelimiter(str[right - 1]) == false)
          printf("Invalid Identifier : '%s'\n", subStr);
