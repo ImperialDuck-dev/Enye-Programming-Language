@@ -6,8 +6,9 @@ bool isEqual(char *str1, char *str2){
 // Checks if string is equal with keyword array
 bool isValidKeyword(char* str) {
    char *const keywords[] = {
-      "if", "else", "while", "do", "break", "continue", "int", "double", "float", "return", "char", "case",
-    "sizeof", "long", "short", "typedef", "switch", "unsigned", "void", "static", "struct", "goto","printf"};
+      "go to", "return", "while", "break", "do", "switch", "include", "default",
+      "boolean", "case", "void", "else", "for", "if", "int", "float", "string",
+      "char", "printf", "scanf" };
 
 
    int size = sizeof(keywords) / sizeof(*keywords);
@@ -36,6 +37,8 @@ bool isValidOperator(char ch){
    return (true);
    return (false);
 }
+
+
 // Returns 'true' if the string is a VALID IDENTIFIER.
 bool isvalidIdentifier(char* str){
    if (str[0] == '0' || str[0] == '1' || str[0] == '2' ||
@@ -88,6 +91,10 @@ void detectTokens(char* str) {
       if (isValidDelimiter(str[right]) == true && left == right) {
          if (isValidOperator(str[right]) == true)
          printf("Valid operator : '%c'\n", str[right]);
+         right++;
+         left = right;
+         if (isUnaryOperator(str[right]) == true)
+         printf("Valid unary operator : '%c'\n", str[right]);
          right++;
          left = right;
       } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left != right)) {
