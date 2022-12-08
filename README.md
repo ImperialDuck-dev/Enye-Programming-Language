@@ -1,4 +1,4 @@
-## ENYE: A FILIPINO-BASED PROGRAMMING LANGUAGE
+### ENYE: A FILIPINO-BASED PROGRAMMING LANGUAGE
 ENYE is a Filipino-based Programming Language that takes inspiration from both Java and C languages.
 
 ## LANGUAGE DESCRIPTION
