@@ -1,5 +1,8 @@
 if (x == y){
     printf("TITE");
+    return true;
+
 } 
 float x = (a + 1b),y;
 int myFirstInteger = 10;
+

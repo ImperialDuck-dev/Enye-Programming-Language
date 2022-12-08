@@ -21,6 +21,30 @@ bool isValidKeyword(char* str) {
    return false;  
  }
 
+bool isValidReservedWord(char* str) {
+   char *const reservedWords[] = {
+      "false","main","continue","true"};
+
+
+   int size = sizeof(reservedWords) / sizeof(*reservedWords);
+
+   for (int i = 0; i < size; i++){
+      if(isEqual(str, *(reservedWords + i))){
+         return true;
+      }
+   }
+   return false;  
+ }
+
+bool isValidComment(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 'e' && str[1] == 'n' && str[2] == 'y' && str[3] == 'e')
+      return (true);
+   }
+   return (false);
+}
+
 bool isValidDelimiter(char ch) {
    if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' ||
    ch == '/' || ch == ',' || ch == ';' || ch == '>' ||
@@ -93,16 +117,16 @@ void detectTokens(char* str) {
          printf("Valid operator : '%c'\n", str[right]);
          right++;
          left = right;
-         if (isUnaryOperator(str[right]) == true)
-         printf("Valid unary operator : '%c'\n", str[right]);
-         right++;
-         left = right;
       } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left != right)) {
          char* subStr = subString(str, left, right - 1);
          if (isValidKeyword(subStr) == true)
             printf("Valid keyword : '%s'\n", subStr);
+         else if (isValidReservedWord(subStr) == true)
+            printf("Valid reserved word : '%s'\n", subStr);   
          else if (isValidInteger(subStr) == true)
             printf("Valid Integer : '%s'\n", subStr);
+         else if (isValidComment(subStr) == true)
+            printf("Valid Comment : '%s'\n", subStr);   
          else if (isRealNumber(subStr) == true)
             printf("Real Number : '%s'\n", subStr);
          else if (isvalidIdentifier(subStr) == true
