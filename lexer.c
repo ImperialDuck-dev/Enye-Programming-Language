@@ -1,29 +1,24 @@
-// bool isValidKeyword(char* str) {
-//    if (!strcmp(str, "if") || !strcmp(str, "else") || !strcmp(str, "while") || !strcmp(str, "do") ||    !strcmp(str, "break") || !strcmp(str, "continue") || !strcmp(str, "int")
-//    || !strcmp(str, "double") || !strcmp(str, "float") || !strcmp(str, "return") || !strcmp(str,    "char") || !strcmp(str, "case") || !strcmp(str, "char")
-//    || !strcmp(str, "sizeof") || !strcmp(str, "long") || !strcmp(str, "short") || !strcmp(str, "typedef") || !strcmp(str, "switch") || !strcmp(str, "unsigned")
-//    || !strcmp(str, "void") || !strcmp(str, "static") || !strcmp(str, "struct") || !strcmp(str, "goto"))
-//    return (true);
-//    return (false);
-// }
-
-char Keywords[40][20] = {"if", "else", "while", "do", "break", "continue", "int", "double", "float", "return", "char", "case",
-    "sizeof", "long", "short", "typedef", "switch", "unsigned", "void", "static", "struct", "goto"};
-    
-bool isValidKeyword(char* str, char *Keywords) {
-   while (*str == *Keywords) {
-      if (*str == '\0' || *Keywords == '\0')
-         break;
-         
-      str++;
-      Keywords++;
-   }
-
-   if (*str == '\0' && *Keywords == '\0')
-      return true;
-   else
-      return false;
+// Compares string with the keywords
+bool isEqual(char *str1, char *str2){
+   for (; *str1 && *str2 && *str1 == *str2; str1++,str2++);
+   return (!(*str1) && !(*str2))? true : false;
 }
+// Checks if string is equal with keyword array
+bool isValidKeyword(char* str) {
+   char *const keywords[] = {
+      "if", "else", "while", "do", "break", "continue", "int", "double", "float", "return", "char", "case",
+    "sizeof", "long", "short", "typedef", "switch", "unsigned", "void", "static", "struct", "goto","printf"};
+
+
+   int size = sizeof(keywords) / sizeof(*keywords);
+
+   for (int i = 0; i < size; i++){
+      if(isEqual(str, *(keywords + i))){
+         return true;
+      }
+   }
+   return false;  
+ }
 
 bool isValidDelimiter(char ch) {
    if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' ||
@@ -35,14 +30,9 @@ bool isValidDelimiter(char ch) {
 }
 bool isValidOperator(char ch){
    if (ch == '+' || ch == '-' || ch == '*' ||
-   ch == '%' || ch == '~' || ch == '^' ||
    ch == '/' || ch == '>' || ch == '<' ||
-   ch == '=' || ch == '+=' || ch == '-=' ||
-   ch == '*=' || ch == '/=' || ch == '%=' ||
-   ch == '~=' || ch == '++' || ch == '--' ||
-   ch == '~DI' || ch == '~O' || ch == '~AT' || 
-   ch == '==' || ch == '~=' || ch == '>=' ||
-   ch == '<=')
+   ch == '=' || ch == '%' || ch == '~' || 
+   ch == '^')
    return (true);
    return (false);
 }
@@ -100,9 +90,9 @@ void detectTokens(char* str) {
          printf("Valid operator : '%c'\n", str[right]);
          right++;
          left = right;
-      } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left !=       right)) {
+      } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left != right)) {
          char* subStr = subString(str, left, right - 1);
-         if (isValidKeyword(subStr, *Keywords) == true)
+         if (isValidKeyword(subStr) == true)
             printf("Valid keyword : '%s'\n", subStr);
          else if (isValidInteger(subStr) == true)
             printf("Valid Integer : '%s'\n", subStr);
