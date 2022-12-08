@@ -1,3 +1,5 @@
+#include "include/lexer.h"
+
 // Compares string with the keywords
 bool isEqual(char *str1, char *str2){
    for (; *str1 && *str2 && *str1 == *str2; str1++,str2++);
