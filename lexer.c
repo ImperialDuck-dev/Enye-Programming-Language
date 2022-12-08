@@ -3,11 +3,13 @@ bool isEqual(char *str1, char *str2){
    for (; *str1 && *str2 && *str1 == *str2; str1++,str2++);
    return (!(*str1) && !(*str2))? true : false;
 }
+
+
 // Checks if string is equal with keyword array
 // UPDATE LATER
 bool isValidKeyword(char* str) {
    char *const keywords[] = {
-      "pumuta sa", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
+      "pumunta sa", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
       "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
       "lipon", "titik", "ipakita", "basahin" };
 
@@ -38,15 +40,32 @@ bool isValidKeyword(char* str) {
    return false;  
  }
 
+ bool isBooleanOperator(char* str) {
+   char *const booleanOperators[] = {
+      "+=","-=","*=","/=","%=","~=","++","--",
+      "~DI","~O","~AT","==",">=","<=","/"};
+
+
+   int size = sizeof(booleanOperators) / sizeof(*booleanOperators);
+
+   for (int i = 0; i < size; i++){
+      if(isEqual(str, *(booleanOperators + i))){
+         return true;
+      }
+   }
+   return false;  
+ }
+
 
 bool isValidDelimiter(char ch) {
    if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' ||
    ch == '/' || ch == ',' || ch == ';' || ch == '>' ||
-   ch == '<' || ch == '=' || ch == '(' || ch == ')' ||
+   ch == '<' || ch == '(' || ch == ')' || ch == '=' ||
    ch == '[' || ch == ']' || ch == '{' || ch == '}')
    return (true);
    return (false);
 }
+
 bool isValidOperator(char ch){
    if (ch == '+' || ch == '-' || ch == '*' ||
    ch == '/' || ch == '>' || ch == '<' ||
@@ -137,7 +156,9 @@ void detectTokens(char* str) {
          left = right;
       } else if (isValidDelimiter(str[right]) == true && left != right || (right == length && left != right)) {
          char* subStr = subString(str, left, right - 1);
-         if (isValidKeyword(subStr) == true)
+         if (isBooleanOperator(subStr) == true)
+            printf("Boolean Operator : '%s'\n", subStr);
+         else if (isValidKeyword(subStr) == true)
             printf("Keyword : '%s'\n", subStr);
          else if (isValidReservedWord(subStr) == true){
             printf("Reserved Word : '%s'\n", subStr);
