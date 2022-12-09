@@ -8,13 +8,13 @@
 #include "include/main.h"
 
 int main() {
-    FILE *fptr = fopen("example/test.txt", "r");
+    FILE *fptr = fopen("example/test.enye", "r");
     if(fptr == NULL){
       perror("Unable to open the file");
     }
     char contents[1000];
     while(fgets(contents,sizeof(contents), fptr)){
-      detectTokens(contents);
+      outputTokens(contents);
       }
    
     return 0;
