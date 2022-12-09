@@ -35,7 +35,7 @@ bool keywordChecker(char* str) {
 //returns true if true
 bool reservedWordChecker(char* str) {
    char *const reservedWords[] = {
-      "false","main","continue","true"};
+      "mali","prinsipal","tuloy","tama"};
 
 
    int size = sizeof(reservedWords) / sizeof(*reservedWords);
@@ -70,6 +70,7 @@ bool booleanOperatorChecker(char* str) {
 // if true, returns true
 bool delimiterChecker(char ch) {
    if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' ||
+  // ch == '"' || 
    ch == '/' || ch == ',' || ch == ';' || ch == '>' ||
    ch == '<' || ch == '(' || ch == ')' || ch == '=' ||
    ch == '[' || ch == ']' || ch == '{' || ch == '}')
@@ -136,7 +137,7 @@ bool identifierChecker(char* str){
 //checks if current lexeme is an int
 //returns false if current lexeme is not equal to any number
 //else returns true
-bool intergerChecker(char* str) {
+bool integerChecker(char* str) {
    int i, len = strlen(str);
    if (len == 0)
    return (false);
@@ -203,7 +204,7 @@ void outputTokens(char* str) {
          else if (commentContentChecker(subStr) == true){
             printf("Comment Content : '%s'\n", subStr);
          }
-         else if (intergerChecker(subStr) == true)
+         else if (integerChecker(subStr) == true)
             printf("Integer : '%s'\n", subStr);
          else if (noiseWordChecker(subStr) == true)
             printf("Noise Word : '%s'\n", subStr);

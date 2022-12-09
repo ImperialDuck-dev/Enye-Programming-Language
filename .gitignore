@@ -1,3 +1,6 @@
 
 src/include/lexer.h
 *.exe
+src/example/test.enye
+src/final.exe
+src/final.exe
