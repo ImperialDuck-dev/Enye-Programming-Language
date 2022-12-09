@@ -14,6 +14,8 @@ ENYE’s core philosophy is to allow aspiring Filipino programmers to code in th
 | ------------- | ------------- |
 | Mathew James Muyco  |   |
 | Arvin Aguila  |   |
+| Eunice Ando  |   |
+| Marifel Calibuso  |   |
 | James Luis Blanco  |   |
 | Francheska Reynoso  |   |
 | Reymar Sison  |   |
