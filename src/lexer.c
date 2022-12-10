@@ -1,9 +1,9 @@
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "include/lexer.h"
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+// #include <stdlib.h>
+// #include <stdbool.h>
+// #include "include/lexer.h"
 
 
 // Compares current lexeme with the keywords
@@ -92,11 +92,20 @@ bool operatorChecker(char ch){
 // Comments are all in capital letters
 // returns true if true
 bool commentContentChecker(char* str){
-   if (isupper(str[0])){
-      return (true);
-   }else
-      return (false);
+   int i, len = strlen(str), flag = 0;
+   for (i = 0; i <=len; i++) {
+      if (isupper(str[i])){
+         flag ++;
+      }
+   }
+
+   if(flag == len){
+       return (true);
+   }
+  
+   return (false);
 }
+
 
 // Checks if current lexeme if it is enye
 // if true, returns true
@@ -201,7 +210,7 @@ void outputTokens(char* str) {
          else if (commentChecker(subStr) == true)
             printf("Comment : '%s'\n", subStr);
          else if (commentContentChecker(subStr) == true){
-            printf("Comment Content : '%s'\n", subStr);
+            printf("Comment : '%s'\n", subStr);
          }
          else if (intergerChecker(subStr) == true)
             printf("Integer : '%s'\n", subStr);
