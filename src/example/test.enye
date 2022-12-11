@@ -1,5 +1,9 @@
 numero x = 1;
 
+kapag(numero edad = 20 ~AT lipon kasarian == "babae" ~AT numero bahay != 120);
+
+kapag(numero edad = 20 && lipon kasarian == "babae" || numero bahay != 120);
+
 lipon angLipon = "Ito ay mga String";
 
 enye ITO AY MGA COMMENTO enye
