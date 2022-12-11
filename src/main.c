@@ -4,8 +4,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "include/lexer.h"
-#include "include/main.h"
+// #include "include/lexer.h"
+// #include "include/main.h"
+#include "lexer.c"
 
 int main() {
     FILE *fptr = fopen("example/test.enye", "r");
