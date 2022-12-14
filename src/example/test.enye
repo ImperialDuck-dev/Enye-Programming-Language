@@ -1,9 +1,5 @@
-lipon ny_string = "Ito ay isang string literal";
-
-numero ny_x = 1;
-
-kapag(numero ny_edad = 20 && lipon ny_kasarian == "babae" || numero ny_bahay != 120);
-
-lipon ny_angLipon = "Ito ay mga String";
-
-enye ITO AY MGA COMMENTO enye
+==
+<=
+~=
++=
+lipon james[] = "ntity";
