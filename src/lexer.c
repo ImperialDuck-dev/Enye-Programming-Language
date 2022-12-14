@@ -9,27 +9,31 @@
 
 // Checks current lexeme if it is a delimiter 
 // if true, returns true
-bool delimiterChecker(char ch) {
-   if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' ||
-   ch == '"' || ch == '~' || 
-   ch == '/' || ch == ',' || ch == ';' || ch == '>' ||
-   ch == '<' || ch == '(' || ch == ')' || ch == '=' ||
-   ch == '[' || ch == ']' || ch == '{' || ch == '}')
-   return (true);
-   return (false);
-}
+
 
 // Checks current lexeme if it is an operator
 // returns true if true
 bool operatorChecker(char ch){
    if (ch == '+' || ch == '-' || ch == '*' ||
    ch == '/' || ch == '>' || ch == '<' ||
+   ch == '!' || ch == '|' || ch == '&' ||
    ch == '=' || ch == '%' || ch == '~' || 
    ch == '^')
    return (true);
    return (false);
 }
 
+bool bracketsChecker(char ch) {
+   if (ch == '(' || ch == ')' || ch == '{' || ch == '}' || ch == '[' || ch == ']')
+   return (true);
+   return (false);
+}
+
+bool delimiterChecker(char ch) {
+   if (ch == ' ' || ch == ';' || operatorChecker(ch) || bracketsChecker(ch))
+   return (true);
+   return (false);
+}
 
 // multi-character type lexeme boolean checkers
 
@@ -43,7 +47,7 @@ bool isEqual(char *str1, char *str2){
 // returns true if true 
 bool keywordChecker(char* str) {
    char *const keywords[] = {
-      "pumunta sa", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
+      "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
       "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
       "lipon", "titik", "ipakita", "basahin" 
    };
@@ -86,10 +90,11 @@ bool reservedWordChecker(char* str) {
 
 // Checks if current lexeme is equal with booleanOperators array
 // returns true if true
+/*
 bool booleanOperatorChecker(char* str) {
    char *const booleanOperators[] = {
       //"+=","-=","*=","/=","%=","~=","++","--",
-      "~DI","~O","~AT", "!", "&&", "||", "+=","-=","*=","/=","%=","~="}; //,"==",">=","<=","/"};
+       "~DI", "~O", "~AT", "+=","-=","*=","/=","%=","~="}; //,"==",">=","<=","/"};
 
 
    int size = sizeof(booleanOperators) / sizeof(*booleanOperators);
@@ -101,7 +106,7 @@ bool booleanOperatorChecker(char* str) {
    }
    return false;  
 }
-
+*/
 // Checks current lexeme if it is a comment 
 // Comments are all in capital letters
 // returns true if true
@@ -148,19 +153,19 @@ bool noiseWordChecker(char* str){
 // Checks again if it is a delimiter; if yes, return false
 // if not, return true
 bool identifierChecker(char* str){
-   int i, len = strlen(str);
-    if(str[0] == '0' || str[0] == '1' || str[0] == '2' ||
-    str[0] == '3' || str[0] == '4' || str[0] == '5' ||
-    str[0] == '6' || str[0] == '7' || str[0] == '8' ||
-    str[0] == '9' || delimiterChecker(str[0]) == true) {
-        return (false);
-    }
-/*
+    int i, len = strlen(str);
+   //  if(str[0] == '0' || str[0] == '1' || str[0] == '2' ||
+   //  str[0] == '3' || str[0] == '4' || str[0] == '5' ||
+   //  str[0] == '6' || str[0] == '7' || str[0] == '8' ||
+   //  str[0] == '9' || delimiterChecker(str[0]) == true) {
+   //      return (false);
+   //  }
+
    for (i = 0; i <=len; i++) {
       if (str[0] == 'n' && str[1] == 'y')
       return (true);
    }
-   return (false);*/
+   return (false);
 }
 
 
@@ -216,8 +221,12 @@ void outputTokens(char* str) {
       if (delimiterChecker(str[right]) == false) //checks if str[0] is a delimiter, if not, increment right
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
-      if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
-         printf("Boolean Operator : '%c%c'\n", str[right],str[right+1]);
+      if (delimiterChecker(str[right]) == true && str[right] == ';')
+         printf("Delimiter: '%c'\n",str[right]);
+      else if (delimiterChecker(str[right]) && bracketsChecker(str[right]))
+         printf("Bracket: '%c'\n",str[right]);
+      else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
+         printf("Operator : '%c%c'\n", str[right],str[right+1]);
          right++;
          left = right;
       }else if (operatorChecker(str[right]) == true)  //checks if the single character type lexeme is also an operator type one
@@ -225,10 +234,10 @@ void outputTokens(char* str) {
          right++;
          left = right;
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
-             char* subStr = subString(str, left, right - 1);
-         if (booleanOperatorChecker(subStr) == true)
-            printf("Boolean Operator : '%s'\n", subStr);
-         else if (keywordChecker(subStr) == true)
+             char* subStr = subString(str, left, right - 1); //takes the current lexeme as input
+         // if (booleanOperatorChecker(subStr) == true)
+         //    printf("Boolean Operator : '%s'\n", subStr);
+         if (keywordChecker(subStr) == true)
             printf("Keyword : '%s'\n", subStr);
          else if (reservedWordChecker(subStr) == true){
             printf("Reserved Word : '%s'\n", subStr);
@@ -247,10 +256,9 @@ void outputTokens(char* str) {
          else if (identifierChecker(subStr) == true)
             // && delimiterChecker(str[right]) == true)
          printf("Identifier : '%s'\n", subStr);
-    /*     else if (identifierChecker(subStr) == false
+         else if (identifierChecker(subStr) == false
             && delimiterChecker(str[right]) == true)
          printf("String : '%s'\n", subStr);
-         */
          left = right;
       }
    }
