@@ -252,7 +252,7 @@ void outputTokens(char* str) {
             }
             else{
                printf("String : '%s'\n", subStr);
-               flag++;
+               flag = 0;
             }
          }
          left = right;
