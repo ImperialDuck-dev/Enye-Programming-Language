@@ -1,6 +1,5 @@
 #ifndef LEXER_H
 #define LEXER_H
-
 bool isEqual(char *str1, char *str2);
 bool keywordChecker(char* str);
 bool reservedWordChecker(char* str);

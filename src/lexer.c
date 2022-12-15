@@ -3,7 +3,9 @@
  #include <string.h>
  #include <stdlib.h>
  #include <stdbool.h>
+ #include "include/lexer.h"
 
+   FILE *outputfptr;
 // Checks current lexeme if it is an operator
 // returns true if true
 bool operatorChecker(char ch){
@@ -199,74 +201,74 @@ char* subString(char* str, int left, int right) {
 
 void tokenRoleSingleOperator(char ch){
    if(ch == '+')
-   printf("\t\t\t:\tADD_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tADD_OPR\n");
    else if (ch == '-')
-   printf("\t\t\t:\tSUBT_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tSUBT_OPR\n");
    else if (ch == '*')
-   printf("\t\t\t:\tMULT_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tMULT_OPR\n");
    else if (ch == '/')
-   printf("\t\t\t:\tDIV_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tDIV_OPR\n");
    else if (ch == '>')
-   printf("\t\t\t:\tGREAT_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tGREAT_OPR\n");
    else if (ch == '<')
-   printf("\t\t\t:\tLESS_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tLESS_OPR\n");
    else if (ch == '!')
-   printf("\t\t\t:\tNOT_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tNOT_OPR\n");
    else if (ch == '~')
-   printf("\t\t\t:\tINT_DIV_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tINT_DIV_OPR\n");
    else if (ch == '=')
-   printf("\t\t\t:\tASS_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tASS_OPR\n");
    else if (ch == '%')
-   printf("\t\t\t:\tMOD_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tMOD_OPR\n");
    else if (ch == '^')
-   printf("\t\t\t:\tEXP_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tEXP_OPR\n");
 }
 
 void tokenRoleMultiOperator(char ch, char ch2){
    if (ch == '=' && ch2 == '=')
-   printf("\t\t\t:\tEQ_TO_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tEQ_TO_OPR\n");
    else if (ch == '>' && ch2 == '=')
-   printf("\t\t\t:\tGRTR_THAN_OR_EQ_TO_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tGRTR_THAN_OR_EQ_TO_OPR\n");
    else if (ch == '<' && ch2 == '=')
-   printf("\t\t\t:\tLESS_THAN_OR_EQ_TO_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tLESS_THAN_OR_EQ_TO_OPR\n");
    else if (ch == '!' && ch2 == '=')
-   printf("\t\t\t:\tNOT_EQUAL_TO_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tNOT_EQUAL_TO_OPR\n");
 }
 
 void tokenRoleBooleanOP(char* str){
    if (str[0] == '&' && str[1] == '&')
-   printf("\t\t\t:\tAND_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tAND_OPR\n");
    if (str[0] == '|' && str[1] == '|')
-   printf("\t\t\t:\tOR_OPR\n");
+   fprintf(outputfptr,"\t\t\t:\tOR_OPR\n");
 }
 
 void tokenRoleBracket(char ch){
    if (ch == '(' || ch == ')')
-   printf("\t\t\t:\tPARENTHESIS\n");
+   fprintf(outputfptr,"\t\t\t:\tPARENTHESIS\n");
    else if (ch == '{' || ch == '}')
-   printf("\t\t\t:\tCURLY BRACES\n");
+   fprintf(outputfptr,"\t\t\t:\tCURLY BRACES\n");
    else if (ch == '[' || ch == ']')
-   printf("\t\t\t:\tSQUARE BRACES\n");
+   fprintf(outputfptr,"\t\t\t:\tSQUARE BRACES\n");
    else if (ch == ';')
-   printf("\t\t\t:\tSEMI COLON\n");
+   fprintf(outputfptr,"\t\t\t:\tSEMI COLON\n");
    else if (ch == '"')
-   printf("\t\t\t:\tQUOTATION MARK\n");
+   fprintf(outputfptr,"\t\t\t:\tQUOTATION MARK\n");
 }
 
 void tokenRoleNoiseWord(char *str){
    if (str[0] == 's' || str[1] == 'a')
-   printf("\t\t\t:\tNOISE WORD\n");
+   fprintf(outputfptr,"\t\t\t:\tNOISE WORD\n");
 }
 
 void tokenRoleIdentifier(char* str){
    if (str[0] == 'n' || str[1] == 'y' || str[2] == '_')
-   printf("\t:\tIDENTIFIER\n");
+   fprintf(outputfptr,"\t:\tIDENTIFIER\n");
 }
 
 void tokenRoleInteger(char* str){
    if (str[0] != '0' || str[1] != '1' || str[2] != '2' || str[3] != '3' || str[4] != '4' || 
    str[5] != '5' || str[6] != '6' || str[7] != '7' || str[8] != '8' || str[9] != '9')
-   printf("\t\t\t:\tINTEGER\n");
+   fprintf(outputfptr,"\t\t\t:\tINTEGER\n");
 }
 
 
@@ -295,45 +297,45 @@ void tokenRoleKeyword(char* str){
       "lipon", "titik", "ipakita", "basahin" 
    };
    if(compare(keywords[0], str) == 0)
-   printf("\t\t:\tGO_KW\n");
+   fprintf(outputfptr,"\t\t:\tGO_KW\n");
    else if(compare(keywords[1], str) == 0)
-   printf("\t\t:\tRETURN_KW\n");
+   fprintf(outputfptr,"\t\t:\tRETURN_KW\n");
    else if(compare(keywords[2], str) == 0)
-   printf("\t\t:\tWHILE_KW\n");
+   fprintf(outputfptr,"\t\t:\tWHILE_KW\n");
    else if(compare(keywords[3], str) == 0)
-   printf("\t\t\t:\tBREAK_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tBREAK_KW\n");
    else if(compare(keywords[4], str) == 0)
-   printf("\t\t\t:\tDO_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tDO_KW\n");
    else if(compare(keywords[5], str) == 0)
-   printf("\t\t\t:\tSWITCH_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tSWITCH_KW\n");
    else if(compare(keywords[6], str) == 0)
-   printf("\t\t\t:\tINCLUDE_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tINCLUDE_KW\n");
    else if(compare(keywords[7], str) == 0)
-   printf("\t\t:\tDEFAULT_KW\n");
+   fprintf(outputfptr,"\t\t:\tDEFAULT_KW\n");
    else if(compare(keywords[8], str) == 0)
-   printf("\t\t:\tBOOLEAN_KW\n");
+   fprintf(outputfptr,"\t\t:\tBOOLEAN_KW\n");
    else if(compare(keywords[9], str) == 0)
-   printf("\t\t\t:\tCASE_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tCASE_KW\n");
    else if(compare(keywords[10], str) == 0)
-   printf("\t\t:\tVOID_KW\n");
+   fprintf(outputfptr,"\t\t:\tVOID_KW\n");
    else if(compare(keywords[11], str) == 0)
-   printf("\t\t\t:\tELSE_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tELSE_KW\n");
    else if(compare(keywords[12], str) == 0)
-   printf("\t\t\t:\tFOR_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tFOR_KW\n");
    else if(compare(keywords[13], str) == 0)
-   printf("\t\t\t:\tIF_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tIF_KW\n");
    else if(compare(keywords[14], str) == 0)
-   printf("\t\t:\tINT_KW\n");
+   fprintf(outputfptr,"\t\t:\tINT_KW\n");
    else if(compare(keywords[15], str) == 0)
-   printf("\t\t\t:\tFLOAT_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tFLOAT_KW\n");
    else if(compare(keywords[16], str) == 0)
-   printf("\t\t\t:\tSTRING_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tSTRING_KW\n");
    else if(compare(keywords[17], str) == 0)
-   printf("\t\t\t:\tCHAR_KW\n");
+   fprintf(outputfptr,"\t\t\t:\tCHAR_KW\n");
    else if(compare(keywords[18], str) == 0)
-   printf("\t\t:\tPRINTF_KW\n");
+   fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
    else if(compare(keywords[19], str) == 0)
-   printf("\t\t:\tBASAHIN_KW\n");
+   fprintf(outputfptr,"\t\t:\tBASAHIN_KW\n");
 }
 
 void tokenRoleReservedWords(char* str){
@@ -341,15 +343,15 @@ void tokenRoleReservedWords(char* str){
       "mali","prinsipal","tuloy","tama", 
    };
    if(compare(reservedWords[0], str) == 0)
-   printf("\t\t:\tFALSE_KW\n");
+   fprintf(outputfptr,"\t\t:\tFALSE_KW\n");
    else if(compare(reservedWords[1], str) == 0)
-   printf("\t:\tMAIN_KW\n");
+   fprintf(outputfptr,"\t:\tMAIN_KW\n");
    else if(compare(reservedWords[2], str) == 0)
-   printf("\t\t:\tCONTINUE_KW\n");
+   fprintf(outputfptr,"\t\t:\tCONTINUE_KW\n");
    else if(compare(reservedWords[3], str) == 0)
-   printf("\t\t:\tTRUE_KW\n");
+   fprintf(outputfptr,"\t\t:\tTRUE_KW\n");
    else if(compare(reservedWords[4], str) == 0)
-   printf("\t\t:\tDELETE_KW\n");
+   fprintf(outputfptr,"\t\t:\tDELETE_KW\n");
 }
 
 void tokenRoleCommentChecker(char* str){
@@ -357,9 +359,9 @@ void tokenRoleCommentChecker(char* str){
       "ny|","|ny" 
    };
    if(compare(commentChecker[0], str) == 0)
-   printf("\t\t\t:\tCLOSING_CMNT\n");
+   fprintf(outputfptr,"\t\t\t:\tCLOSING_CMNT\n");
    else if(compare(commentChecker[1], str) == 0)
-   printf("\t\t\t:\tOPENING_CMNT\n");
+   fprintf(outputfptr,"\t\t\t:\tOPENING_CMNT\n");
    
 }
 
@@ -369,7 +371,7 @@ void tokenRoleContentChecker(char* str){
       if (isupper(str[i])){
       }
    }
-   printf("\t\t:\tCMNT_CONTENT\n");
+   fprintf(outputfptr,"\t\t:\tCMNT_CONTENT\n");
 }
 
 
@@ -383,63 +385,65 @@ void outputTokens(char* str) {
    int left = 0, right = 0;
    int length = strlen(str);
    int flag = 0;
+   
    while (right <= length && left <= right) { //while there is another lexeme next to current lexeme
       if (delimiterChecker(str[right]) == false) //checks if str[0] is a delimiter, if not, increment right
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
       if (delimiterChecker(str[right]) == true && str[right] == ';')
-         printf("Delimiter: %c\t\t\t:\tQUOTATION MARK\n",str[right]);
+         fprintf(outputfptr,"Delimiter: %c\t\t\t:\tQUOTATION MARK\n",str[right]);
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
-         printf("Bracket: %c",str[right]);
+         fprintf(outputfptr,"Bracket: %c",str[right]);
          tokenRoleBracket(str[right]);
       }
       else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
-         printf("Operator : %c%c", str[right],str[right+1]);
+         fprintf(outputfptr,"Operator : %c%c", str[right],str[right+1]);
          tokenRoleMultiOperator(str[right],str[right+1]);
          right = right+2;
          left = right;
       }else if (operatorChecker(str[right]) == true)
          //checks if the single character type lexeme is also an operator type one
-         printf("Operator : %c", str[right]);
+         fprintf(outputfptr,"Operator : %c", str[right]);
          tokenRoleSingleOperator(str[right]);
          right++;
          left = right;
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
              char* subStr = subString(str, left, right - 1); //takes the current lexeme as input
          if (keywordChecker(subStr) == true){
-            printf("Keyword : %s", subStr);
+            fprintf(outputfptr,"Keyword : %s", subStr);
             tokenRoleKeyword(subStr);
             // Increment flag
             flag++;}
          else if (booleanOperatorChecker(subStr) == true){
-            printf("Operator : %s", subStr);   
+            fprintf(outputfptr,"Operator : %s", subStr);   
             tokenRoleBooleanOP(subStr);
          }
          else if (reservedWordChecker(subStr) == true){
-            printf("Reserved Word : %s", subStr);
+            fprintf(outputfptr,"Reserved Word : %s", subStr);
             tokenRoleReservedWords(subStr);
             }
          else if (integerChecker(subStr) == true){
-            printf("Integer : %s", subStr);
+            fprintf(outputfptr,"Integer : %s", subStr);
             tokenRoleInteger(subStr);
             }
          else if (realNumberChecker(subStr) == true)
-            printf("Number : %s\n", subStr);
+            fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+            
          else if (commentChecker(subStr) == true){
-            printf("Comment : %s", subStr);
+            fprintf(outputfptr,"Comment : %s", subStr);
             tokenRoleCommentChecker(subStr);
             }
          else if (commentContentChecker(subStr) == true){
-            printf("Comment : %s", subStr);
+            fprintf(outputfptr,"Comment : %s", subStr);
             tokenRoleContentChecker(subStr);
          }
          else if (noiseWordChecker(subStr) == true){
-            printf("Noise Word : %s", subStr);
+            fprintf(outputfptr,"Noise Word : %s", subStr);
             tokenRoleNoiseWord(subStr);
             }
          
          else if (identifierChecker(subStr) == true){
-            printf("Identifier : %s", subStr);
+            fprintf(outputfptr,"Identifier : %s", subStr);
             tokenRoleIdentifier(subStr);
             // Reset flag counter
          flag = 0;}
@@ -449,13 +453,13 @@ void outputTokens(char* str) {
                // e.g. keyword ny_identifier (+1 -1 = flag: 0)
                // If a keyword (flag: 1) does not reset, it means that the succeeding lexeme 
                // is an invalid keyword, otherwise it is a syntax error
-               printf("Invalid Identifier : %s", subStr);
-               printf("\t:\tINVALID IDENTIFIER\n");
+               fprintf(outputfptr,"Invalid Identifier : %s", subStr);
+               fprintf(outputfptr,"\t:\tINVALID IDENTIFIER\n");
                flag = 0;
             }
             else{
-               printf("String : %s", subStr);
-               printf("\t\t\t:\tSTRING LITERAL\n");
+               fprintf(outputfptr,"String : %s", subStr);
+               fprintf(outputfptr,"\t\t\t:\tSTRING LITERAL\n");
                flag = 0;
             }
          }

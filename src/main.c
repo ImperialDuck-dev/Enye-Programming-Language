@@ -9,12 +9,13 @@
 // #include "lexer.c"
 
 int main() {
-    FILE *inputfptr = fopen("example/test.enye", "r");
-    FILE *outputfptr = fopen("example/SymbolTable.enye", "w");
+   inputfptr = fopen("example/test.c", "r");
+   outputfptr = fopen("example/SymbolTable.enye", "w");
     if(inputfptr == NULL){
       perror("Unable to open the file");
     }
     char contents[1000];
+    printf("GENERATING SYMBOL TABLE...");
     while(fgets(contents,sizeof(contents), inputfptr)){
       outputTokens(contents);
       }
