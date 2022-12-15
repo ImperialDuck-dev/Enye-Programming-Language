@@ -198,6 +198,37 @@ char* subString(char* str, int left, int right) {
    return (subStr);
 }
 
+void tokenRoleSingleOperator(char ch){
+   if(ch == '+')
+   printf("\t:\tADD_OPR\n");
+   else if (ch == '-')
+   printf("\t:\tSUBT_OPR\n");
+   else if (ch == '*')
+   printf("\t:\tMULT_OPR\n");
+   else if (ch == '/')
+   printf("\t:\tDIV_OPR\n");
+   else if (ch == '>')
+   printf("\t:\tGREAT_OPR\n");
+   else if (ch == '<')
+   printf("\t:\tLESS_OPR\n");
+   else if (ch == '!')
+   printf("\t:\tNOT_OPR\n");
+   else if (ch == '~')
+   printf("\t:\tINT_DIV_OPR\n");
+   else if (ch == '=')
+   printf("\t:\tASS_OPR\n");
+   else if (ch == '%')
+   printf("\t:\tMOD_OPR\n");
+   else if (ch == '^')
+   printf("\t:\tEXP_OPR\n");
+}
+
+void tokenRoleMultiOperator(char ch, char ch2){
+   if (ch == '!' && ch2 == '=')
+   printf("\t:\tNOT_EQ_TO_OPR\n");
+}
+
+
 //funtion that scans code 
 //and takes lexemes as input
 //and outputs tokens based on their classification
@@ -214,11 +245,14 @@ void outputTokens(char* str) {
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right]))
          printf("Bracket: %c\n",str[right]);
       else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
-         printf("Operator : %c%c\n", str[right],str[right+1]);
+         printf("Operator : %c%c", str[right],str[right+1]);
+         tokenRoleMultiOperator(str[right],str[right+1]);
          right++;
          left = right;
-      }else if (operatorChecker(str[right]) == true)  //checks if the single character type lexeme is also an operator type one
-         printf("Operator : %c\n", str[right]);
+      }else if (operatorChecker(str[right]) == true)
+         //checks if the single character type lexeme is also an operator type one
+         printf("Operator : %c", str[right]);
+         tokenRoleSingleOperator(str[right]);
          right++;
          left = right;
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
