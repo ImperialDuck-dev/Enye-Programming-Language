@@ -391,7 +391,7 @@ void outputTokens(char* str) {
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
       if (delimiterChecker(str[right]) == true && str[right] == ';')
-         fprintf(outputfptr,"Delimiter: %c\t\t\t:\tQUOTATION MARK\n",str[right]);
+         fprintf(outputfptr,"Delimiter: %c\t\t\t:\tSEMI COLON\n",str[right]);
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
          fprintf(outputfptr,"Bracket: %c",str[right]);
          tokenRoleBracket(str[right]);
