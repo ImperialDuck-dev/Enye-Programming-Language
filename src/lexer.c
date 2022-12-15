@@ -16,8 +16,8 @@
 bool operatorChecker(char ch){
    if (ch == '+' || ch == '-' || ch == '*' ||
    ch == '/' || ch == '>' || ch == '<' ||
-   ch == '!' || ch == '|' || ch == '&' ||
-   ch == '=' || ch == '%' || ch == '~' || 
+   ch == '!' || ch == '~' ||
+   ch == '=' || ch == '%' || 
    ch == '^')
    return (true);
    return (false);
@@ -30,7 +30,7 @@ bool bracketsChecker(char ch) {
 }
 
 bool delimiterChecker(char ch) {
-   if (ch == ' ' || ch == ';' || operatorChecker(ch) || bracketsChecker(ch))
+   if (ch == ' ' || ch == ';' || ch == '"' || ch == '\n' || ch == '\0' || operatorChecker(ch) || bracketsChecker(ch))
    return (true);
    return (false);
 }
@@ -65,11 +65,13 @@ bool keywordChecker(char* str) {
 bool stringChecker(char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
-      if (str[0] == '"' || str[len] == '\0')
-      return (true);
+      if (str[i] == '\"' || str[len-1] == '\"') {
+         return (true);
+      } 
    }
-   return (false);
+  return (false);
 }
+
 
 //Checks if current lexeme is equal with reservedWords array
 //returns true if true
@@ -88,31 +90,42 @@ bool reservedWordChecker(char* str) {
    return false;  
 }
 
-// Checks if current lexeme is equal with booleanOperators array
-// returns true if true
-/*
-bool booleanOperatorChecker(char* str) {
-   char *const booleanOperators[] = {
-      //"+=","-=","*=","/=","%=","~=","++","--",
-       "~DI", "~O", "~AT", "+=","-=","*=","/=","%=","~="}; //,"==",">=","<=","/"};
+bool booleanOperatorChecker(char* str){
+   char *const boolOperators[] = {
+      "||", "&&", "!"
+   };
 
-
-   int size = sizeof(booleanOperators) / sizeof(*booleanOperators);
+   int size = sizeof(boolOperators) / sizeof(*boolOperators);
 
    for (int i = 0; i < size; i++){
-      if(isEqual(str, *(booleanOperators + i))){
+      if(isEqual(str, *(boolOperators + i))){
          return true;
       }
    }
-   return false;  
+   return false;
 }
-*/
+
 // Checks current lexeme if it is a comment 
 // Comments are all in capital letters
 // returns true if true
+bool commentChecker(char* str){
+   char *const comments[] = {
+      "ny|", "|ny"
+   };
+
+   int size = sizeof(comments) / sizeof(*comments);
+
+   for (int i = 0; i < size; i++){
+      if(isEqual(str, *(comments + i))){
+         return true;
+      }
+   }
+   return false;
+}
+
 bool commentContentChecker(char* str){
-   int i, len = strlen(str), flag = 0;
-   for (i = 0; i <=len; i++) {
+   int i, len = strlen(str), flag = 1;
+   for (i = 1; i <=len; i++) {
       if (isupper(str[i])){
          flag ++;
       }
@@ -128,14 +141,14 @@ bool commentContentChecker(char* str){
 
 // Checks if current lexeme if it is enye
 // if true, returns true
-bool commentChecker(char* str){
-   int i, len = strlen(str);
-   for (i = 0; i <=len; i++) {
-      if (str[0] == 'e' && str[1] == 'n' && str[2] == 'y' && str[3] == 'e')
-      return (true);
-   }
-   return (false);
-}
+// bool commentChecker(char* str){
+//    int i, len = strlen(str);
+//    for (i = 0; i <=len; i++) {
+//       if (str[0] == '/' && str[1] == 'n' && str[2] == 'y' && str[len] == '/' && str[len-1] == 'y' && str[len-2] == 'n')
+//       return (true);
+//    }
+//    return (false);
+// }
 
 // Checks if the current lexeme is "sa"
 // returns true if true
@@ -162,7 +175,7 @@ bool identifierChecker(char* str){
    //  }
 
    for (i = 0; i <=len; i++) {
-      if (str[0] == 'n' && str[1] == 'y')
+      if (str[0] == 'n' && str[1] == 'y' && str[2] == '_')
       return (true);
    }
    return (false);
@@ -217,6 +230,7 @@ char* subString(char* str, int left, int right) {
 void outputTokens(char* str) {
    int left = 0, right = 0;
    int length = strlen(str);
+   int flag = 0;
    while (right <= length && left <= right) { //while there is another lexeme next to current lexeme
       if (delimiterChecker(str[right]) == false) //checks if str[0] is a delimiter, if not, increment right
       right++;
@@ -235,30 +249,38 @@ void outputTokens(char* str) {
          left = right;
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
              char* subStr = subString(str, left, right - 1); //takes the current lexeme as input
-         // if (booleanOperatorChecker(subStr) == true)
-         //    printf("Boolean Operator : '%s'\n", subStr);
-         if (keywordChecker(subStr) == true)
+         if (keywordChecker(subStr) == true){
             printf("Keyword : '%s'\n", subStr);
-         else if (reservedWordChecker(subStr) == true){
+            flag++;}
+         else if (booleanOperatorChecker(subStr) == true)
+            printf("Operator : '%s'\n", subStr);   
+         else if (reservedWordChecker(subStr) == true)
             printf("Reserved Word : '%s'\n", subStr);
-         }
          else if (commentChecker(subStr) == true)
             printf("Comment : '%s'\n", subStr);
-         else if (commentContentChecker(subStr) == true){
+         else if (commentContentChecker(subStr) == true)
             printf("Comment : '%s'\n", subStr);
-         }
          else if (integerChecker(subStr) == true)
             printf("Integer : '%s'\n", subStr);
          else if (noiseWordChecker(subStr) == true)
             printf("Noise Word : '%s'\n", subStr);
          else if (realNumberChecker(subStr) == true)
             printf("Number : '%s'\n", subStr);
-         else if (identifierChecker(subStr) == true)
-            // && delimiterChecker(str[right]) == true)
-         printf("Identifier : '%s'\n", subStr);
-         else if (identifierChecker(subStr) == false
-            && delimiterChecker(str[right]) == true)
-         printf("String : '%s'\n", subStr);
+         else if (identifierChecker(subStr) == true){
+            printf("Identifier : '%s'\n", subStr);
+         flag = 0;}
+         else if(identifierChecker(subStr)== false){
+            if(flag != 0){
+               printf("Invalid Identifier : '%s'\n", subStr);
+               flag = 0;
+            }
+            else{
+               printf("String : '%s'\n", subStr);
+               flag++;
+            }
+         }
+         
+
          left = right;
       }
    }
