@@ -10,7 +10,7 @@
 
 pumunta sa ibalik habang hinto gawin lipat
 isama kakulangan bulyan case kawalan edi bawat
-bawat kapag numero punto lipon titik basahin ipakita 
+kapag numero punto lipon titik basahin ipakita 
 
 mali prinsipal tuloy tama
 

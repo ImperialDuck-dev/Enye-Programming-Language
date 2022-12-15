@@ -335,7 +335,7 @@ void tokenRoleKeyword(char* str){
    else if(compare(keywords[18], str) == 0)
    fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
    else if(compare(keywords[19], str) == 0)
-   fprintf(outputfptr,"\t\t:\tBASAHIN_KW\n");
+   fprintf(outputfptr,"\t\t:\tSCANF_KW\n");
 }
 
 void tokenRoleReservedWords(char* str){
