@@ -1,0 +1,80 @@
+Delimiter: ;			:	QUOTATION MARK
+Bracket: (			:	PARENTHESIS
+Bracket: )			:	PARENTHESIS
+Bracket: {			:	CURLY BRACES
+Bracket: }			:	CURLY BRACES
+Bracket: [			:	SQUARE BRACES
+Bracket: ]			:	SQUARE BRACES
+Operator : =			:	ASS_OPR
+Operator : +			:	ADD_OPR
+Operator : -			:	SUBT_OPR
+Operator : *			:	MULT_OPR
+Operator : /			:	DIV_OPR
+Operator : %			:	MOD_OPR
+Operator : ~			:	INT_DIV_OPR
+Operator : ^			:	EXP_OPR
+Operator : !			:	NOT_OPR
+Operator : &&			:	AND_OPR
+Operator : ||			:	OR_OPR
+Operator : ==			:	EQ_TO_OPR
+Operator : >			:	GREAT_OPR
+Operator : <			:	LESS_OPR
+Operator : >=			:	GRTR_THAN_OR_EQ_TO_OPR
+Operator : <=			:	LESS_THAN_OR_EQ_TO_OPR
+Operator : !=			:	NOT_EQUAL_TO_OPR
+Integer : 1			:	INTEGER
+Integer : 2			:	INTEGER
+Integer : 3			:	INTEGER
+Integer : 4			:	INTEGER
+Integer : 5			:	INTEGER
+Integer : 6			:	INTEGER
+Integer : 7			:	INTEGER
+Integer : 8			:	INTEGER
+Integer : 9			:	INTEGER
+Integer : 10			:	INTEGER
+Integer : 11			:	INTEGER
+Number : 1.25			:	REAL_NUMBER
+Number : 3.4			:	REAL_NUMBER
+Number : 5.6			:	REAL_NUMBER
+Number : 69.69			:	REAL_NUMBER
+Number : 56.			:	REAL_NUMBER
+Integer : 79			:	INTEGER
+Keyword : pumunta		:	GO_KW
+Noise Word : sa			:	NOISE WORD
+Keyword : ibalik		:	RETURN_KW
+Keyword : habang		:	WHILE_KW
+Keyword : hinto			:	BREAK_KW
+Keyword : gawin			:	DO_KW
+Keyword : lipat			:	SWITCH_KW
+Keyword : isama			:	INCLUDE_KW
+Keyword : kakulangan		:	DEFAULT_KW
+Keyword : bulyan		:	BOOLEAN_KW
+Keyword : case			:	CASE_KW
+Keyword : kawalan		:	VOID_KW
+Keyword : edi			:	ELSE_KW
+Keyword : bawat			:	FOR_KW
+Keyword : bawat			:	FOR_KW
+Keyword : kapag			:	IF_KW
+Keyword : numero		:	INT_KW
+Keyword : punto			:	FLOAT_KW
+Keyword : lipon			:	STRING_KW
+Keyword : titik			:	CHAR_KW
+Keyword : basahin		:	BASAHIN_KW
+Keyword : ipakita		:	PRINTF_KW
+Reserved Word : mali		:	FALSE_KW
+Reserved Word : prinsipal	:	MAIN_KW
+Reserved Word : tuloy		:	CONTINUE_KW
+Reserved Word : tama		:	TRUE_KW
+Keyword : lipon			:	STRING_KW
+Identifier : ny_identifier	:	IDENTIFIER
+Operator : =			:	ASS_OPR
+String : Mga			:	STRING LITERAL
+String : String			:	STRING LITERAL
+Keyword : lipon			:	STRING_KW
+Invalid Identifier : invalid	:	INVALID IDENTIFIER
+Operator : =			:	ASS_OPR
+String : James			:	STRING LITERAL
+String : Blanco			:	STRING LITERAL
+Comment : |ny			:	OPENING_CMNT
+Comment : KUMENTO		:	CMNT_CONTENT
+Comment : ny|			:	CLOSING_CMNT
