@@ -3,7 +3,7 @@
 
 #include "lexer.h"
 
-FILE *fptr;
+FILE *inputfptr, *outputfptr;
 char contents[1000];
 
 #endif
