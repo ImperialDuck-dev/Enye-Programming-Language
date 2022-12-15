@@ -5,43 +5,47 @@
 // #include <stdbool.h>
 // #include "include/lexer.h"
 
-// single character-type lexeme boolean checker
 
-// Checks current lexeme if it is a delimiter 
-// if true, returns true
 
+
+
+
+// multi-character type lexeme boolean checkers
+// Compares current lexeme with the keywords
+bool isEqual(char *str1, char *str2){
+   for (; *str1 && *str2 && *str1 == *str2; str1++,str2++);
+   return (!(*str1) && !(*str2))? true : false;
+}
 
 // Checks current lexeme if it is an operator
 // returns true if true
 bool operatorChecker(char ch){
    if (ch == '+' || ch == '-' || ch == '*' ||
    ch == '/' || ch == '>' || ch == '<' ||
-   ch == '!' || ch == '~' ||
-   ch == '=' || ch == '%' || 
-   ch == '^')
+   ch == '!' || ch == '~' || ch == '=' || 
+   ch == '%' || ch == '^')
    return (true);
    return (false);
 }
 
 bool bracketsChecker(char ch) {
-   if (ch == '(' || ch == ')' || ch == '{' || ch == '}' || ch == '[' || ch == ']')
+   if (ch == '(' || ch == ')' || ch == '{' || 
+   ch == '}' || ch == '[' || ch == ']')
    return (true);
    return (false);
 }
 
+// Checks current lexeme if it is a delimiter 
+// if true, returns true
 bool delimiterChecker(char ch) {
-   if (ch == ' ' || ch == ';' || ch == '"' || ch == '\n' || ch == '\0' || operatorChecker(ch) || bracketsChecker(ch))
+   if (ch == ' ' || ch == ';' || ch == '"' || 
+   ch == '\n' || ch == '\0' || 
+   operatorChecker(ch) || bracketsChecker(ch))
    return (true);
    return (false);
 }
 
-// multi-character type lexeme boolean checkers
 
-// Compares current lexeme with the keywords
-bool isEqual(char *str1, char *str2){
-   for (; *str1 && *str2 && *str1 == *str2; str1++,str2++);
-   return (!(*str1) && !(*str2))? true : false;
-}
 
 // Checks if current lexeme is equal with keyword array
 // returns true if true 
@@ -61,17 +65,6 @@ bool keywordChecker(char* str) {
    }
    return false;  
 }
-
-bool stringChecker(char* str){
-   int i, len = strlen(str);
-   for (i = 0; i <=len; i++) {
-      if (str[i] == '\"' || str[len-1] == '\"') {
-         return (true);
-      } 
-   }
-  return (false);
-}
-
 
 //Checks if current lexeme is equal with reservedWords array
 //returns true if true
@@ -139,17 +132,6 @@ bool commentContentChecker(char* str){
 }
 
 
-// Checks if current lexeme if it is enye
-// if true, returns true
-// bool commentChecker(char* str){
-//    int i, len = strlen(str);
-//    for (i = 0; i <=len; i++) {
-//       if (str[0] == '/' && str[1] == 'n' && str[2] == 'y' && str[len] == '/' && str[len-1] == 'y' && str[len-2] == 'n')
-//       return (true);
-//    }
-//    return (false);
-// }
-
 // Checks if the current lexeme is "sa"
 // returns true if true
 bool noiseWordChecker(char* str){
@@ -167,12 +149,6 @@ bool noiseWordChecker(char* str){
 // if not, return true
 bool identifierChecker(char* str){
     int i, len = strlen(str);
-   //  if(str[0] == '0' || str[0] == '1' || str[0] == '2' ||
-   //  str[0] == '3' || str[0] == '4' || str[0] == '5' ||
-   //  str[0] == '6' || str[0] == '7' || str[0] == '8' ||
-   //  str[0] == '9' || delimiterChecker(str[0]) == true) {
-   //      return (false);
-   //  }
 
    for (i = 0; i <=len; i++) {
       if (str[0] == 'n' && str[1] == 'y' && str[2] == '_')
@@ -279,8 +255,6 @@ void outputTokens(char* str) {
                flag++;
             }
          }
-         
-
          left = right;
       }
    }
