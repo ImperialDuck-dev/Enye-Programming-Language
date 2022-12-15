@@ -259,6 +259,17 @@ void tokenRoleNoiseWord(char *str){
    printf("\t\t\t:\tNOISE WORD\n");
 }
 
+void tokenRoleIdentifier(char* str){
+   if (str[0] == 'n' || str[1] == 'y' || str[2] == '_')
+   printf("\t:\tIDENTIFIER\n");
+}
+
+void tokenRoleInteger(char* str){
+   if (str[0] != '0' || str[1] != '1' || str[2] != '2' || str[3] != '3' || str[4] != '4' || 
+   str[5] != '5' || str[6] != '6' || str[7] != '7' || str[8] != '8' || str[9] != '9')
+   printf("\t\t\t:\tINTEGER\n");
+}
+
 
 int compare(char a[],char b[])  
 {  
@@ -347,9 +358,9 @@ void tokenRoleCommentChecker(char* str){
       "ny|","|ny" 
    };
    if(compare(commentChecker[0], str) == 0)
-   printf("\t\t:\tCLOSING_CMNT\n");
+   printf("\t\t\t:\tCLOSING_CMNT\n");
    else if(compare(commentChecker[1], str) == 0)
-   printf("\t\t:\tOPENING_CMNT\n");
+   printf("\t\t\t:\tOPENING_CMNT\n");
    
 }
 
@@ -359,7 +370,7 @@ void tokenRoleContentChecker(char* str){
       if (isupper(str[i])){
       }
    }
-   printf("\t:\tCMNT_CONTENT\n");
+   printf("\t\t:\tCMNT_CONTENT\n");
 }
 
 
@@ -409,6 +420,12 @@ void outputTokens(char* str) {
             printf("Reserved Word : %s", subStr);
             tokenRoleReservedWords(subStr);
             }
+         else if (integerChecker(subStr) == true){
+            printf("Integer : %s", subStr);
+            tokenRoleInteger(subStr);
+            }
+         else if (realNumberChecker(subStr) == true)
+            printf("Number : %s\n", subStr);
          else if (commentChecker(subStr) == true){
             printf("Comment : %s", subStr);
             tokenRoleCommentChecker(subStr);
@@ -417,16 +434,14 @@ void outputTokens(char* str) {
             printf("Comment : %s", subStr);
             tokenRoleContentChecker(subStr);
          }
-         else if (integerChecker(subStr) == true)
-            printf("Integer : %s\n", subStr);
          else if (noiseWordChecker(subStr) == true){
             printf("Noise Word : %s", subStr);
             tokenRoleNoiseWord(subStr);
             }
-         else if (realNumberChecker(subStr) == true)
-            printf("Number : %s\n", subStr);
+         
          else if (identifierChecker(subStr) == true){
-            printf("Identifier : %s\n", subStr);
+            printf("Identifier : %s", subStr);
+            tokenRoleIdentifier(subStr);
             // Reset flag counter
          flag = 0;}
          else if(identifierChecker(subStr)== false){
@@ -435,11 +450,13 @@ void outputTokens(char* str) {
                // e.g. keyword ny_identifier (+1 -1 = flag: 0)
                // If a keyword (flag: 1) does not reset, it means that the succeeding lexeme 
                // is an invalid keyword, otherwise it is a syntax error
-               printf("Invalid Identifier : %s\n", subStr);
+               printf("Invalid Identifier : %s", subStr);
+               printf("\t:\tINVALID IDENTIFIER\n");
                flag = 0;
             }
             else{
-               printf("String : %s\n", subStr);
+               printf("String : %s", subStr);
+               printf("\t\t\t:\tSTRING LITERAL\n");
                flag = 0;
             }
          }
