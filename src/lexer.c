@@ -224,10 +224,22 @@ void tokenRoleSingleOperator(char ch){
 }
 
 void tokenRoleMultiOperator(char ch, char ch2){
-   if (ch == '!' && ch2 == '=')
-   printf("\t:\tNOT_EQ_TO_OPR\n");
+   if (ch == '=' && ch2 == '=')
+   printf("\t:\tEQ_TO_OPR\n");
+   else if (ch == '>' && ch2 == '=')
+   printf("\t:\tGRTR_THAN_OR_EQ_TO_OPR\n");
+   else if (ch == '<' && ch2 == '=')
+   printf("\t:\tLESS_THAN_OR_EQ_TO_OPR\n");
+   else if (ch == '!' && ch2 == '=')
+   printf("\t:\tNOT_EQUAL_TO_OPR\n");
 }
 
+void tokenRoleBooleanOP(char* str){
+   if (str[0] == '&' && str[1] == '&')
+   printf("\t:\tAND_OPR\n");
+   if (str[0] == '|' && str[1] == '|')
+   printf("\t:\tOR_OPR\n");
+}
 
 //funtion that scans code 
 //and takes lexemes as input
@@ -247,7 +259,7 @@ void outputTokens(char* str) {
       else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
          printf("Operator : %c%c", str[right],str[right+1]);
          tokenRoleMultiOperator(str[right],str[right+1]);
-         right++;
+         right = right+2;
          left = right;
       }else if (operatorChecker(str[right]) == true)
          //checks if the single character type lexeme is also an operator type one
@@ -261,8 +273,10 @@ void outputTokens(char* str) {
             printf("Keyword : %s\n", subStr);
             // Increment flag
             flag++;}
-         else if (booleanOperatorChecker(subStr) == true)
-            printf("Operator : %s\n", subStr);   
+         else if (booleanOperatorChecker(subStr) == true){
+            printf("Operator : %s", subStr);   
+            tokenRoleBooleanOP(subStr);
+         }
          else if (reservedWordChecker(subStr) == true)
             printf("Reserved Word : %s\n", subStr);
          else if (commentChecker(subStr) == true)
