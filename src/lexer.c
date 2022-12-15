@@ -1,9 +1,8 @@
-// #include <ctype.h>
-// #include <stdio.h>
-// #include <string.h>
-// #include <stdlib.h>
-// #include <stdbool.h>
-// #include "include/lexer.h"
+ #include <ctype.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdbool.h>
 
 // Checks current lexeme if it is an operator
 // returns true if true
