@@ -1,9 +1,12 @@
-lipon ny_string = "Ito ay isang string literal";
+; () {} []
 
-numero ny_x = 1;
+= + - * / % ~ ^
+ 
+! && || == ~= > < >= <=
 
-kapag(numero ny_edad = 20 && lipon ny_kasarian == "babae" || numero ny_bahay != 120);
+pumunta sa ibalik habang hinto gawin lipat
+isama kakulangan bulyan case kawalan edi bawat
+bawat kapag numero punto lipon titik basahin ipakita 
 
-lipon ny_angLipon = "Ito ay mga String";
 
-enye ITO AY MGA COMMENTO enye
+mali prinsipal tuloy tama
