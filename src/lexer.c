@@ -254,6 +254,74 @@ void tokenRoleBracket(char ch){
    printf("\t:\tQUOTATION MARK\n");
 }
 
+
+int compare(char a[],char b[])  
+{  
+   int flag=0,i=0;  // integer variables declaration  
+   while(a[i]!='\0' &&b[i]!='\0')  // while loop  
+   {  
+    if(a[i]!=b[i])  
+      {  
+        flag=1;  
+          break;  
+      }  
+      i++;  
+   }  
+   if(flag==0)  
+   return 0;  
+   else  
+   return 1;  
+}  
+
+void tokenRoleKeyword(char* str){
+   char *const keywords[] = {
+      "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "isama",
+      "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
+      "lipon", "titik", "ipakita", "basahin" 
+   };
+   if(compare(keywords[0], str) == 0)
+   printf("\t:\tGO_KW\n");
+   else if(compare(keywords[1], str) == 0)
+   printf("\t:\tRETURN_KW\n");
+   else if(compare(keywords[2], str) == 0)
+   printf("\t:\tWHILE_KW\n");
+   else if(compare(keywords[3], str) == 0)
+   printf("\t:\tBREAK_KW\n");
+   else if(compare(keywords[4], str) == 0)
+   printf("\t:\tDO_KW\n");
+   else if(compare(keywords[5], str) == 0)
+   printf("\t:\tSWITCH_KW\n");
+   else if(compare(keywords[6], str) == 0)
+   printf("\t:\tINCLUDE_KW\n");
+   else if(compare(keywords[7], str) == 0)
+   printf("\t:\tDEFAULT_KW\n");
+   else if(compare(keywords[8], str) == 0)
+   printf("\t:\tBOOLEAN_KW\n");
+   else if(compare(keywords[9], str) == 0)
+   printf("\t:\tCASE_KW\n");
+   else if(compare(keywords[10], str) == 0)
+   printf("\t:\tVOID_KW\n");
+   else if(compare(keywords[11], str) == 0)
+   printf("\t:\tELSE_KW\n");
+   else if(compare(keywords[12], str) == 0)
+   printf("\t:\tFOR_KW\n");
+   else if(compare(keywords[13], str) == 0)
+   printf("\t:\tIF_KW\n");
+   else if(compare(keywords[14], str) == 0)
+   printf("\t:\tINT_KW\n");
+   else if(compare(keywords[15], str) == 0)
+   printf("\t:\tFLOAT_KW\n");
+   else if(compare(keywords[16], str) == 0)
+   printf("\t:\tSTRING_KW\n");
+   else if(compare(keywords[17], str) == 0)
+   printf("\t:\tCHAR_KW\n");
+   else if(compare(keywords[18], str) == 0)
+   printf("\t:\tPRINTF_KW\n");
+   else if(compare(keywords[19], str) == 0)
+   printf("\t:\tBASAHIN_KW\n");
+}
+
+
 //funtion that scans code 
 //and takes lexemes as input
 //and outputs tokens based on their classification
@@ -285,7 +353,8 @@ void outputTokens(char* str) {
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
              char* subStr = subString(str, left, right - 1); //takes the current lexeme as input
          if (keywordChecker(subStr) == true){
-            printf("Keyword : %s\n", subStr);
+            printf("Keyword : %s", subStr);
+            tokenRoleKeyword(subStr);
             // Increment flag
             flag++;}
          else if (booleanOperatorChecker(subStr) == true){
