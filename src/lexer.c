@@ -241,6 +241,19 @@ void tokenRoleBooleanOP(char* str){
    printf("\t:\tOR_OPR\n");
 }
 
+void tokenRoleBracket(char ch){
+   if (ch == '(' || ch == ')')
+   printf("\t:\tPARENTHESIS\n");
+   else if (ch == '{' || ch == '}')
+   printf("\t:\tCURLY BRACES\n");
+   else if (ch == '[' || ch == ']')
+   printf("\t:\tSQUARE BRACES\n");
+   else if (ch == ';')
+   printf("\t:\tSEMI COLON\n");
+   else if (ch == '"')
+   printf("\t:\tQUOTATION MARK\n");
+}
+
 //funtion that scans code 
 //and takes lexemes as input
 //and outputs tokens based on their classification
@@ -253,9 +266,11 @@ void outputTokens(char* str) {
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
       if (delimiterChecker(str[right]) == true && str[right] == ';')
-         printf("Delimiter: %c\n",str[right]);
-      else if (delimiterChecker(str[right]) && bracketsChecker(str[right]))
-         printf("Bracket: %c\n",str[right]);
+         printf("Delimiter: %c\t:\tQUOTATION MARK\n",str[right]);
+      else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
+         printf("Bracket: %c",str[right]);
+         tokenRoleBracket(str[right]);
+      }
       else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
          printf("Operator : %c%c", str[right],str[right+1]);
          tokenRoleMultiOperator(str[right],str[right+1]);
