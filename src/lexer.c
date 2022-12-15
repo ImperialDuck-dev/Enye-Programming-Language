@@ -249,10 +249,10 @@ void tokenRoleBracket(char ch){
    fprintf(outputfptr,"\t\t\t:\tCURLY BRACES\n");
    else if (ch == '[' || ch == ']')
    fprintf(outputfptr,"\t\t\t:\tSQUARE BRACES\n");
-   else if (ch == ';')
-   fprintf(outputfptr,"\t\t\t:\tSEMI COLON\n");
-   else if (ch == '"')
-   fprintf(outputfptr,"\t\t\t:\tQUOTATION MARK\n");
+   // else if (ch == ';')
+   // fprintf(outputfptr,"\t\t\t:\tSEMI COLON\n");
+   // else if (ch == '"')
+   // fprintf(outputfptr,"\t\t\t:\tQUOTATION MARK\n");
 }
 
 void tokenRoleNoiseWord(char *str){
@@ -391,7 +391,7 @@ void outputTokens(char* str) {
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
       if (delimiterChecker(str[right]) == true && str[right] == ';')
-         fprintf(outputfptr,"Delimiter: %c\t\t\t:\tSEMI COLON\n",str[right]);
+         fprintf(outputfptr,"Delimiter: %c\t\t:\tSEMI COLON\n",str[right]);
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
          fprintf(outputfptr,"Bracket: %c",str[right]);
          tokenRoleBracket(str[right]);

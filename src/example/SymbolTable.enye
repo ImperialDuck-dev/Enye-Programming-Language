@@ -1,10 +1,10 @@
-Delimiter: ;			:	QUOTATION MARK
 Bracket: (			:	PARENTHESIS
 Bracket: )			:	PARENTHESIS
 Bracket: {			:	CURLY BRACES
 Bracket: }			:	CURLY BRACES
 Bracket: [			:	SQUARE BRACES
 Bracket: ]			:	SQUARE BRACES
+Delimiter: ;		:	SEMI COLON
 Operator : =			:	ASS_OPR
 Operator : +			:	ADD_OPR
 Operator : -			:	SUBT_OPR
@@ -37,8 +37,7 @@ Number : 1.25			:	REAL_NUMBER
 Number : 3.4			:	REAL_NUMBER
 Number : 5.6			:	REAL_NUMBER
 Number : 69.69			:	REAL_NUMBER
-Number : 56.			:	REAL_NUMBER
-Integer : 79			:	INTEGER
+Number : 56.79			:	REAL_NUMBER
 Keyword : pumunta		:	GO_KW
 Noise Word : sa			:	NOISE WORD
 Keyword : ibalik		:	RETURN_KW
@@ -71,7 +70,7 @@ Operator : =			:	ASS_OPR
 String : Mga			:	STRING LITERAL
 String : String			:	STRING LITERAL
 Keyword : lipon			:	STRING_KW
-Invalid Identifier : invalid	:	INVALID IDENTIFIER
+Invalid Lexeme : invalid	:	LEXEME NOT RECOGNIZED
 Operator : =			:	ASS_OPR
 String : James			:	STRING LITERAL
 String : Blanco			:	STRING LITERAL
