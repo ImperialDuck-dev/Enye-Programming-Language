@@ -453,8 +453,8 @@ void outputTokens(char* str) {
                // e.g. keyword ny_identifier (+1 -1 = flag: 0)
                // If a keyword (flag: 1) does not reset, it means that the succeeding lexeme 
                // is an invalid keyword, otherwise it is a syntax error
-               fprintf(outputfptr,"Invalid Identifier : %s", subStr);
-               fprintf(outputfptr,"\t:\tINVALID IDENTIFIER\n");
+               fprintf(outputfptr,"Invalid Lexeme : %s", subStr);
+               fprintf(outputfptr,"\t:\tLEXEME NOT RECOGNIZED\n");
                flag = 0;
             }
             else{
