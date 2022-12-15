@@ -200,58 +200,63 @@ char* subString(char* str, int left, int right) {
 
 void tokenRoleSingleOperator(char ch){
    if(ch == '+')
-   printf("\t:\tADD_OPR\n");
+   printf("\t\t\t:\tADD_OPR\n");
    else if (ch == '-')
-   printf("\t:\tSUBT_OPR\n");
+   printf("\t\t\t:\tSUBT_OPR\n");
    else if (ch == '*')
-   printf("\t:\tMULT_OPR\n");
+   printf("\t\t\t:\tMULT_OPR\n");
    else if (ch == '/')
-   printf("\t:\tDIV_OPR\n");
+   printf("\t\t\t:\tDIV_OPR\n");
    else if (ch == '>')
-   printf("\t:\tGREAT_OPR\n");
+   printf("\t\t\t:\tGREAT_OPR\n");
    else if (ch == '<')
-   printf("\t:\tLESS_OPR\n");
+   printf("\t\t\t:\tLESS_OPR\n");
    else if (ch == '!')
-   printf("\t:\tNOT_OPR\n");
+   printf("\t\t\t:\tNOT_OPR\n");
    else if (ch == '~')
-   printf("\t:\tINT_DIV_OPR\n");
+   printf("\t\t\t:\tINT_DIV_OPR\n");
    else if (ch == '=')
-   printf("\t:\tASS_OPR\n");
+   printf("\t\t\t:\tASS_OPR\n");
    else if (ch == '%')
-   printf("\t:\tMOD_OPR\n");
+   printf("\t\t\t:\tMOD_OPR\n");
    else if (ch == '^')
-   printf("\t:\tEXP_OPR\n");
+   printf("\t\t\t:\tEXP_OPR\n");
 }
 
 void tokenRoleMultiOperator(char ch, char ch2){
    if (ch == '=' && ch2 == '=')
-   printf("\t:\tEQ_TO_OPR\n");
+   printf("\t\t\t:\tEQ_TO_OPR\n");
    else if (ch == '>' && ch2 == '=')
-   printf("\t:\tGRTR_THAN_OR_EQ_TO_OPR\n");
+   printf("\t\t\t:\tGRTR_THAN_OR_EQ_TO_OPR\n");
    else if (ch == '<' && ch2 == '=')
-   printf("\t:\tLESS_THAN_OR_EQ_TO_OPR\n");
+   printf("\t\t\t:\tLESS_THAN_OR_EQ_TO_OPR\n");
    else if (ch == '!' && ch2 == '=')
-   printf("\t:\tNOT_EQUAL_TO_OPR\n");
+   printf("\t\t\t:\tNOT_EQUAL_TO_OPR\n");
 }
 
 void tokenRoleBooleanOP(char* str){
    if (str[0] == '&' && str[1] == '&')
-   printf("\t:\tAND_OPR\n");
+   printf("\t\t\t:\tAND_OPR\n");
    if (str[0] == '|' && str[1] == '|')
-   printf("\t:\tOR_OPR\n");
+   printf("\t\t\t:\tOR_OPR\n");
 }
 
 void tokenRoleBracket(char ch){
    if (ch == '(' || ch == ')')
-   printf("\t:\tPARENTHESIS\n");
+   printf("\t\t\t:\tPARENTHESIS\n");
    else if (ch == '{' || ch == '}')
-   printf("\t:\tCURLY BRACES\n");
+   printf("\t\t\t:\tCURLY BRACES\n");
    else if (ch == '[' || ch == ']')
-   printf("\t:\tSQUARE BRACES\n");
+   printf("\t\t\t:\tSQUARE BRACES\n");
    else if (ch == ';')
-   printf("\t:\tSEMI COLON\n");
+   printf("\t\t\t:\tSEMI COLON\n");
    else if (ch == '"')
-   printf("\t:\tQUOTATION MARK\n");
+   printf("\t\t\t:\tQUOTATION MARK\n");
+}
+
+void tokenRoleNoiseWord(char *str){
+   if (str[0] == 's' || str[1] == 'a')
+   printf("\t\t\t:\tNOISE WORD\n");
 }
 
 
@@ -280,46 +285,85 @@ void tokenRoleKeyword(char* str){
       "lipon", "titik", "ipakita", "basahin" 
    };
    if(compare(keywords[0], str) == 0)
-   printf("\t:\tGO_KW\n");
+   printf("\t\t:\tGO_KW\n");
    else if(compare(keywords[1], str) == 0)
-   printf("\t:\tRETURN_KW\n");
+   printf("\t\t:\tRETURN_KW\n");
    else if(compare(keywords[2], str) == 0)
-   printf("\t:\tWHILE_KW\n");
+   printf("\t\t:\tWHILE_KW\n");
    else if(compare(keywords[3], str) == 0)
-   printf("\t:\tBREAK_KW\n");
+   printf("\t\t\t:\tBREAK_KW\n");
    else if(compare(keywords[4], str) == 0)
-   printf("\t:\tDO_KW\n");
+   printf("\t\t\t:\tDO_KW\n");
    else if(compare(keywords[5], str) == 0)
-   printf("\t:\tSWITCH_KW\n");
+   printf("\t\t\t:\tSWITCH_KW\n");
    else if(compare(keywords[6], str) == 0)
-   printf("\t:\tINCLUDE_KW\n");
+   printf("\t\t\t:\tINCLUDE_KW\n");
    else if(compare(keywords[7], str) == 0)
-   printf("\t:\tDEFAULT_KW\n");
+   printf("\t\t:\tDEFAULT_KW\n");
    else if(compare(keywords[8], str) == 0)
-   printf("\t:\tBOOLEAN_KW\n");
+   printf("\t\t:\tBOOLEAN_KW\n");
    else if(compare(keywords[9], str) == 0)
-   printf("\t:\tCASE_KW\n");
+   printf("\t\t\t:\tCASE_KW\n");
    else if(compare(keywords[10], str) == 0)
-   printf("\t:\tVOID_KW\n");
+   printf("\t\t:\tVOID_KW\n");
    else if(compare(keywords[11], str) == 0)
-   printf("\t:\tELSE_KW\n");
+   printf("\t\t\t:\tELSE_KW\n");
    else if(compare(keywords[12], str) == 0)
-   printf("\t:\tFOR_KW\n");
+   printf("\t\t\t:\tFOR_KW\n");
    else if(compare(keywords[13], str) == 0)
-   printf("\t:\tIF_KW\n");
+   printf("\t\t\t:\tIF_KW\n");
    else if(compare(keywords[14], str) == 0)
-   printf("\t:\tINT_KW\n");
+   printf("\t\t:\tINT_KW\n");
    else if(compare(keywords[15], str) == 0)
-   printf("\t:\tFLOAT_KW\n");
+   printf("\t\t\t:\tFLOAT_KW\n");
    else if(compare(keywords[16], str) == 0)
-   printf("\t:\tSTRING_KW\n");
+   printf("\t\t\t:\tSTRING_KW\n");
    else if(compare(keywords[17], str) == 0)
-   printf("\t:\tCHAR_KW\n");
+   printf("\t\t\t:\tCHAR_KW\n");
    else if(compare(keywords[18], str) == 0)
-   printf("\t:\tPRINTF_KW\n");
+   printf("\t\t:\tPRINTF_KW\n");
    else if(compare(keywords[19], str) == 0)
-   printf("\t:\tBASAHIN_KW\n");
+   printf("\t\t:\tBASAHIN_KW\n");
 }
+
+void tokenRoleReservedWords(char* str){
+   char *const reservedWords[] = {
+      "mali","prinsipal","tuloy","tama", 
+   };
+   if(compare(reservedWords[0], str) == 0)
+   printf("\t\t:\tFALSE_KW\n");
+   else if(compare(reservedWords[1], str) == 0)
+   printf("\t:\tMAIN_KW\n");
+   else if(compare(reservedWords[2], str) == 0)
+   printf("\t\t:\tCONTINUE_KW\n");
+   else if(compare(reservedWords[3], str) == 0)
+   printf("\t\t:\tTRUE_KW\n");
+   else if(compare(reservedWords[4], str) == 0)
+   printf("\t\t:\tDELETE_KW\n");
+}
+
+void tokenRoleCommentChecker(char* str){
+   char *const commentChecker[] = {
+      "ny|","|ny" 
+   };
+   if(compare(commentChecker[0], str) == 0)
+   printf("\t\t:\tCLOSING_CMNT\n");
+   else if(compare(commentChecker[1], str) == 0)
+   printf("\t\t:\tOPENING_CMNT\n");
+   
+}
+
+void tokenRoleContentChecker(char* str){
+   int i, len = strlen(str);
+   for (i = 1; i <=len; i++) {
+      if (isupper(str[i])){
+      }
+   }
+   printf("\t:\tCMNT_CONTENT\n");
+}
+
+
+
 
 
 //funtion that scans code 
@@ -334,7 +378,7 @@ void outputTokens(char* str) {
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
       if (delimiterChecker(str[right]) == true && str[right] == ';')
-         printf("Delimiter: %c\t:\tQUOTATION MARK\n",str[right]);
+         printf("Delimiter: %c\t\t\t:\tQUOTATION MARK\n",str[right]);
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
          printf("Bracket: %c",str[right]);
          tokenRoleBracket(str[right]);
@@ -361,16 +405,24 @@ void outputTokens(char* str) {
             printf("Operator : %s", subStr);   
             tokenRoleBooleanOP(subStr);
          }
-         else if (reservedWordChecker(subStr) == true)
-            printf("Reserved Word : %s\n", subStr);
-         else if (commentChecker(subStr) == true)
-            printf("Comment : %s\n", subStr);
-         else if (commentContentChecker(subStr) == true)
-            printf("Comment : %s\n", subStr);
+         else if (reservedWordChecker(subStr) == true){
+            printf("Reserved Word : %s", subStr);
+            tokenRoleReservedWords(subStr);
+            }
+         else if (commentChecker(subStr) == true){
+            printf("Comment : %s", subStr);
+            tokenRoleCommentChecker(subStr);
+            }
+         else if (commentContentChecker(subStr) == true){
+            printf("Comment : %s", subStr);
+            tokenRoleContentChecker(subStr);
+         }
          else if (integerChecker(subStr) == true)
             printf("Integer : %s\n", subStr);
-         else if (noiseWordChecker(subStr) == true)
-            printf("Noise Word : %s\n", subStr);
+         else if (noiseWordChecker(subStr) == true){
+            printf("Noise Word : %s", subStr);
+            tokenRoleNoiseWord(subStr);
+            }
          else if (realNumberChecker(subStr) == true)
             printf("Number : %s\n", subStr);
          else if (identifierChecker(subStr) == true){
