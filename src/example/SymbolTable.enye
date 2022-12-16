@@ -52,13 +52,12 @@ Keyword : case			:	CASE_KW
 Keyword : kawalan		:	VOID_KW
 Keyword : edi			:	ELSE_KW
 Keyword : bawat			:	FOR_KW
-Keyword : bawat			:	FOR_KW
 Keyword : kapag			:	IF_KW
 Keyword : numero		:	INT_KW
 Keyword : punto			:	FLOAT_KW
 Keyword : lipon			:	STRING_KW
 Keyword : titik			:	CHAR_KW
-Keyword : basahin		:	BASAHIN_KW
+Keyword : basahin		:	SCANF_KW
 Keyword : ipakita		:	PRINTF_KW
 Reserved Word : mali		:	FALSE_KW
 Reserved Word : prinsipal	:	MAIN_KW
