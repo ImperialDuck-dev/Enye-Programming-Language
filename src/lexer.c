@@ -65,7 +65,7 @@ bool keywordChecker(char* str) {
 //returns true if true
 bool reservedWordChecker(char* str) {
    char *const reservedWords[] = {
-      "mali","prinsipal","tuloy","tama"};
+      "tama", "mali","prinsipal","tuloy","tanggalin"};
 
 
    int size = sizeof(reservedWords) / sizeof(*reservedWords);
@@ -340,7 +340,7 @@ void tokenRoleKeyword(char* str){
 
 void tokenRoleReservedWords(char* str){
    char *const reservedWords[] = {
-      "mali","prinsipal","tuloy","tama", 
+      "mali","prinsipal","tuloy","tama","tanggalin" 
    };
    if(compare(reservedWords[0], str) == 0)
    fprintf(outputfptr,"\t\t:\tFALSE_KW\n");

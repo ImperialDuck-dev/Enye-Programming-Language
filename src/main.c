@@ -18,23 +18,25 @@ int main() {
       if (len < 1) {
         printf("Invalid file path");
         return 0;
-      }if(filepath[len-1] != 'c' && filepath[len-2] != '.'){
-        printf("Invalid file extension");
+      }
+      if(filepath[len-1] != 'c' && filepath[len-2] != '.'){
+        printf("Invalid file extension\n.\n.\nProgram will now close");
         return 0;
       }else{
         inputfptr = fopen(filepath, "r");
       }
+
+
    outputfptr = fopen("example/SymbolTable.enye", "w");
     if(inputfptr == NULL){
       perror("Unable to open the file");
     }
     char contents[1000];
     printf("GENERATING SYMBOL TABLE...\n");
-    getch();
     while(fgets(contents,sizeof(contents), inputfptr)){
       outputTokens(contents);
       }
-    printf("SYMBOL TABLE GENERATED...");  
+    printf("SYMBOL TABLE GENERATED...\n");  
 
 
     fclose(inputfptr);

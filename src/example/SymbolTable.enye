@@ -41,8 +41,8 @@ Number : 56.79			:	REAL_NUMBER
 Keyword : pumunta		:	GO_KW
 Noise Word : sa			:	NOISE WORD
 Keyword : ibalik		:	RETURN_KW
-Keyword : habang		:	WHILE_KW
 Keyword : hinto			:	BREAK_KW
+Keyword : habang		:	WHILE_KW
 Keyword : gawin			:	DO_KW
 Keyword : lipat			:	SWITCH_KW
 Keyword : isama			:	INCLUDE_KW
@@ -63,16 +63,35 @@ Reserved Word : mali		:	FALSE_KW
 Reserved Word : prinsipal	:	MAIN_KW
 Reserved Word : tuloy		:	CONTINUE_KW
 Reserved Word : tama		:	TRUE_KW
+Reserved Word : tanggalin		:	DELETE_KW
 Keyword : lipon			:	STRING_KW
 Identifier : ny_identifier	:	IDENTIFIER
 Operator : =			:	ASS_OPR
-String : Mga			:	STRING LITERAL
-String : String			:	STRING LITERAL
+String : Mabuhay			:	STRING LITERAL
+Delimiter: ;		:	SEMI COLON
 Keyword : lipon			:	STRING_KW
-Invalid Lexeme : invalid	:	LEXEME NOT RECOGNIZED
+Identifier : ny_character	:	IDENTIFIER
 Operator : =			:	ASS_OPR
-String : James			:	STRING LITERAL
-String : Blanco			:	STRING LITERAL
+String : 'M'			:	STRING LITERAL
+Delimiter: ;		:	SEMI COLON
+Keyword : lipon			:	STRING_KW
+Invalid Lexeme : wrongIdentifier	:	LEXEME NOT RECOGNIZED
+Delimiter: ;		:	SEMI COLON
+Keyword : numero		:	INT_KW
+Identifier : ny_integer	:	IDENTIFIER
+Operator : =			:	ASS_OPR
+Integer : 69			:	INTEGER
+Delimiter: ;		:	SEMI COLON
+Keyword : punto			:	FLOAT_KW
+Identifier : ny_float	:	IDENTIFIER
+Operator : =			:	ASS_OPR
+Number : 69.69			:	REAL_NUMBER
+Delimiter: ;		:	SEMI COLON
+Keyword : bulyan		:	BOOLEAN_KW
+Identifier : ny_boolean	:	IDENTIFIER
+Operator : =			:	ASS_OPR
+String : true			:	STRING LITERAL
+Delimiter: ;		:	SEMI COLON
 Comment : |ny			:	OPENING_CMNT
 Comment : KUMENTO		:	CMNT_CONTENT
 Comment : ny|			:	CLOSING_CMNT
