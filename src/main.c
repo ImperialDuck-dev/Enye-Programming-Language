@@ -20,15 +20,15 @@ int main() {
         return 0;
       }
       if(filepath[len-1] != 'y' && filepath[len-2] != 'n' && filepath[len-3] != '.'){
-        printf("Invalid file extension\n.\n.\nProgram will now close");
-      }else if(inputfptr == NULL){
-      perror("Unable to open the file");
-      }else{
+        printf("Invalid file extension\n.\n.\nProgram will now close" );
+      return 0;}
+      else{
         inputfptr = fopen(filepath, "r");
       }
 
 
     outputfptr = fopen("example/SymbolTable.txt", "w");
+    
     char contents[1000];
     printf("GENERATING SYMBOL TABLE...\n");
     while(fgets(contents,sizeof(contents), inputfptr)){
