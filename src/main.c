@@ -15,21 +15,20 @@ int main() {
       printf("Input file path: ");
       scanf("%s",in_filepath);
       len = strlen(in_filepath);
-      if (len < 1) {    // Checks if file path is invalid
+      if (len <= 1) { // Checks if file path is invalid
         printf("Invalid file path");
         return 0;
       }
       // Checks if file extension is invalid
-      if(in_filepath[len-1] != 'y' && in_filepath[len-2] != 'n' && in_filepath[len-3] != '.'){
-        printf("Invalid file extension\n.\n.\nProgram will now close" );
-      return 0;}
-      else{
+      if(in_filepath[len-1] == 'y' && in_filepath[len-2] == 'n' && in_filepath[len-3] == '.'){
         inputfptr = fopen(in_filepath, "r"); // opens input file
+        outputfptr = fopen(out_filepath, "w"); 
+        }
+      else{
+        printf("Invalid file extension\n.\n.\nProgram will now close");
+        return 0;
       }
-
-
-    outputfptr = fopen(out_filepath, "w"); 
-    // opens output file
+      
 
     char contents[1000]; // variable to store contents of input file
     printf("GENERATING SYMBOL TABLE...\n");
