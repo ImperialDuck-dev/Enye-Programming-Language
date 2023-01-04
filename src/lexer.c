@@ -140,6 +140,18 @@ bool noiseWordChecker(char* str){
    return (false);
 }
 
+ /* FOR REVISION
+bool keyWordChecker(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 'c' && str[1] == 'a' && str[2] == 's' && str[3] == 'e')
+      if (str[0] == 'l' && str[1] == 'i' && str[2] == 'p' && str[3] == 'o' && str[4] == 'n')
+      return (true);
+   }
+   return (false);
+}
+*/
+
 // Identifiers starts at ny_
 // Checks if the current lexeme is an identifier
 // if not, return true
@@ -241,7 +253,7 @@ void tokenRoleBooleanOP(char* str){
    if (str[0] == '|' && str[1] == '|')
    fprintf(outputfptr,"\t\t\t:\tOR_OPR\n");
 }
-
+// REVISION MUST SPECIFY WHAT BRACKET (L,R) //
 void tokenRoleBracket(char ch){
    if (ch == '(' || ch == ')')
    fprintf(outputfptr,"\t\t\t:\tPARENTHESIS\n");
@@ -391,59 +403,73 @@ void outputTokens(char* str) {
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
       if (delimiterChecker(str[right]) == true && str[right] == ';')
-         fprintf(outputfptr,"Delimiter: %c\t\t:\tSEMI COLON\n",str[right]);
+      //   fprintf(outputfptr,"Delimiter: %c\t\t:\tSEMI COLON\n",str[right]);
+         fprintf(outputfptr,"Lexeme: %c\t\t:\tSEMI COLON\n",str[right]);
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
-         fprintf(outputfptr,"Bracket: %c",str[right]);
+      //   fprintf(outputfptr,"Bracket: %c",str[right]);
+         fprintf(outputfptr,"Lexeme: %c",str[right]);
          tokenRoleBracket(str[right]);
       }
       else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
-         fprintf(outputfptr,"Operator : %c%c", str[right],str[right+1]);
+      //   fprintf(outputfptr,"Operator : %c%c", str[right],str[right+1]);
+         fprintf(outputfptr,"Lexeme : %c%c", str[right],str[right+1]);
          tokenRoleMultiOperator(str[right],str[right+1]);
          right = right+2;
          left = right;
       }else if (operatorChecker(str[right]) == true)
          //checks if the single character type lexeme is also an operator type one
-         fprintf(outputfptr,"Operator : %c", str[right]);
+      //   fprintf(outputfptr,"Operator : %c", str[right]);
+         fprintf(outputfptr,"Lexeme : %c", str[right]);
          tokenRoleSingleOperator(str[right]);
          right++;
          left = right;
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
              char* subStr = subString(str, left, right - 1); //takes the current lexeme as input
          if (keywordChecker(subStr) == true){
-            fprintf(outputfptr,"Keyword : %s", subStr);
+         //   fprintf(outputfptr,"Keyword : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleKeyword(subStr);
             // Increment flag
             flag++;}
          else if (booleanOperatorChecker(subStr) == true){
-            fprintf(outputfptr,"Operator : %s", subStr);   
+         //   fprintf(outputfptr,"Operator : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);   
             tokenRoleBooleanOP(subStr);
          }
          else if (reservedWordChecker(subStr) == true){
-            fprintf(outputfptr,"Reserved Word : %s", subStr);
+         //   fprintf(outputfptr,"Reserved Word : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleReservedWords(subStr);
             }
          else if (integerChecker(subStr) == true){
-            fprintf(outputfptr,"Integer : %s", subStr);
+         //   fprintf(outputfptr,"Integer : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleInteger(subStr);
             }
          else if (realNumberChecker(subStr) == true)
-            fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+            fprintf(outputfptr,"Lexeme : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+
             
          else if (commentChecker(subStr) == true){
-            fprintf(outputfptr,"Comment : %s", subStr);
+         //   fprintf(outputfptr,"Comment : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleCommentChecker(subStr);
             }
          else if (commentContentChecker(subStr) == true){
-            fprintf(outputfptr,"Comment : %s", subStr);
+         //   fprintf(outputfptr,"Comment : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleContentChecker(subStr);
          }
          else if (noiseWordChecker(subStr) == true){
-            fprintf(outputfptr,"Noise Word : %s", subStr);
+         //   fprintf(outputfptr,"Noise Word : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleNoiseWord(subStr);
             }
          
          else if (identifierChecker(subStr) == true){
-            fprintf(outputfptr,"Identifier : %s", subStr);
+         //   fprintf(outputfptr,"Identifier : %s", subStr);
+            fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleIdentifier(subStr);
             // Reset flag counter
          flag = 0;}
@@ -453,12 +479,14 @@ void outputTokens(char* str) {
                // e.g. keyword ny_identifier (+1 -1 = flag: 0)
                // If a keyword (flag: 1) does not reset, it means that the succeeding lexeme 
                // is an invalid keyword, otherwise it is a syntax error
-               fprintf(outputfptr,"Invalid Lexeme : %s", subStr);
+            //   fprintf(outputfptr,"Invalid Lexeme : %s", subStr);
+               fprintf(outputfptr,"Lexeme : %s", subStr);
                fprintf(outputfptr,"\t:\tLEXEME NOT RECOGNIZED\n");
                flag = 0;
             }
             else{
-               fprintf(outputfptr,"String : %s", subStr);
+            //   fprintf(outputfptr,"String : %s", subStr);
+               fprintf(outputfptr,"Lexeme : %s", subStr);
                fprintf(outputfptr,"\t\t\t:\tSTRING LITERAL\n");
                flag = 0;
             }

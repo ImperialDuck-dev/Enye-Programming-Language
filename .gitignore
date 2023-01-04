@@ -4,3 +4,8 @@ src/include/lexer.h
 src/example/test.enye
 src/final.exe
 src/final.exe
+*.exe
+src/main.ny
+src/lexer.ny
+src/example/SampleProgram.ny
+src/example/SymbolTable.txt

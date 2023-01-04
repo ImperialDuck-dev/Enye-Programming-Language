@@ -9,6 +9,8 @@
 #include "include/main.h"
 // #include "lexer.c"
 
+
+
 int main() {
   char in_filepath[100],out_filepath[100] = "example/SymbolTable.txt"; // file path variable
   int len; // length of file path
@@ -29,12 +31,13 @@ int main() {
         return 0;
       }
       
-
     char contents[1000]; // variable to store contents of input file
     printf("GENERATING SYMBOL TABLE...\n");
     while(fgets(contents,sizeof(contents), inputfptr)){ 
       outputTokens(contents); // Parses input file
       }
+    getch();
+    getch();
     printf("SYMBOL TABLE GENERATED...\n");  
     printf("Symbol Table can be found at %s",out_filepath);
 

@@ -20,6 +20,11 @@ lipon ny_character = 'M';
 
 lipon wrongIdentifier;
 
+ny_Identifiers must only contain words if the developer wants to name a identifier with
+a number he must place it in word format
+
+3.1.2
+
 numero ny_integer = 69;
 
 punto ny_float = 69.69;
