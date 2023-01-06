@@ -63,19 +63,35 @@ bool keywordChecker(char* str) {
 
 //Checks if current lexeme is equal with reservedWords array
 //returns true if true
-bool reservedWordChecker(char* str) {
-   char *const reservedWords[] = {
-      "tama", "mali","prinsipal","tuloy","tanggalin"};
+// bool reservedWordChecker(char* str) {
+//    char *const reservedWords[] = {
+//       "tama", "mali","prinsipal","tuloy","tanggalin"};
 
 
-   int size = sizeof(reservedWords) / sizeof(*reservedWords);
+//    int size = sizeof(reservedWords) / sizeof(*reservedWords);
 
-   for (int i = 0; i < size; i++){
-      if(isEqual(str, *(reservedWords + i))){
-         return true;
-      }
+//    for (int i = 0; i < size; i++){
+//       if(isEqual(str, *(reservedWords + i))){
+//          return true;
+//       }
+//    }
+//    return false;  
+// }
+
+bool reservedWordChecker (char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 't' && str[1] == 'a' && str[2] == 'm' && str[3] == 'a')
+      return (true);
+      else if (str[0] == 'm' && str[1] == 'a' && str[2] == 'l' && str[3] == 'i')
+      return (true);
+      else if (str[0] == 'p' && str[1] == 'r' && str[2] == 'i' && str[3] == 'n' && str[4] == 's' && str[5] == 'i' && str[6] == 'p' && str[7] == 'a' && str[8] == 'l') 
+      return (true);
+      else if (str[0] == 't' && str[1] == 'u' && str[2] == 'l' && str[3] == 'o' && str[4] == 'y')
+      return (true);
+      else if (str[0] == 't' && str[1] == 'a' && str[2] == 'n' && str[3] == 'g' && str[4] == 'g' && str[5] == 'a' && str[6] == 'l' && str[7] == 'i' && str[8] == 'n')
    }
-   return false;  
+   return (false);
 }
 
 bool booleanOperatorChecker(char* str){
