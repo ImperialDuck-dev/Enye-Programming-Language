@@ -29,3 +29,7 @@ bulyan ny_boolean = true;
 |ny KUMENTO ny|
 
 6..9.9
+
+@
+
+inva@lid

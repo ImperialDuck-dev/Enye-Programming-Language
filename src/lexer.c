@@ -189,6 +189,17 @@ bool noiseWordChecker(char* str){
    return (false);
 }
 
+// Checks if a character in a lexeme 
+// is an invalid character/symbol
+bool invalidSymbolsChecker(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[i] == '@')
+      return (true);
+   }
+   return (false);
+}
+
 // Identifiers starts at ny_
 // Checks if the current lexeme is an identifier
 // if not, return true
@@ -596,6 +607,9 @@ void outputTokens(char* str) {
          else if (InvalidrealNumberChecker(subStr) == true)
          //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
             fprintf(outputfptr,"Lexeme : %s\t\t\t:\tINVALID REAL_NUMBER\n", subStr);
+         else if (invalidSymbolsChecker(subStr) == true)
+         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+            fprintf(outputfptr,"Lexeme : %s\t\t\t:\tLEXEME NOT RECOGNIZED\n", subStr);
          else if (commentChecker(subStr) == true){
          //   fprintf(outputfptr,"Comment : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
@@ -619,7 +633,7 @@ void outputTokens(char* str) {
             // Reset flag counter
          flag = 0;}
          else if(identifierChecker(subStr)== false){
-            if(flag != 0){
+            if(flag != 0 || identifierChecker(subStr)== true){
                // A keyword must have succeeding identifier
                // e.g. keyword ny_identifier (+1 -1 = flag: 0)
                // If a keyword (flag: 1) does not reset, it means that the succeeding lexeme 

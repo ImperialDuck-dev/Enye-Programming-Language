@@ -99,3 +99,5 @@ Lexeme : |ny			:	OPENING_CMNT
 Lexeme : KUMENTO		:	CMNT_CONTENT
 Lexeme : ny|			:	CLOSING_CMNT
 Lexeme : 6..9.9			:	INVALID REAL_NUMBER
+Lexeme : @			:	LEXEME NOT RECOGNIZED
+Lexeme : inva@lid			:	LEXEME NOT RECOGNIZED
