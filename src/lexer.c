@@ -239,12 +239,37 @@ bool realNumberChecker(char* str) {
       if (str[i] == '.'){
          flag ++;
       }
-
-      if (flag == 1){
-         hasDecimal = true;
-      }
+   }
+   if (flag == 1){
+      hasDecimal = true;
    }
    return (hasDecimal);
+}
+
+// Invalid Real Number Checker
+// Returns true if the flag detects multi-decimal floating points
+// Normal float must always have only 1 in flag value 
+// Flag will increment base on repetitive detected floating points
+bool InvalidrealNumberChecker(char* str) {
+   int i, len = strlen(str), flag = 0;
+   bool hasMultipleDecimal = false;
+   if (len == 0)
+   return (false);
+   for (i = 0; i < len; i++) {
+      if (str[i] != '0' && str[i] != '1' && str[i] != '2' && str[i] != '3' && str[i] != '4' && str[i] != '5' && str[i] != '6' && str[i] != '7' && str[i] != '8'
+      && str[i] != '9' && str[i] != '.' || (str[i] == '-' && i > 0)){
+          return (false);
+      }
+     
+      // flag should always be 1, if not then it is invalid (eg 2.1.1..)
+      if (str[i] == '.'){
+         flag ++;
+      }
+   }
+   if (flag != 0 && flag != 1){
+      hasMultipleDecimal = true;
+   }
+   return (hasMultipleDecimal);
 }
 
 char* subString(char* str, int left, int right) {
@@ -568,8 +593,9 @@ void outputTokens(char* str) {
          else if (realNumberChecker(subStr) == true)
          //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
             fprintf(outputfptr,"Lexeme : %s\t\t\t:\tREAL_NUMBER\n", subStr);
-
-            
+         else if (InvalidrealNumberChecker(subStr) == true)
+         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+            fprintf(outputfptr,"Lexeme : %s\t\t\t:\tINVALID REAL_NUMBER\n", subStr);
          else if (commentChecker(subStr) == true){
          //   fprintf(outputfptr,"Comment : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
