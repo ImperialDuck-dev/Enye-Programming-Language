@@ -45,17 +45,17 @@ void tokenRoleDelimeterOperator(char ch){
    fprintf(outputfptr,"\t\t\t:\tCOLON\n");
 }
 
-
+/*
 // multi-character type lexeme boolean checkers
 // Compares current lexeme with the keywords
 bool isEqual(char *str1, char *str2){
    for (; *str1 && *str2 && *str1 == *str2; str1++,str2++);
    return (!(*str1) && !(*str2))? true : false;
 }
-
+*/
 // Checks if current lexeme is equal with keyword array
 // returns true if true 
-
+/*
 bool keywordChecker(char* str) {
    char *const keywords[] = {
       "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "isama",
@@ -72,8 +72,8 @@ bool keywordChecker(char* str) {
    }
    return false;  
 }
-
-bool keyWordChecker(char* str){
+*/
+bool keywordChecker(char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
       if (str[0] == 'c' && str[1] == 'a' && str[2] == 's' && str[3] == 'e')
@@ -136,22 +136,7 @@ bool reservedWordChecker (char* str){
    }
    return (false);
 }
-/*
-bool booleanOperatorChecker(char* str){
-   char *const boolOperators[] = {
-      "||", "&&", "!"
-   };
 
-   int size = sizeof(boolOperators) / sizeof(*boolOperators);
-
-   for (int i = 0; i < size; i++){
-      if(isEqual(str, *(boolOperators + i))){
-         return true;
-      }
-   }
-   return false;
-}
-*/
 bool booleanOperatorChecker (char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
@@ -165,30 +150,12 @@ bool booleanOperatorChecker (char* str){
    return (false);
 }
 
-// Checks current lexeme if it is a comment 
-// Comments are all in capital letters
-// returns true if true
-/*
-bool commentChecker(char* str){
-   char *const comments[] = {
-      "ny|", "|ny"
-   };
-
-   int size = sizeof(comments) / sizeof(*comments);
-
-   for (int i = 0; i < size; i++){
-      if(isEqual(str, *(comments + i))){
-         return true;
-      }
-   }
-   return false;
-}
-*/
-
 bool commentChecker(char* str){
 int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
-      if (str[0] == '|' && str[1] == 'n' && str[2] == 'y' || str[0] == 'n' && str[1] == 'y' && str[2] == '|')
+      if (str[0] == '|' && str[1] == 'n' && str[2] == 'y')
+         return (true);
+      else if(str[0] == 'n' && str[1] == 'y' && str[2] == '|')
       return (true);
    }
    return (false);
@@ -322,6 +289,8 @@ void tokenRoleBooleanOP(char* str){
    fprintf(outputfptr,"\t\t\t:\tAND_OPR\n");
    else if (str[0] == '|' && str[1] == '|')
    fprintf(outputfptr,"\t\t\t:\tOR_OPR\n");
+   else if (str[0] == '!')
+   fprintf(outputfptr,"\t\t\t:\tNOT_OPR\n");
 }
 void tokenRoleBracket(char ch){
    if (ch == '(')
@@ -359,7 +328,7 @@ void tokenRoleInteger(char* str){
    str[5] != '5' || str[6] != '6' || str[7] != '7' || str[8] != '8' || str[9] != '9')
    fprintf(outputfptr,"\t\t\t:\tINTEGER\n");
 }
-
+/*
 int compare(char a[],char b[])  
 {  
    int flag=0,i=0;  // integer variables declaration  
@@ -376,7 +345,8 @@ int compare(char a[],char b[])
    return 0;  
    else  
    return 1;  
-}  
+}
+*/  
 /*
 void tokenRoleKeyword(char* str){
    char *const keywords[] = {
@@ -453,6 +423,69 @@ void tokenRoleCommentChecker(char* str){
    
 }
 */
+
+void tokenRoleKeyword(char* str){
+   if (str[0] == 'c' && str[1] == 'a' && str[2] == 's' && str[3] == 'e')
+         fprintf(outputfptr,"\t\t\t:\tCASE_KW\n");
+      else if (str[0] == 'l' && str[1] == 'i' && str[2] == 'p' && str[3] == 'o' && str[4] == 'n')
+         fprintf(outputfptr,"\t\t\t:\tSTRING_KW\n");
+      else if (str[0] == 'p' && str[1] == 'u' && str[2] == 'm' && str[3] == 'u' && str[4] == 'n' && str[5] == 't'&& str[6] == 'a')
+         fprintf(outputfptr,"\t\t:\tGO_KW\n");  
+      else if (str[0] == 'i' && str[1] == 'b' && str[2] == 'a' && str[3] == 'l' && str[4] == 'i' && str[5] == 'k')
+         fprintf(outputfptr,"\t\t:\tRETURN_KW\n"); 
+      else if (str[0] == 'h' && str[1] == 'a' && str[2] == 'b' && str[3] == 'a' && str[4] == 'n' && str[5] == 'g')
+         fprintf(outputfptr,"\t\t:\tWHILE_KW\n"); 
+      else if (str[0] == 'h' && str[1] == 'i' && str[2] == 'n' && str[3] == 't' && str[4] == 'o')
+         fprintf(outputfptr,"\t\t\t:\tBREAK_KW\n");
+      else if (str[0] == 'g' && str[1] == 'a' && str[2] == 'w' && str[3] == 'i' && str[4] == 'n')
+         fprintf(outputfptr,"\t\t\t:\tDO_KW\n");
+      else if (str[0] == 'l' && str[1] == 'i' && str[2] == 'p' && str[3] == 'a' && str[4] == 't')
+         fprintf(outputfptr,"\t\t\t:\tSWITCH_KW\n"); 
+      else if (str[0] == 'i' && str[1] == 's' && str[2] == 'a' && str[3] == 'm' && str[4] == 'a')
+         fprintf(outputfptr,"\t\t\t:\tINCLUDE_KW\n");
+      else if (str[0] == 'k' && str[1] == 'a' && str[2] == 'k' && str[3] == 'u' && str[4] == 'l' && str[5] == 'a'&& str[6] == 'n'&& str[7] == 'g'&& str[8] == 'a'&& str[9] == 'n')
+         fprintf(outputfptr,"\t\t:\tDEFAULT_KW\n");
+      else if (str[0] == 'b' && str[1] == 'u' && str[2] == 'l' && str[3] == 'y' && str[4] == 'a'&& str[5] == 'n')
+         fprintf(outputfptr,"\t\t:\tBOOLEAN_KW\n");
+      else if (str[0] == 'k' && str[1] == 'a' && str[2] == 'w' && str[3] == 'a' && str[4] == 'l' && str[5] == 'a'&& str[6] == 'n')
+         fprintf(outputfptr,"\t\t:\tVOID_KW\n");
+      else if (str[0] == 'e' && str[1] == 'd' && str[2] == 'i' )
+         fprintf(outputfptr,"\t\t\t:\tELSE_KW\n");
+      else if (str[0] == 'b' && str[1] == 'a' && str[2] == 'w' && str[3] == 'a' && str[4] == 't')
+         fprintf(outputfptr,"\t\t\t:\tFOR_KW\n");
+      else if (str[0] == 'k' && str[1] == 'a' && str[2] == 'p' && str[3] == 'a' && str[4] == 'g')
+         fprintf(outputfptr,"\t\t\t:\tIF_KW\n");
+      else if (str[0] == 'n' && str[1] == 'u' && str[2] == 'm' && str[3] == 'e' && str[4] == 'r' && str[5] == 'o')
+         fprintf(outputfptr,"\t\t:\tINT_KW\n");
+      else if (str[0] == 'p' && str[1] == 'u' && str[2] == 'n' && str[3] == 't' && str[4] == 'o')
+         fprintf(outputfptr,"\t\t\t:\tFLOAT_KW\n");
+      else if (str[0] == 't' && str[1] == 'i' && str[2] == 't' && str[3] == 'i' && str[4] == 'k')
+         fprintf(outputfptr,"\t\t\t:\tCHAR_KW\n");
+      else if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a')
+         fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
+      else if (str[0] == 'b' && str[1] == 'a' && str[2] == 's' && str[3] == 'a' && str[4] == 'h' && str[5] == 'i'&& str[6] == 'n')
+         fprintf(outputfptr,"\t\t:\tSCANF_KW\n");
+}
+
+void tokenRoleReservedWords(char* str){
+   if (str[0] == 't' && str[1] == 'a' && str[2] == 'm' && str[3] == 'a')
+      fprintf(outputfptr,"\t\t:\tTRUE_KW\n");
+      else if (str[0] == 'm' && str[1] == 'a' && str[2] == 'l' && str[3] == 'i')
+      fprintf(outputfptr,"\t\t:\tFALSE_KW\n");
+      else if (str[0] == 'p' && str[1] == 'r' && str[2] == 'i' && str[3] == 'n' && str[4] == 's' && str[5] == 'i' && str[6] == 'p' && str[7] == 'a' && str[8] == 'l') 
+      fprintf(outputfptr,"\t:\tMAIN_KW\n");
+      else if (str[0] == 't' && str[1] == 'u' && str[2] == 'l' && str[3] == 'o' && str[4] == 'y')
+      fprintf(outputfptr,"\t\t:\tCONTINUE_KW\n");
+      else if (str[0] == 't' && str[1] == 'a' && str[2] == 'n' && str[3] == 'g' && str[4] == 'g' && str[5] == 'a' && str[6] == 'l' && str[7] == 'i' && str[8] == 'n')
+      fprintf(outputfptr,"\t\t:\tDELETE_KW\n");
+}
+
+void tokenRoleCommentChecker(char* str){
+   if (str[0] == '|' && str[1] == 'n' && str[2] == 'y')
+         fprintf(outputfptr,"\t\t\t:\tOPENING_CMNT\n");
+      else if(str[0] == 'n' && str[1] == 'y' && str[2] == '|')
+         fprintf(outputfptr,"\t\t\t:\tCLOSING_CMNT\n");
+}
 
 void tokenRoleContentChecker(char* str){
    int i, len = strlen(str);
