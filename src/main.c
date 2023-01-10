@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <conio.h>
-// #include "include/lexer.h"
-// #include "include/main.h"
+#include "include/lexer.h"
+#include "include/main.h"
 #include "lexer.c"
 
 
