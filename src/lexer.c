@@ -225,16 +225,24 @@ bool integerChecker(char* str) {
 // Check if the lexeme contains a decimal point
 // If has a decimal point, return true
 bool realNumberChecker(char* str) {
-   int i, len = strlen(str);
+   int i, len = strlen(str), flag = 0;
    bool hasDecimal = false;
    if (len == 0)
    return (false);
    for (i = 0; i < len; i++) {
       if (str[i] != '0' && str[i] != '1' && str[i] != '2' && str[i] != '3' && str[i] != '4' && str[i] != '5' && str[i] != '6' && str[i] != '7' && str[i] != '8'
-      && str[i] != '9' && str[i] != '.' || (str[i] == '-' && i > 0))
-      return (false);
-         if (str[i] == '.')
-      hasDecimal = true;
+      && str[i] != '9' && str[i] != '.' || (str[i] == '-' && i > 0)){
+          return (false);
+      }
+     
+      // flag should always be 1, if not then it is invalid (eg 2.1.1..)
+      if (str[i] == '.'){
+         flag ++;
+      }
+
+      if (flag == 1){
+         hasDecimal = true;
+      }
    }
    return (hasDecimal);
 }
