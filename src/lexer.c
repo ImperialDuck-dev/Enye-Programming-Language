@@ -27,11 +27,22 @@ bool bracketsChecker(char ch) {
 // Checks current lexeme if it is a delimiter 
 // if true, returns true
 bool delimiterChecker(char ch) {
-   if (ch == ' ' || ch == ';' || ch == '"' || 
-   ch == '\n' || ch == '\0' || 
-   operatorChecker(ch) || bracketsChecker(ch))
+   if (ch == ' ' || ch == ';' || ch == ',' || 
+   ch == '"' || ch == '\n' || ch == '\0' ||
+   ch == ':' || operatorChecker(ch) || 
+   bracketsChecker(ch))
    return (true);
    return (false);
+}
+
+
+void tokenRoleDelimeterOperator(char ch){
+   if(ch == ';')
+   fprintf(outputfptr,"\t\t\t:\tSEMI_COLON\n");
+   else if (ch == ',')
+   fprintf(outputfptr,"\t\t\t:\tCOMMA\n");
+   else if (ch == ':')
+   fprintf(outputfptr,"\t\t\t:\tCOLON\n");
 }
 
 
@@ -44,9 +55,10 @@ bool isEqual(char *str1, char *str2){
 
 // Checks if current lexeme is equal with keyword array
 // returns true if true 
+
 bool keywordChecker(char* str) {
    char *const keywords[] = {
-      "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "lipat", "isama",
+      "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "isama",
       "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
       "lipon", "titik", "ipakita", "basahin" 
    };
@@ -61,22 +73,52 @@ bool keywordChecker(char* str) {
    return false;  
 }
 
-//Checks if current lexeme is equal with reservedWords array
-//returns true if true
-// bool reservedWordChecker(char* str) {
-//    char *const reservedWords[] = {
-//       "tama", "mali","prinsipal","tuloy","tanggalin"};
-
-
-//    int size = sizeof(reservedWords) / sizeof(*reservedWords);
-
-//    for (int i = 0; i < size; i++){
-//       if(isEqual(str, *(reservedWords + i))){
-//          return true;
-//       }
-//    }
-//    return false;  
-// }
+bool keyWordChecker(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 'c' && str[1] == 'a' && str[2] == 's' && str[3] == 'e')
+         return (true);
+      else if (str[0] == 'l' && str[1] == 'i' && str[2] == 'p' && str[3] == 'o' && str[4] == 'n')
+         return (true);
+      else if (str[0] == 'p' && str[1] == 'u' && str[2] == 'm' && str[3] == 'u' && str[4] == 'n' && str[5] == 't'&& str[6] == 'a')
+         return (true);  
+      else if (str[0] == 'i' && str[1] == 'b' && str[2] == 'a' && str[3] == 'l' && str[4] == 'i' && str[5] == 'k')
+         return (true); 
+      else if (str[0] == 'h' && str[1] == 'a' && str[2] == 'b' && str[3] == 'a' && str[4] == 'n' && str[5] == 'g')
+         return (true); 
+      else if (str[0] == 'h' && str[1] == 'i' && str[2] == 'n' && str[3] == 't' && str[4] == 'o')
+         return (true);
+      else if (str[0] == 'g' && str[1] == 'a' && str[2] == 'w' && str[3] == 'i' && str[4] == 'n')
+         return (true);
+      else if (str[0] == 'l' && str[1] == 'i' && str[2] == 'p' && str[3] == 'a' && str[4] == 't')
+         return (true); 
+      else if (str[0] == 'i' && str[1] == 's' && str[2] == 'a' && str[3] == 'm' && str[4] == 'a')
+         return (true);
+      else if (str[0] == 'k' && str[1] == 'a' && str[2] == 'k' && str[3] == 'u' && str[4] == 'l' && str[5] == 'a'&& str[6] == 'n'&& str[7] == 'g'&& str[8] == 'a'&& str[9] == 'n')
+         return (true);
+      else if (str[0] == 'b' && str[1] == 'u' && str[2] == 'l' && str[3] == 'y' && str[4] == 'a'&& str[5] == 'n')
+         return (true);
+      else if (str[0] == 'k' && str[1] == 'a' && str[2] == 'w' && str[3] == 'a' && str[4] == 'l' && str[5] == 'a'&& str[6] == 'n')
+         return (true);
+      else if (str[0] == 'e' && str[1] == 'd' && str[2] == 'i' )
+         return (true);
+      else if (str[0] == 'b' && str[1] == 'a' && str[2] == 'w' && str[3] == 'a' && str[4] == 't')
+         return (true);
+      else if (str[0] == 'k' && str[1] == 'a' && str[2] == 'p' && str[3] == 'a' && str[4] == 'g')
+         return (true);
+      else if (str[0] == 'n' && str[1] == 'u' && str[2] == 'm' && str[3] == 'e' && str[4] == 'r' && str[5] == 'o')
+         return (true);
+      else if (str[0] == 'p' && str[1] == 'u' && str[2] == 'n' && str[3] == 't' && str[4] == 'o')
+         return (true);
+      else if (str[0] == 't' && str[1] == 'i' && str[2] == 't' && str[3] == 'i' && str[4] == 'k')
+         return (true);
+      else if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a')
+         return (true);
+      else if (str[0] == 'b' && str[1] == 'a' && str[2] == 's' && str[3] == 'a' && str[4] == 'h' && str[5] == 'i'&& str[6] == 'n')
+         return (true); 
+   }
+   return (false);
+}
 
 bool reservedWordChecker (char* str){
    int i, len = strlen(str);
@@ -90,10 +132,11 @@ bool reservedWordChecker (char* str){
       else if (str[0] == 't' && str[1] == 'u' && str[2] == 'l' && str[3] == 'o' && str[4] == 'y')
       return (true);
       else if (str[0] == 't' && str[1] == 'a' && str[2] == 'n' && str[3] == 'g' && str[4] == 'g' && str[5] == 'a' && str[6] == 'l' && str[7] == 'i' && str[8] == 'n')
+      return (true);
    }
    return (false);
 }
-
+/*
 bool booleanOperatorChecker(char* str){
    char *const boolOperators[] = {
       "||", "&&", "!"
@@ -108,10 +151,24 @@ bool booleanOperatorChecker(char* str){
    }
    return false;
 }
+*/
+bool booleanOperatorChecker (char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == '|' && str[1] == '|')
+      return (true);
+      else if(str[0] == '&' && str[1] == '&')
+      return (true);
+      else if(str[0] == '!')
+      return (true);
+   }
+   return (false);
+}
 
 // Checks current lexeme if it is a comment 
 // Comments are all in capital letters
 // returns true if true
+/*
 bool commentChecker(char* str){
    char *const comments[] = {
       "ny|", "|ny"
@@ -126,7 +183,16 @@ bool commentChecker(char* str){
    }
    return false;
 }
+*/
 
+bool commentChecker(char* str){
+int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == '|' && str[1] == 'n' && str[2] == 'y' || str[0] == 'n' && str[1] == 'y' && str[2] == '|')
+      return (true);
+   }
+   return (false);
+}
 // Checks if the comment content are all in capital letters
 // Returns true if true
 bool commentContentChecker(char* str){
@@ -155,18 +221,6 @@ bool noiseWordChecker(char* str){
    }
    return (false);
 }
-
- /* FOR REVISION
-bool keyWordChecker(char* str){
-   int i, len = strlen(str);
-   for (i = 0; i <=len; i++) {
-      if (str[0] == 'c' && str[1] == 'a' && str[2] == 's' && str[3] == 'e')
-      if (str[0] == 'l' && str[1] == 'i' && str[2] == 'p' && str[3] == 'o' && str[4] == 'n')
-      return (true);
-   }
-   return (false);
-}
-*/
 
 // Identifiers starts at ny_
 // Checks if the current lexeme is an identifier
@@ -266,17 +320,22 @@ void tokenRoleMultiOperator(char ch, char ch2){
 void tokenRoleBooleanOP(char* str){
    if (str[0] == '&' && str[1] == '&')
    fprintf(outputfptr,"\t\t\t:\tAND_OPR\n");
-   if (str[0] == '|' && str[1] == '|')
+   else if (str[0] == '|' && str[1] == '|')
    fprintf(outputfptr,"\t\t\t:\tOR_OPR\n");
 }
-// REVISION MUST SPECIFY WHAT BRACKET (L,R) //
 void tokenRoleBracket(char ch){
-   if (ch == '(' || ch == ')')
-   fprintf(outputfptr,"\t\t\t:\tPARENTHESIS\n");
-   else if (ch == '{' || ch == '}')
-   fprintf(outputfptr,"\t\t\t:\tCURLY BRACES\n");
-   else if (ch == '[' || ch == ']')
-   fprintf(outputfptr,"\t\t\t:\tSQUARE BRACES\n");
+   if (ch == '(')
+   fprintf(outputfptr,"\t\t\t:\tLEFT_PARENTHESIS\n");
+   else if (ch == ')')
+   fprintf(outputfptr,"\t\t\t:\tRIGHT_PARENTHESIS\n");
+   else if (ch == '{')
+   fprintf(outputfptr,"\t\t\t:\tLEFT_CURLY_BRACES\n");
+   else if (ch == '}')
+   fprintf(outputfptr,"\t\t\t:\tRIGHT_CURLY_BRACES\n");
+   else if (ch == '[')
+   fprintf(outputfptr,"\t\t\t:\tLEFT_SQUARE_BRACES\n");
+   else if (ch == ']')
+   fprintf(outputfptr,"\t\t\t:\tRIGHT_SQUARE_BRACES\n");
    // else if (ch == ';')
    // fprintf(outputfptr,"\t\t\t:\tSEMI COLON\n");
    // else if (ch == '"')
@@ -291,6 +350,8 @@ void tokenRoleNoiseWord(char *str){
 void tokenRoleIdentifier(char* str){
    if (str[0] == 'n' || str[1] == 'y' || str[2] == '_')
    fprintf(outputfptr,"\t:\tIDENTIFIER\n");
+   else
+   fprintf(outputfptr,"\t\t\t:\tINVALID IDENTIFIER\n");
 }
 
 void tokenRoleInteger(char* str){
@@ -298,7 +359,6 @@ void tokenRoleInteger(char* str){
    str[5] != '5' || str[6] != '6' || str[7] != '7' || str[8] != '8' || str[9] != '9')
    fprintf(outputfptr,"\t\t\t:\tINTEGER\n");
 }
-
 
 int compare(char a[],char b[])  
 {  
@@ -317,7 +377,7 @@ int compare(char a[],char b[])
    else  
    return 1;  
 }  
-
+/*
 void tokenRoleKeyword(char* str){
    char *const keywords[] = {
       "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "isama",
@@ -392,6 +452,7 @@ void tokenRoleCommentChecker(char* str){
    fprintf(outputfptr,"\t\t\t:\tOPENING_CMNT\n");
    
 }
+*/
 
 void tokenRoleContentChecker(char* str){
    int i, len = strlen(str);
@@ -418,9 +479,10 @@ void outputTokens(char* str) {
       if (delimiterChecker(str[right]) == false) //checks if str[0] is a delimiter, if not, increment right
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
-      if (delimiterChecker(str[right]) == true && str[right] == ';')
+      if (delimiterChecker(str[right]) == true && str[right] == ';' || str[right] == ':' || str[right] == ','){
       //   fprintf(outputfptr,"Delimiter: %c\t\t:\tSEMI COLON\n",str[right]);
-         fprintf(outputfptr,"Lexeme: %c\t\t:\tSEMI COLON\n",str[right]);
+         fprintf(outputfptr,"Lexeme: %c",str[right]);
+         tokenRoleDelimeterOperator(str[right]);}
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
       //   fprintf(outputfptr,"Bracket: %c",str[right]);
          fprintf(outputfptr,"Lexeme: %c",str[right]);

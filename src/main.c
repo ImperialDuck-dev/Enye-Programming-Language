@@ -7,7 +7,7 @@
 #include <conio.h>
 #include "include/lexer.h"
 #include "include/main.h"
-// #include "lexer.c"
+#include "lexer.c"
 
 
 
@@ -33,12 +33,13 @@ int main() {
       
     char contents[1000]; // variable to store contents of input file
     printf("GENERATING SYMBOL TABLE...\n");
+    fprintf(outputfptr,"LEXEMES\t\t\t\t\tTOKENS\n"); 
     while(fgets(contents,sizeof(contents), inputfptr)){ 
       outputTokens(contents); // Parses input file
       }
     getch();
     getch();
-    printf("SYMBOL TABLE GENERATED...\n");  
+    printf("SYMBOL TABLE GENERATED...\n");
     printf("Symbol Table can be found at %s",out_filepath);
 
     fclose(inputfptr); // closes input file
