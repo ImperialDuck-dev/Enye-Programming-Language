@@ -27,3 +27,11 @@ punto ny_float = 69.69;
 bulyan ny_boolean = true;
 
 |ny KUMENTO ny|
+
+6..9.9
+
+@ 
+
+inva@lid 
+
+ny_abcdefghijklmnopqrstuvwxyz1234567890

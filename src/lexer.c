@@ -189,6 +189,17 @@ bool noiseWordChecker(char* str){
    return (false);
 }
 
+// Checks if a character in a lexeme 
+// is an invalid character/symbol
+bool invalidSymbolsChecker(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[i] == '@' || str[i] == '#')
+      return (true);
+   }
+   return (false);
+}
+
 // Identifiers starts at ny_
 // Checks if the current lexeme is an identifier
 // if not, return true
@@ -225,18 +236,51 @@ bool integerChecker(char* str) {
 // Check if the lexeme contains a decimal point
 // If has a decimal point, return true
 bool realNumberChecker(char* str) {
-   int i, len = strlen(str);
+   int i, len = strlen(str), flag = 0;
    bool hasDecimal = false;
    if (len == 0)
    return (false);
    for (i = 0; i < len; i++) {
       if (str[i] != '0' && str[i] != '1' && str[i] != '2' && str[i] != '3' && str[i] != '4' && str[i] != '5' && str[i] != '6' && str[i] != '7' && str[i] != '8'
-      && str[i] != '9' && str[i] != '.' || (str[i] == '-' && i > 0))
-      return (false);
-         if (str[i] == '.')
+      && str[i] != '9' && str[i] != '.' || (str[i] == '-' && i > 0)){
+          return (false);
+      }
+     
+      // flag should always be 1, if not then it is invalid (eg 2.1.1..)
+      if (str[i] == '.'){
+         flag ++;
+      }
+   }
+   if (flag == 1){
       hasDecimal = true;
    }
    return (hasDecimal);
+}
+
+// Invalid Real Number Checker
+// Returns true if the flag detects multi-decimal floating points
+// Normal float must always have only 1 in flag value 
+// Flag will increment base on repetitive detected floating points
+bool InvalidrealNumberChecker(char* str) {
+   int i, len = strlen(str), flag = 0;
+   bool hasMultipleDecimal = false;
+   if (len == 0)
+   return (false);
+   for (i = 0; i < len; i++) {
+      if (str[i] != '0' && str[i] != '1' && str[i] != '2' && str[i] != '3' && str[i] != '4' && str[i] != '5' && str[i] != '6' && str[i] != '7' && str[i] != '8'
+      && str[i] != '9' && str[i] != '.' || (str[i] == '-' && i > 0)){
+          return (false);
+      }
+     
+      // flag should always be 1, if not then it is invalid (eg 2.1.1..)
+      if (str[i] == '.'){
+         flag ++;
+      }
+   }
+   if (flag != 0 && flag != 1){
+      hasMultipleDecimal = true;
+   }
+   return (hasMultipleDecimal);
 }
 
 char* subString(char* str, int left, int right) {
@@ -560,8 +604,12 @@ void outputTokens(char* str) {
          else if (realNumberChecker(subStr) == true)
          //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
             fprintf(outputfptr,"Lexeme : %s\t\t\t:\tREAL_NUMBER\n", subStr);
-
-            
+         else if (InvalidrealNumberChecker(subStr) == true)
+         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+            fprintf(outputfptr,"Lexeme : %s\t\t\t:\tINVALID REAL_NUMBER\n", subStr);
+         else if (invalidSymbolsChecker(subStr) == true)
+         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
+            fprintf(outputfptr,"Lexeme : %s\t\t\t:\tLEXEME NOT RECOGNIZED\n", subStr);
          else if (commentChecker(subStr) == true){
          //   fprintf(outputfptr,"Comment : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
@@ -580,12 +628,20 @@ void outputTokens(char* str) {
          
          else if (identifierChecker(subStr) == true){
          //   fprintf(outputfptr,"Identifier : %s", subStr);
-            fprintf(outputfptr,"Lexeme : %s", subStr);
-            tokenRoleIdentifier(subStr);
-            // Reset flag counter
-         flag = 0;}
+            int len = strlen(subStr);
+            if(len < 30){
+               fprintf(outputfptr,"Lexeme : %s", subStr);
+               tokenRoleIdentifier(subStr);
+               // Reset flag counter
+               flag = 0;}
+            else{
+               fprintf(outputfptr,"Lexeme : %s", subStr);
+               fprintf(outputfptr,"\t:\tLEXEME NOT RECOGNIZED\n");
+               flag = 0;
+            }
+         }
          else if(identifierChecker(subStr)== false){
-            if(flag != 0){
+            if(flag != 0 || identifierChecker(subStr)== true){
                // A keyword must have succeeding identifier
                // e.g. keyword ny_identifier (+1 -1 = flag: 0)
                // If a keyword (flag: 1) does not reset, it means that the succeeding lexeme 
