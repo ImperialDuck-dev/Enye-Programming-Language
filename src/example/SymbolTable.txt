@@ -101,3 +101,4 @@ Lexeme : ny|			:	CLOSING_CMNT
 Lexeme : 6..9.9			:	INVALID REAL_NUMBER
 Lexeme : @			:	LEXEME NOT RECOGNIZED
 Lexeme : inva@lid			:	LEXEME NOT RECOGNIZED
+Lexeme : ny_abcdefghijklmnopqrstuvwxyz1234567890	:	LEXEME NOT RECOGNIZED

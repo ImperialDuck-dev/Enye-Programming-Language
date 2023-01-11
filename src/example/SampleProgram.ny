@@ -30,6 +30,8 @@ bulyan ny_boolean = true;
 
 6..9.9
 
-@
+@ 
 
-inva@lid
+inva@lid 
+
+ny_abcdefghijklmnopqrstuvwxyz1234567890

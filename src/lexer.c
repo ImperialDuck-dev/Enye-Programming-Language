@@ -194,7 +194,7 @@ bool noiseWordChecker(char* str){
 bool invalidSymbolsChecker(char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
-      if (str[i] == '@')
+      if (str[i] == '@' || str[i] == '#')
       return (true);
    }
    return (false);
@@ -628,10 +628,18 @@ void outputTokens(char* str) {
          
          else if (identifierChecker(subStr) == true){
          //   fprintf(outputfptr,"Identifier : %s", subStr);
-            fprintf(outputfptr,"Lexeme : %s", subStr);
-            tokenRoleIdentifier(subStr);
-            // Reset flag counter
-         flag = 0;}
+            int len = strlen(subStr);
+            if(len < 30){
+               fprintf(outputfptr,"Lexeme : %s", subStr);
+               tokenRoleIdentifier(subStr);
+               // Reset flag counter
+               flag = 0;}
+            else{
+               fprintf(outputfptr,"Lexeme : %s", subStr);
+               fprintf(outputfptr,"\t:\tLEXEME NOT RECOGNIZED\n");
+               flag = 0;
+            }
+         }
          else if(identifierChecker(subStr)== false){
             if(flag != 0 || identifierChecker(subStr)== true){
                // A keyword must have succeeding identifier
