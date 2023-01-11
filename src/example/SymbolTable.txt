@@ -68,7 +68,7 @@ Lexeme : prinsipal	:	MAIN_KW
 Lexeme : tuloy		:	CONTINUE_KW
 Lexeme : tama		:	TRUE_KW
 Lexeme : tanggalin		:	DELETE_KW
-Lexeme : checkReservedWord			:	STRING LITERAL
+Lexeme : checkReservedWord	:	LEXEME NOT RECOGNIZED
 Lexeme : lipon			:	STRING_KW
 Lexeme : ny_identifier	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR

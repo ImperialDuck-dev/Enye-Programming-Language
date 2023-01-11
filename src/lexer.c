@@ -460,7 +460,8 @@ void outputTokens(char* str) {
          else if (reservedWordChecker(subStr) == true){
             fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleReservedWords(subStr);
-            }
+            // Increment flag
+            flag++;}
          else if (integerChecker(subStr) == true){
             fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleInteger(subStr);
