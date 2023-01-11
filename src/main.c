@@ -17,7 +17,7 @@ int main() {
       printf("Input file path: ");
       scanf("%s",in_filepath);
       len = strlen(in_filepath);
-      if (len <= 1) { // Checks if file path is invalid
+      if (len <= 2) { // Checks if file path is invalid
         printf("Invalid file path");
         return 0;
       }

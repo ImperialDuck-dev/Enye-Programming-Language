@@ -435,6 +435,12 @@ void outputTokens(char* str) {
          fprintf(outputfptr,"Lexeme: %c",str[right]);
          tokenRoleBracket(str[right]);
       }
+      else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) && operatorChecker(str[right+2]) == true){
+         fprintf(outputfptr,"Lexeme : %c%c%c", str[right],str[right+1],str[right+2]);
+         fprintf(outputfptr,"\t\t\t:\tINVALID OPERATOR\n");
+         right = right+3;
+         left = right;
+      }
       else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
          fprintf(outputfptr,"Lexeme : %c%c", str[right],str[right+1]);
          tokenRoleMultiOperator(str[right],str[right+1]);
