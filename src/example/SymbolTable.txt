@@ -8,7 +8,6 @@ Lexeme: ]			:	RIGHT_SQUARE_BRACES
 Lexeme: ;			:	SEMI_COLON
 Lexeme: ,			:	COMMA
 Lexeme: :			:	COLON
-
 Lexeme : =			:	ASS_OPR
 Lexeme : +			:	ADD_OPR
 Lexeme : -			:	SUBT_OPR
@@ -17,7 +16,6 @@ Lexeme : /			:	DIV_OPR
 Lexeme : %			:	MOD_OPR
 Lexeme : ~			:	INT_DIV_OPR
 Lexeme : ^			:	EXP_OPR
-
 Lexeme : !			:	NOT_OPR
 Lexeme : &&			:	AND_OPR
 Lexeme : ||			:	OR_OPR
@@ -27,7 +25,6 @@ Lexeme : <			:	LESS_OPR
 Lexeme : >=			:	GRTR_THAN_OR_EQ_TO_OPR
 Lexeme : <=			:	LESS_THAN_OR_EQ_TO_OPR
 Lexeme : !=			:	NOT_EQUAL_TO_OPR
-
 Lexeme : 1			:	INTEGER
 Lexeme : 2			:	INTEGER
 Lexeme : 3			:	INTEGER
@@ -39,13 +36,11 @@ Lexeme : 8			:	INTEGER
 Lexeme : 9			:	INTEGER
 Lexeme : 10			:	INTEGER
 Lexeme : 11			:	INTEGER
-
 Lexeme : 1.25			:	REAL_NUMBER
 Lexeme : 3.4			:	REAL_NUMBER
 Lexeme : 5.6			:	REAL_NUMBER
 Lexeme : 69.69			:	REAL_NUMBER
 Lexeme : 56.79			:	REAL_NUMBER
-
 Lexeme : pumunta		:	GO_KW
 Lexeme : sa			:	NOISE WORD
 Lexeme : ibalik		:	RETURN_KW
@@ -68,26 +63,22 @@ Lexeme : titik			:	CHAR_KW
 Lexeme : basahin		:	SCANF_KW
 Lexeme : ipakita		:	PRINTF_KW
 Lexeme : testKeyword	:	LEXEME NOT RECOGNIZED
-
 Lexeme : mali		:	FALSE_KW
 Lexeme : prinsipal	:	MAIN_KW
 Lexeme : tuloy		:	CONTINUE_KW
 Lexeme : tama		:	TRUE_KW
 Lexeme : tanggalin		:	DELETE_KW
 Lexeme : checkReservedWord			:	STRING LITERAL
-
 Lexeme : lipon			:	STRING_KW
 Lexeme : ny_identifier	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : Mabuhay			:	STRING LITERAL
 Lexeme: ;			:	SEMI_COLON
-
 Lexeme : lipon			:	STRING_KW
 Lexeme : ny_character	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : 'M'			:	STRING LITERAL
 Lexeme: ;			:	SEMI_COLON
-
 Lexeme : lipon			:	STRING_KW
 Lexeme : wrongIdentifier	:	LEXEME NOT RECOGNIZED
 Lexeme: ;			:	SEMI_COLON
@@ -96,25 +87,20 @@ Lexeme : ny_integer	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : 69			:	INTEGER
 Lexeme: ;			:	SEMI_COLON
-
 Lexeme : punto			:	FLOAT_KW
 Lexeme : ny_float	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : 69.69			:	REAL_NUMBER
 Lexeme: ;			:	SEMI_COLON
-
 Lexeme : bulyan		:	BOOLEAN_KW
 Lexeme : ny_boolean	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : tama		:	TRUE_KW
 Lexeme: ;			:	SEMI_COLON
-
 Lexeme : |ny			:	OPENING_CMNT
 Lexeme : KUMENTO		:	CMNT_CONTENT
 Lexeme : ny|			:	CLOSING_CMNT
-
 Lexeme : 6..9.9			:	INVALID REAL_NUMBER
-
 Lexeme : @			:	LEXEME NOT RECOGNIZED
 Lexeme : inva@lid			:	LEXEME NOT RECOGNIZED
 Lexeme : ny_abcdefghijklmnopqrstuvwxyz1234567890	:	LEXEME NOT RECOGNIZED
