@@ -45,34 +45,9 @@ void tokenRoleDelimeterOperator(char ch){
    fprintf(outputfptr,"\t\t\t:\tCOLON\n");
 }
 
-/*
+
 // multi-character type lexeme boolean checkers
 // Compares current lexeme with the keywords
-bool isEqual(char *str1, char *str2){
-   for (; *str1 && *str2 && *str1 == *str2; str1++,str2++);
-   return (!(*str1) && !(*str2))? true : false;
-}
-*/
-// Checks if current lexeme is equal with keyword array
-// returns true if true 
-/*
-bool keywordChecker(char* str) {
-   char *const keywords[] = {
-      "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "isama",
-      "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
-      "lipon", "titik", "ipakita", "basahin" 
-   };
-
-   int size = sizeof(keywords) / sizeof(*keywords);
-
-   for (int i = 0; i < size; i++){
-      if(isEqual(str, *(keywords + i))){
-         return true;
-      }
-   }
-   return false;  
-}
-*/
 bool keywordChecker(char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
@@ -349,10 +324,6 @@ void tokenRoleBracket(char ch){
    fprintf(outputfptr,"\t\t\t:\tLEFT_SQUARE_BRACES\n");
    else if (ch == ']')
    fprintf(outputfptr,"\t\t\t:\tRIGHT_SQUARE_BRACES\n");
-   // else if (ch == ';')
-   // fprintf(outputfptr,"\t\t\t:\tSEMI COLON\n");
-   // else if (ch == '"')
-   // fprintf(outputfptr,"\t\t\t:\tQUOTATION MARK\n");
 }
 
 void tokenRoleNoiseWord(char *str){
@@ -372,101 +343,6 @@ void tokenRoleInteger(char* str){
    str[5] != '5' || str[6] != '6' || str[7] != '7' || str[8] != '8' || str[9] != '9')
    fprintf(outputfptr,"\t\t\t:\tINTEGER\n");
 }
-/*
-int compare(char a[],char b[])  
-{  
-   int flag=0,i=0;  // integer variables declaration  
-   while(a[i]!='\0' &&b[i]!='\0')  // while loop  
-   {  
-    if(a[i]!=b[i])  
-      {  
-        flag=1;  
-          break;  
-      }  
-      i++;  
-   }  
-   if(flag==0)  
-   return 0;  
-   else  
-   return 1;  
-}
-*/  
-/*
-void tokenRoleKeyword(char* str){
-   char *const keywords[] = {
-      "pumunta", "ibalik", "habang", "hinto", "gawin", "lipat", "isama",
-      "kakulangan", "bulyan", "case", "kawalan", "edi", "bawat", "kapag", "numero", "punto",
-      "lipon", "titik", "ipakita", "basahin" 
-   };
-   if(compare(keywords[0], str) == 0)
-   fprintf(outputfptr,"\t\t:\tGO_KW\n");
-   else if(compare(keywords[1], str) == 0)
-   fprintf(outputfptr,"\t\t:\tRETURN_KW\n");
-   else if(compare(keywords[2], str) == 0)
-   fprintf(outputfptr,"\t\t:\tWHILE_KW\n");
-   else if(compare(keywords[3], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tBREAK_KW\n");
-   else if(compare(keywords[4], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tDO_KW\n");
-   else if(compare(keywords[5], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tSWITCH_KW\n");
-   else if(compare(keywords[6], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tINCLUDE_KW\n");
-   else if(compare(keywords[7], str) == 0)
-   fprintf(outputfptr,"\t\t:\tDEFAULT_KW\n");
-   else if(compare(keywords[8], str) == 0)
-   fprintf(outputfptr,"\t\t:\tBOOLEAN_KW\n");
-   else if(compare(keywords[9], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tCASE_KW\n");
-   else if(compare(keywords[10], str) == 0)
-   fprintf(outputfptr,"\t\t:\tVOID_KW\n");
-   else if(compare(keywords[11], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tELSE_KW\n");
-   else if(compare(keywords[12], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tFOR_KW\n");
-   else if(compare(keywords[13], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tIF_KW\n");
-   else if(compare(keywords[14], str) == 0)
-   fprintf(outputfptr,"\t\t:\tINT_KW\n");
-   else if(compare(keywords[15], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tFLOAT_KW\n");
-   else if(compare(keywords[16], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tSTRING_KW\n");
-   else if(compare(keywords[17], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tCHAR_KW\n");
-   else if(compare(keywords[18], str) == 0)
-   fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
-   else if(compare(keywords[19], str) == 0)
-   fprintf(outputfptr,"\t\t:\tSCANF_KW\n");
-}
-
-void tokenRoleReservedWords(char* str){
-   char *const reservedWords[] = {
-      "mali","prinsipal","tuloy","tama","tanggalin" 
-   };
-   if(compare(reservedWords[0], str) == 0)
-   fprintf(outputfptr,"\t\t:\tFALSE_KW\n");
-   else if(compare(reservedWords[1], str) == 0)
-   fprintf(outputfptr,"\t:\tMAIN_KW\n");
-   else if(compare(reservedWords[2], str) == 0)
-   fprintf(outputfptr,"\t\t:\tCONTINUE_KW\n");
-   else if(compare(reservedWords[3], str) == 0)
-   fprintf(outputfptr,"\t\t:\tTRUE_KW\n");
-   else if(compare(reservedWords[4], str) == 0)
-   fprintf(outputfptr,"\t\t:\tDELETE_KW\n");
-}
-
-void tokenRoleCommentChecker(char* str){
-   char *const commentChecker[] = {
-      "ny|","|ny" 
-   };
-   if(compare(commentChecker[0], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tCLOSING_CMNT\n");
-   else if(compare(commentChecker[1], str) == 0)
-   fprintf(outputfptr,"\t\t\t:\tOPENING_CMNT\n");
-   
-}
-*/
 
 void tokenRoleKeyword(char* str){
    if (str[0] == 'c' && str[1] == 'a' && str[2] == 's' && str[3] == 'e')
@@ -557,23 +433,19 @@ void outputTokens(char* str) {
       right++;
       if(delimiterChecker(str[right]) == true && left == right) { //checks if the current lexeme is a single character type    
       if (delimiterChecker(str[right]) == true && str[right] == ';' || str[right] == ':' || str[right] == ','){
-      //   fprintf(outputfptr,"Delimiter: %c\t\t:\tSEMI COLON\n",str[right]);
          fprintf(outputfptr,"Lexeme: %c",str[right]);
          tokenRoleDelimeterOperator(str[right]);}
       else if (delimiterChecker(str[right]) && bracketsChecker(str[right])){
-      //   fprintf(outputfptr,"Bracket: %c",str[right]);
          fprintf(outputfptr,"Lexeme: %c",str[right]);
          tokenRoleBracket(str[right]);
       }
       else if(operatorChecker(str[right]) == true && operatorChecker(str[right + 1]) == true){
-      //   fprintf(outputfptr,"Operator : %c%c", str[right],str[right+1]);
          fprintf(outputfptr,"Lexeme : %c%c", str[right],str[right+1]);
          tokenRoleMultiOperator(str[right],str[right+1]);
          right = right+2;
          left = right;
       }else if (operatorChecker(str[right]) == true)
          //checks if the single character type lexeme is also an operator type one
-      //   fprintf(outputfptr,"Operator : %c", str[right]);
          fprintf(outputfptr,"Lexeme : %c", str[right]);
          tokenRoleSingleOperator(str[right]);
          right++;
@@ -581,55 +453,40 @@ void outputTokens(char* str) {
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
              char* subStr = subString(str, left, right - 1); //takes the current lexeme as input
          if (keywordChecker(subStr) == true){
-         //   fprintf(outputfptr,"Keyword : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleKeyword(subStr);
             // Increment flag
             flag++;}
          else if (booleanOperatorChecker(subStr) == true){
-         //   fprintf(outputfptr,"Operator : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);   
             tokenRoleBooleanOP(subStr);
          }
          else if (reservedWordChecker(subStr) == true){
-         //   fprintf(outputfptr,"Reserved Word : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleReservedWords(subStr);
             }
          else if (integerChecker(subStr) == true){
-         //   fprintf(outputfptr,"Integer : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleInteger(subStr);
             }
          else if (realNumberChecker(subStr) == true)
-         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
             fprintf(outputfptr,"Lexeme : %s\t\t\t:\tREAL_NUMBER\n", subStr);
          else if (InvalidrealNumberChecker(subStr) == true)
-         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
             fprintf(outputfptr,"Lexeme : %s\t\t\t:\tINVALID REAL_NUMBER\n", subStr);
          else if (invalidSymbolsChecker(subStr) == true)
-         //   fprintf(outputfptr,"Number : %s\t\t\t:\tREAL_NUMBER\n", subStr);
             fprintf(outputfptr,"Lexeme : %s\t\t\t:\tLEXEME NOT RECOGNIZED\n", subStr);
          else if (commentChecker(subStr) == true){
-         //   fprintf(outputfptr,"Comment : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
-            tokenRoleCommentChecker(subStr);
-            }
+            tokenRoleCommentChecker(subStr);}
          else if (commentContentChecker(subStr) == true){
-         //   fprintf(outputfptr,"Comment : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
-            tokenRoleContentChecker(subStr);
-         }
+            tokenRoleContentChecker(subStr);}
          else if (noiseWordChecker(subStr) == true){
-         //   fprintf(outputfptr,"Noise Word : %s", subStr);
             fprintf(outputfptr,"Lexeme : %s", subStr);
-            tokenRoleNoiseWord(subStr);
-            }
-         
+            tokenRoleNoiseWord(subStr);}
          else if (identifierChecker(subStr) == true){
-         //   fprintf(outputfptr,"Identifier : %s", subStr);
             int len = strlen(subStr);
-            if(len < 30){
+            if(len <= 30){
                fprintf(outputfptr,"Lexeme : %s", subStr);
                tokenRoleIdentifier(subStr);
                // Reset flag counter

@@ -10,9 +10,9 @@
 
 pumunta sa ibalik hinto habang gawin lipat
 isama kakulangan bulyan case kawalan edi bawat
-kapag numero punto lipon titik basahin ipakita 
+kapag numero punto lipon titik basahin ipakita testKeyword
 
-mali prinsipal tuloy tama tanggalin
+mali prinsipal tuloy tama tanggalin checkReservedWord
 
 lipon ny_identifier = "Mabuhay";
 
@@ -24,7 +24,7 @@ numero ny_integer = 69;
 
 punto ny_float = 69.69;
 
-bulyan ny_boolean = true;
+bulyan ny_boolean = tama;
 
 |ny KUMENTO ny|
 
