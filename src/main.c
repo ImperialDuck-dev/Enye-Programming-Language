@@ -26,8 +26,11 @@ int main() {
         inputfptr = fopen(in_filepath, "r"); // opens input file
         outputfptr = fopen(out_filepath, "w"); 
         }
-      else{
+      else if(in_filepath[len-1] != 'y' && in_filepath[len-2] != 'n' && in_filepath[len-3] != '.'){
         printf("Invalid file extension\n.\n.\nProgram will now close");
+        return 0;
+      }else{
+        printf("Invalid input!\n.\n.\nProgram will now close");
         return 0;
       }
       
