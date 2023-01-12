@@ -24,6 +24,7 @@ void tokenRoleBracket(char ch);
 void tokenRoleNoiseWord(char *str);
 void tokenRoleIdentifier(char* str);
 void tokenRoleInteger(char* str);
+void tokenRoleDelimeterOperator(char ch);
 int compare(char a[],char b[]);
 void tokenRoleKeyword(char* str);
 void tokenRoleReservedWords(char* str);

@@ -1,10 +1,13 @@
-Lexeme: (			:	PARENTHESIS
-Lexeme: )			:	PARENTHESIS
-Lexeme: {			:	CURLY BRACES
-Lexeme: }			:	CURLY BRACES
-Lexeme: [			:	SQUARE BRACES
-Lexeme: ]			:	SQUARE BRACES
-Lexeme: ;		:	SEMI COLON
+LEXEMES					TOKENS
+Lexeme: (			:	LEFT_PARENTHESIS
+Lexeme: )			:	RIGHT_PARENTHESIS
+Lexeme: {			:	LEFT_CURLY_BRACES
+Lexeme: }			:	RIGHT_CURLY_BRACES
+Lexeme: [			:	LEFT_SQUARE_BRACES
+Lexeme: ]			:	RIGHT_SQUARE_BRACES
+Lexeme: ;			:	SEMI_COLON
+Lexeme: ,			:	COMMA
+Lexeme: :			:	COLON
 Lexeme : =			:	ASS_OPR
 Lexeme : +			:	ADD_OPR
 Lexeme : -			:	SUBT_OPR
@@ -59,63 +62,45 @@ Lexeme : lipon			:	STRING_KW
 Lexeme : titik			:	CHAR_KW
 Lexeme : basahin		:	SCANF_KW
 Lexeme : ipakita		:	PRINTF_KW
+Lexeme : testKeyword	:	LEXEME NOT RECOGNIZED
 Lexeme : mali		:	FALSE_KW
 Lexeme : prinsipal	:	MAIN_KW
 Lexeme : tuloy		:	CONTINUE_KW
 Lexeme : tama		:	TRUE_KW
 Lexeme : tanggalin		:	DELETE_KW
+Lexeme : checkReservedWord	:	LEXEME NOT RECOGNIZED
 Lexeme : lipon			:	STRING_KW
 Lexeme : ny_identifier	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : Mabuhay			:	STRING LITERAL
-Lexeme: ;		:	SEMI COLON
+Lexeme: ;			:	SEMI_COLON
 Lexeme : lipon			:	STRING_KW
 Lexeme : ny_character	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : 'M'			:	STRING LITERAL
-Lexeme: ;		:	SEMI COLON
+Lexeme: ;			:	SEMI_COLON
 Lexeme : lipon			:	STRING_KW
 Lexeme : wrongIdentifier	:	LEXEME NOT RECOGNIZED
-Lexeme: ;		:	SEMI COLON
-Lexeme : ny_Identifiers	:	IDENTIFIER
-Lexeme : must			:	STRING LITERAL
-Lexeme : only			:	STRING LITERAL
-Lexeme : contain			:	STRING LITERAL
-Lexeme : words			:	STRING LITERAL
-Lexeme : if			:	STRING LITERAL
-Lexeme : the			:	STRING LITERAL
-Lexeme : developer			:	STRING LITERAL
-Lexeme : wants			:	STRING LITERAL
-Lexeme : to			:	STRING LITERAL
-Lexeme : name			:	STRING LITERAL
-Lexeme : a		:	CMNT_CONTENT
-Lexeme : identifier			:	STRING LITERAL
-Lexeme : with			:	STRING LITERAL
-Lexeme : a		:	CMNT_CONTENT
-Lexeme : number			:	STRING LITERAL
-Lexeme : he			:	STRING LITERAL
-Lexeme : must			:	STRING LITERAL
-Lexeme : place			:	STRING LITERAL
-Lexeme : it			:	STRING LITERAL
-Lexeme : in			:	STRING LITERAL
-Lexeme : word			:	STRING LITERAL
-Lexeme : format			:	STRING LITERAL
-Lexeme : 3.1.2			:	REAL_NUMBER
+Lexeme: ;			:	SEMI_COLON
 Lexeme : numero		:	INT_KW
 Lexeme : ny_integer	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : 69			:	INTEGER
-Lexeme: ;		:	SEMI COLON
+Lexeme: ;			:	SEMI_COLON
 Lexeme : punto			:	FLOAT_KW
 Lexeme : ny_float	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
 Lexeme : 69.69			:	REAL_NUMBER
-Lexeme: ;		:	SEMI COLON
+Lexeme: ;			:	SEMI_COLON
 Lexeme : bulyan		:	BOOLEAN_KW
 Lexeme : ny_boolean	:	IDENTIFIER
 Lexeme : =			:	ASS_OPR
-Lexeme : true			:	STRING LITERAL
-Lexeme: ;		:	SEMI COLON
+Lexeme : tama		:	TRUE_KW
+Lexeme: ;			:	SEMI_COLON
 Lexeme : |ny			:	OPENING_CMNT
 Lexeme : KUMENTO		:	CMNT_CONTENT
 Lexeme : ny|			:	CLOSING_CMNT
+Lexeme : 6..9.9			:	INVALID REAL_NUMBER
+Lexeme : @			:	LEXEME NOT RECOGNIZED
+Lexeme : inva@lid			:	LEXEME NOT RECOGNIZED
+Lexeme : ny_abcdefghijklmnopqrstuvwxyz1234567890	:	LEXEME NOT RECOGNIZED

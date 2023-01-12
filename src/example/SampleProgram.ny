@@ -1,4 +1,4 @@
-() {} [] ;
+() {} [] ; , : 
 
 = + - * / % ~ ^
  
@@ -10,9 +10,9 @@
 
 pumunta sa ibalik hinto habang gawin lipat
 isama kakulangan bulyan case kawalan edi bawat
-kapag numero punto lipon titik basahin ipakita 
+kapag numero punto lipon titik basahin ipakita testKeyword
 
-mali prinsipal tuloy tama tanggalin
+mali prinsipal tuloy tama tanggalin checkReservedWord
 
 lipon ny_identifier = "Mabuhay";
 
@@ -20,15 +20,18 @@ lipon ny_character = 'M';
 
 lipon wrongIdentifier;
 
-ny_Identifiers must only contain words if the developer wants to name a identifier with
-a number he must place it in word format
-
-3.1.2
-
 numero ny_integer = 69;
 
 punto ny_float = 69.69;
 
-bulyan ny_boolean = true;
+bulyan ny_boolean = tama;
 
 |ny KUMENTO ny|
+
+6..9.9
+
+@ 
+
+inva@lid 
+
+ny_abcdefghijklmnopqrstuvwxyz1234567890
