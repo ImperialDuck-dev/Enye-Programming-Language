@@ -59,7 +59,7 @@ bool bracketsChecker(char ch) {
    return (true);
    return (false);
 }
-
+// CHANGED
 void tokenRoleBracket(char ch){
    if (ch == '(')
    fprintf(outputfptr,"\t\t\t:\tLEFT_PARENTHESIS\n");
@@ -75,8 +75,7 @@ void tokenRoleBracket(char ch){
    fprintf(outputfptr,"\t\t\t:\tRIGHT_SQUARE_BRACES\n");
 }
 
-// Checks current lexeme if it is a delimiter 
-// if true, returns true
+// CHANGED
 bool delimiterChecker(char ch) {
    if (ch == ' ' || ch == ';' || ch == ',' || 
    ch == '"' || ch == '\n' || ch == '\0' ||
@@ -85,7 +84,7 @@ bool delimiterChecker(char ch) {
    return (true);
    return (false);
 }
-
+// CHANGED
 void tokenRoleDelimeterOperator(char ch){
    if(ch == ';')
    fprintf(outputfptr,"\t\t\t:\tSEMI_COLON\n");
@@ -96,8 +95,7 @@ void tokenRoleDelimeterOperator(char ch){
 }
 
 
-// multi-character type lexeme boolean checkers
-// Compares current lexeme with the keywords
+// CHANGED
 bool keywordChecker(char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
@@ -145,6 +143,7 @@ bool keywordChecker(char* str){
    return (false);
 }
 
+// CHANGED
 void tokenRoleKeyword(char* str){
    if (str[0] == 'c' && str[1] == 'a' && str[2] == 's' && str[3] == 'e')
          fprintf(outputfptr,"\t\t\t:\tCASE_KW\n");
@@ -188,6 +187,7 @@ void tokenRoleKeyword(char* str){
          fprintf(outputfptr,"\t\t:\tSCANF_KW\n");
 }
 
+// CHANGED
 bool reservedWordChecker (char* str){
    int i, len = strlen(str);
    for (i = 0; i <=len; i++) {
@@ -205,6 +205,7 @@ bool reservedWordChecker (char* str){
    return (false);
 }
 
+// CHANGED
 void tokenRoleReservedWords(char* str){
    if (str[0] == 't' && str[1] == 'a' && str[2] == 'm' && str[3] == 'a')
       fprintf(outputfptr,"\t\t:\tTRUE_KW\n");
@@ -301,12 +302,15 @@ void tokenRoleNoiseWord(char *str){
    fprintf(outputfptr,"\t\t\t:\tNOISE WORD\n");
 }
 
+// NEW
 // Checks if a character in a lexeme 
 // is an invalid character/symbol
-bool invalidSymbolsChecker(char* str){
-   int i, len = strlen(str);
+bool invalidSymbolsChecker(char* str){ 
+   int i, len = strlen(str); 
    for (i = 0; i <=len; i++) {
-      if (str[i] == '@' || str[i] == '#')
+      if (str[i] == '@' || str[i] == '#' || str[i] == '1' || str[i] == '2' || 
+      str[i] == '3' || str[i] == '4' || str[i] == '5' || str[i] == '6' || 
+      str[i] == '7' || str[i] == '8' || str[i] == '9' || str[i] == '0' )
       return (true);
    }
    return (false);
@@ -395,7 +399,6 @@ bool InvalidrealNumberChecker(char* str) {
       && str[i] != '9' && str[i] != '.' || (str[i] == '-' && i > 0)){
           return (false);
       }
-     
       // flag should always be 1, if not then it is invalid (eg 2.1.1..)
       if (str[i] == '.'){
          flag ++;
@@ -523,4 +526,3 @@ void outputTokens(char* str) {
    }
    return;
 }
-

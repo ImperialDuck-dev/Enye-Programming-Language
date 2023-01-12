@@ -1,3 +1,5 @@
++++
+
 () {} [] ; , : 
 
 = + - * / % ~ ^
@@ -24,13 +26,14 @@ numero ny_integer = 69;
 
 punto ny_float = 69.69;
 
-bulyan ny_boolean = tama;
+bulyan ny_boolean11 = tama;
 
 |ny KUMENTO ny|
 
 6..9.9
 
-@ 
+1.2.3
+@
 
 inva@lid 
 
