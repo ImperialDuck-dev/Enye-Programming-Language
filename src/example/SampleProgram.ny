@@ -19,6 +19,7 @@ mali prinsipal tuloy tama tanggalin checkReservedWord
 lipon ny_identifier = "Mabuhay";
 
 lipon ny_character = 'M';
+<type specifier> <identifier> <assigment op> <pangunahin>
 
 lipon wrongIdentifier;
 
