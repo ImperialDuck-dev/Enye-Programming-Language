@@ -18,10 +18,14 @@ bool operatorChecker(char ch){
 }
 
 void tokenRoleSingleOperator(char ch){
-   if(ch == '+')
+   if(ch == '+'){
    fprintf(outputfptr,"\t\t\t:\tADD_OPR\n");
-   else if (ch == '-')
-   fprintf(outputfptr,"\t\t\t:\tSUBT_OPR\n");
+   nextToken = ADD_OPR;
+   }
+   else if (ch == '-'){
+   fprintf(outputfptr,"\t\t\t:\tSUB_OPR\n");
+   nextToken = SUB_OPR;
+   }
    else if (ch == '*')
    fprintf(outputfptr,"\t\t\t:\tMULT_OPR\n");
    else if (ch == '/')
@@ -61,10 +65,14 @@ bool bracketsChecker(char ch) {
 }
 // CHANGED
 void tokenRoleBracket(char ch){
-   if (ch == '(')
+   if (ch == '('){
    fprintf(outputfptr,"\t\t\t:\tLEFT_PARENTHESIS\n");
-   else if (ch == ')')
+   nextToken = LEFT_PARENTHESIS;
+   }
+   else if (ch == ')'){
    fprintf(outputfptr,"\t\t\t:\tRIGHT_PARENTHESIS\n");
+   nextToken = RIGHT_PARENTHESIS;
+   }
    else if (ch == '{')
    fprintf(outputfptr,"\t\t\t:\tLEFT_CURLY_BRACES\n");
    else if (ch == '}')
@@ -86,14 +94,24 @@ bool delimiterChecker(char ch) {
 }
 // CHANGED
 void tokenRoleDelimeterOperator(char ch){
-   if(ch == ';')
+   if(ch == ';'){
    fprintf(outputfptr,"\t\t\t:\tSEMI_COLON\n");
+   nextToken = SEMI_COLON;
+   }
    else if (ch == ',')
    fprintf(outputfptr,"\t\t\t:\tCOMMA\n");
    else if (ch == ':')
    fprintf(outputfptr,"\t\t\t:\tCOLON\n");
 }
 
+
+bool ipakitaChecker(char* str){
+   int i, len = strlen(str);
+   for (i = 0; i <=len; i++) {
+      if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a')
+         return (true);
+   }
+}
 
 // CHANGED
 bool keywordChecker(char* str){
@@ -134,8 +152,6 @@ bool keywordChecker(char* str){
       else if (str[0] == 'p' && str[1] == 'u' && str[2] == 'n' && str[3] == 't' && str[4] == 'o')
          return (true);
       else if (str[0] == 't' && str[1] == 'i' && str[2] == 't' && str[3] == 'i' && str[4] == 'k')
-         return (true);
-      else if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a')
          return (true);
       else if (str[0] == 'b' && str[1] == 'a' && str[2] == 's' && str[3] == 'a' && str[4] == 'h' && str[5] == 'i'&& str[6] == 'n')
          return (true); 
@@ -181,10 +197,14 @@ void tokenRoleKeyword(char* str){
          fprintf(outputfptr,"\t\t\t:\tFLOAT_KW\n");
       else if (str[0] == 't' && str[1] == 'i' && str[2] == 't' && str[3] == 'i' && str[4] == 'k')
          fprintf(outputfptr,"\t\t\t:\tCHAR_KW\n");
-      else if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a')
-         fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
+     
       else if (str[0] == 'b' && str[1] == 'a' && str[2] == 's' && str[3] == 'a' && str[4] == 'h' && str[5] == 'i'&& str[6] == 'n')
          fprintf(outputfptr,"\t\t:\tSCANF_KW\n");
+}
+
+void tokenRolePrintKeyword(char* str){
+    if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a')
+         fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
 }
 
 // CHANGED
@@ -299,7 +319,7 @@ bool noiseWordChecker(char* str){
 
 void tokenRoleNoiseWord(char *str){
    if (str[0] == 's' || str[1] == 'a')
-   fprintf(outputfptr,"\t\t\t:\tNOISE WORD\n");
+   fprintf(outputfptr,"\t\t\t:\tNOISE_WORD\n");
 }
 
 // NEW
@@ -333,7 +353,7 @@ void tokenRoleIdentifier(char* str){
    if (str[0] == 'n' || str[1] == 'y' || str[2] == '_')
    fprintf(outputfptr,"\t:\tIDENTIFIER\n");
    else
-   fprintf(outputfptr,"\t\t\t:\tINVALID IDENTIFIER\n");
+   fprintf(outputfptr,"\t\t\t:\tINVALID_IDENTIFIER\n");
 }
 
 // Checks if current lexeme is an int
@@ -457,7 +477,12 @@ void outputTokens(char* str) {
          left = right;
       }else if (delimiterChecker(str[right]) == true && left != right || (right == length && left != right)){ //checks if the current lexemes is a multicharacter lexeme type
              char* subStr = subString(str, left, right - 1); //takes the current lexeme as input
-         if (keywordChecker(subStr) == true){
+         if (ipakitaChecker(subStr) == true){
+            fprintf(outputfptr,"Lexeme : %s", subStr);   
+            tokenRolePrintKeyword(subStr);
+            flag = 0;
+         }
+         else if (keywordChecker(subStr) == true){
             fprintf(outputfptr,"Lexeme : %s", subStr);
             tokenRoleKeyword(subStr);
             // Increment flag
@@ -518,6 +543,7 @@ void outputTokens(char* str) {
             //   fprintf(outputfptr,"String : %s", subStr);
                fprintf(outputfptr,"Lexeme : %s", subStr);
                fprintf(outputfptr,"\t\t\t:\tSTRING LITERAL\n");
+               nextToken = STRING_LITERAL;
                flag = 0;
             }
          }
@@ -526,3 +552,4 @@ void outputTokens(char* str) {
    }
    return;
 }
+
