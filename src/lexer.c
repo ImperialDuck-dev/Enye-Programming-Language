@@ -68,10 +68,12 @@ void tokenRoleBracket(char ch){
    if (ch == '('){
    fprintf(outputfptr,"\t\t\t:\tLEFT_PARENTHESIS\n");
    nextToken = LEFT_PARENTHESIS;
+   fprintf(outputfptr3,"LEFT_PARENTHESIS\n");
    }
    else if (ch == ')'){
    fprintf(outputfptr,"\t\t\t:\tRIGHT_PARENTHESIS\n");
    nextToken = RIGHT_PARENTHESIS;
+   fprintf(outputfptr3,"RIGHT_PARENTHESIS\n");
    }
    else if (ch == '{')
    fprintf(outputfptr,"\t\t\t:\tLEFT_CURLY_BRACES\n");
@@ -97,11 +99,15 @@ void tokenRoleDelimeterOperator(char ch){
    if(ch == ';'){
    fprintf(outputfptr,"\t\t\t:\tSEMI_COLON\n");
    nextToken = SEMI_COLON;
+   fprintf(outputfptr3,"SEMI_COLON");
    }
-   else if (ch == ',')
+   else if (ch == ','){
    fprintf(outputfptr,"\t\t\t:\tCOMMA\n");
+   fprintf(outputfptr3,"COMMA\n");
+   }
    else if (ch == ':')
    fprintf(outputfptr,"\t\t\t:\tCOLON\n");
+   fprintf(outputfptr3,"\nCOLON\n");
 }
 
 
@@ -208,11 +214,13 @@ void tokenRoleKeyword(char* str){
 void tokenRolePrintKeyword(char* str){
     if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a'){
          fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
+         fprintf(outputfptr3,"PRINTF_KW\n");
       nextToken = PRINT_KW;
       }
    else{
       fprintf(outputfptr,"\t\t:\tSTRING_LITERAL\n");
       nextToken = STRING_LITERAL;
+      fprintf(outputfptr3,"PRINTF_KW\n");
    }
 }
 

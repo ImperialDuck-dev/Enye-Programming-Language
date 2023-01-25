@@ -1,1 +1,1 @@
-ipakita (Mabuhay);
+ipakita ("Mabuhay");
