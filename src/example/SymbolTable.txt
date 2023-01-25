@@ -1,5 +1,6 @@
 LEXEMES					TOKENS
 Lexeme : ipakita		:	PRINTF_KW
 Lexeme: (			:	LEFT_PARENTHESIS
-Lexeme : MabuhayLexeme: )			:	RIGHT_PARENTHESIS
+Lexeme : Mabuhay		:	STRING_LITERAL
+Lexeme: )			:	RIGHT_PARENTHESIS
 Lexeme: ;			:	SEMI_COLON

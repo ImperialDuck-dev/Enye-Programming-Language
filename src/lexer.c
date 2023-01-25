@@ -200,11 +200,20 @@ void tokenRoleKeyword(char* str){
      
       else if (str[0] == 'b' && str[1] == 'a' && str[2] == 's' && str[3] == 'a' && str[4] == 'h' && str[5] == 'i'&& str[6] == 'n')
          fprintf(outputfptr,"\t\t:\tSCANF_KW\n");
+      else{
+      nextToken = STRING_LITERAL;
+      }
 }
 
 void tokenRolePrintKeyword(char* str){
-    if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a')
+    if (str[0] == 'i' && str[1] == 'p' && str[2] == 'a' && str[3] == 'k' && str[4] == 'i' && str[5] == 't' && str[6] == 'a'){
          fprintf(outputfptr,"\t\t:\tPRINTF_KW\n");
+      nextToken = PRINT_KW;
+      }
+   else{
+      fprintf(outputfptr,"\t\t:\tSTRING_LITERAL\n");
+      nextToken = STRING_LITERAL;
+   }
 }
 
 // CHANGED
