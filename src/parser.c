@@ -54,6 +54,7 @@ int main() {
                         }
                     parsingData[i] = parsingContent;                
     }
+                    print_declaration(parsingData);
       }           
       else if(in_filepath[len-1] != 'y' && in_filepath[len-2] != 'n' && in_filepath[len-3] != '.'){
         printf("Invalid file extension\n.\n.\nProgram will now close");
@@ -63,21 +64,10 @@ int main() {
         return 0;
       }
     
-    fclose(inputfptr); // closes input file
-    fclose(outputfptr); // closes output file
+    
+    fclose(outputfptr2); // closes output file
     return 0;
 
-
-      }
-void printStmt (char* str)
-{
-
-    char* token = strtok(str, " ");
-    while (token != NULL) {
-        if (nextToken == PRINT_KW) {
-            printf("%s", token);
-
 }
-}
-        }
 
+    

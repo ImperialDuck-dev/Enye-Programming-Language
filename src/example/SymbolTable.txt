@@ -1,6 +1,217 @@
 LEXEMES					TOKENS
-Lexeme : ipakita		:	PRINTF_KW
-Lexeme: (			:	LEFT_PARENTHESIS
-Lexeme : Mabuhay		:	STRING_LITERAL
-Lexeme: )			:	RIGHT_PARENTHESIS
-Lexeme: ;			:	SEMI_COLON
+
++++				INVALID OPERATOR
+
+(				LEFT_PARENTHESIS
+
+)				RIGHT_PARENTHESIS
+
+{				LEFT_CURLY_BRACES
+
+}				RIGHT_CURLY_BRACES
+
+[				LEFT_SQUARE_BRACES
+
+]				RIGHT_SQUARE_BRACES
+
+;				SEMI_COLON
+
+,				COMMA
+
+:				COLON
+
+=				ASS_OPR
+
++				ADD_OPR
+
+-				SUB_OPR
+
+*				MULT_OPR
+
+/				DIV_OPR
+
+%				MOD_OPR
+
+~				INT_DIV_OPR
+
+^				EXP_OPR
+
+!				NOT_OPR
+
+&&				AND_OPR
+
+||				OR_OPR
+
+==				EQ_TO_OPR
+
+>				GREAT_OPR
+
+<				LESS_OPR
+
+>=				GRTR_THAN_OR_EQ_TO_OPR
+
+<=				LESS_THAN_OR_EQ_TO_OPR
+
+!=				NOT_EQUAL_TO_OPR
+
+1				INTEGER
+
+2				INTEGER
+
+3				INTEGER
+
+4				INTEGER
+
+5				INTEGER
+
+6				INTEGER
+
+7				INTEGER
+
+8				INTEGER
+
+9				INTEGER
+
+10				INTEGER
+
+11				INTEGER
+
+1.25			REAL_NUMBER
+
+3.4			REAL_NUMBER
+
+5.6			REAL_NUMBER
+
+69.69			REAL_NUMBER
+
+56.79			REAL_NUMBER
+
+pumunta			GO_KW
+
+sa				NOISE_WORD
+
+ibalik			RETURN_KW
+
+hinto				BREAK_KW
+
+habang			WHILE_KW
+
+gawin				DO_KW
+
+lipat				SWITCH_KW
+
+isama				INCLUDE_KW
+
+kakulangan			DEFAULT_KW
+
+bulyan			BOOLEAN_KW
+
+case				CASE_KW
+
+kawalan			VOID_KW
+
+edi				ELSE_KW
+
+bawat				FOR_KW
+
+kapag				IF_KW
+
+numero			INT_KW
+
+punto				FLOAT_KW
+
+lipon				STRING_KW
+
+titik				CHAR_KW
+
+basahin			SCANF_KW
+
+ipakita			PRINTF_KW
+
+testKeyword			STRING_LITERAL
+
+mali			FALSE_KW
+
+prinsipal		MAIN_KW
+
+tuloy			CONTINUE_KW
+
+tama			TRUE_KW
+
+tanggalin			DELETE_KW
+
+checkReservedWord			STRING_LITERAL
+
+lipon				STRING_KW
+
+ny_identifier		IDENTIFIER
+
+=				ASS_OPR
+
+Mabuhay			STRING_LITERAL
+
+;				SEMI_COLON
+
+lipon				STRING_KW
+
+ny_character		IDENTIFIER
+
+=				ASS_OPR
+
+'M'			STRING_LITERAL
+
+;				SEMI_COLON
+
+lipon				STRING_KW
+
+wrongIdentifier			STRING_LITERAL
+
+;				SEMI_COLON
+
+numero			INT_KW
+
+ny_integer		IDENTIFIER
+
+=				ASS_OPR
+
+69				INTEGER
+
+;				SEMI_COLON
+
+punto				FLOAT_KW
+
+ny_float		IDENTIFIER
+
+=				ASS_OPR
+
+69.69			REAL_NUMBER
+
+;				SEMI_COLON
+
+bulyan			BOOLEAN_KW
+
+ny_boolean11		IDENTIFIER
+
+=				ASS_OPR
+
+tama			TRUE_KW
+
+;				SEMI_COLON
+
+|ny				OPENING_CMNT
+
+KUMENTO			CMNT_CONTENT
+
+ny|				CLOSING_CMNT
+
+6..9.9			INVALID_LEXEME
+
+1.2.3			INVALID_LEXEME
+
+@			INVALID_LEXEME
+
+inva@lid			INVALID_LEXEME
+
+ny_abcdefghijklmnopqrstuvwxyz1234567890		INVALID_LEXEME
+
+ny___test		INVALID_IDENTIFIER

@@ -1,1 +1,2 @@
-nt
+
+    return 0;

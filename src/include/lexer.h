@@ -31,7 +31,8 @@ void tokenRoleReservedWords(char* str);
 void tokenRoleCommentChecker(char* str);
 void tokenRoleContentChecker(char* str);
 
-
+void print_declaration(char *parsingData);
+void getTokens(char *lexerData);
 
 /* TOKEN CODES */
 
@@ -111,4 +112,5 @@ void tokenRoleContentChecker(char* str);
 #define STRING_LITERAL 150
 
 int nextToken;
+int identifierFlag;
 #endif

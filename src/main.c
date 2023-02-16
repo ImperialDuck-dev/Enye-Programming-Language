@@ -45,7 +45,6 @@ int main() {
         }
         data[i] = content;
     }
-    printf("%s",data);
     outputTokens(data); // calls outputTokens function
     printf("\nSYMBOL TABLE GENERATED...\n");
     fclose(inputfptr); // closes input file
