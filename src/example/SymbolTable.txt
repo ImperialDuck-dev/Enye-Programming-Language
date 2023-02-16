@@ -1,108 +1,217 @@
 LEXEMES					TOKENS
-Lexeme : +++			:	INVALID OPERATOR
-Lexeme: (			:	LEFT_PARENTHESIS
-Lexeme: )			:	RIGHT_PARENTHESIS
-Lexeme: {			:	LEFT_CURLY_BRACES
-Lexeme: }			:	RIGHT_CURLY_BRACES
-Lexeme: [			:	LEFT_SQUARE_BRACES
-Lexeme: ]			:	RIGHT_SQUARE_BRACES
-Lexeme: ;			:	SEMI_COLON
-Lexeme: ,			:	COMMA
-Lexeme: :			:	COLON
-Lexeme : =			:	ASS_OPR
-Lexeme : +			:	ADD_OPR
-Lexeme : -			:	SUBT_OPR
-Lexeme : *			:	MULT_OPR
-Lexeme : /			:	DIV_OPR
-Lexeme : %			:	MOD_OPR
-Lexeme : ~			:	INT_DIV_OPR
-Lexeme : ^			:	EXP_OPR
-Lexeme : !			:	NOT_OPR
-Lexeme : &&			:	AND_OPR
-Lexeme : ||			:	OR_OPR
-Lexeme : ==			:	EQ_TO_OPR
-Lexeme : >			:	GREAT_OPR
-Lexeme : <			:	LESS_OPR
-Lexeme : >=			:	GRTR_THAN_OR_EQ_TO_OPR
-Lexeme : <=			:	LESS_THAN_OR_EQ_TO_OPR
-Lexeme : !=			:	NOT_EQUAL_TO_OPR
-Lexeme : 1			:	INTEGER
-Lexeme : 2			:	INTEGER
-Lexeme : 3			:	INTEGER
-Lexeme : 4			:	INTEGER
-Lexeme : 5			:	INTEGER
-Lexeme : 6			:	INTEGER
-Lexeme : 7			:	INTEGER
-Lexeme : 8			:	INTEGER
-Lexeme : 9			:	INTEGER
-Lexeme : 10			:	INTEGER
-Lexeme : 11			:	INTEGER
-Lexeme : 1.25			:	REAL_NUMBER
-Lexeme : 3.4			:	REAL_NUMBER
-Lexeme : 5.6			:	REAL_NUMBER
-Lexeme : 69.69			:	REAL_NUMBER
-Lexeme : 56.79			:	REAL_NUMBER
-Lexeme : pumunta		:	GO_KW
-Lexeme : sa			:	NOISE WORD
-Lexeme : ibalik		:	RETURN_KW
-Lexeme : hinto			:	BREAK_KW
-Lexeme : habang		:	WHILE_KW
-Lexeme : gawin			:	DO_KW
-Lexeme : lipat			:	SWITCH_KW
-Lexeme : isama			:	INCLUDE_KW
-Lexeme : kakulangan		:	DEFAULT_KW
-Lexeme : bulyan		:	BOOLEAN_KW
-Lexeme : case			:	CASE_KW
-Lexeme : kawalan		:	VOID_KW
-Lexeme : edi			:	ELSE_KW
-Lexeme : bawat			:	FOR_KW
-Lexeme : kapag			:	IF_KW
-Lexeme : numero		:	INT_KW
-Lexeme : punto			:	FLOAT_KW
-Lexeme : lipon			:	STRING_KW
-Lexeme : titik			:	CHAR_KW
-Lexeme : basahin		:	SCANF_KW
-Lexeme : ipakita		:	PRINTF_KW
-Lexeme : testKeyword	:	LEXEME NOT RECOGNIZED
-Lexeme : mali		:	FALSE_KW
-Lexeme : prinsipal	:	MAIN_KW
-Lexeme : tuloy		:	CONTINUE_KW
-Lexeme : tama		:	TRUE_KW
-Lexeme : tanggalin		:	DELETE_KW
-Lexeme : checkReservedWord	:	LEXEME NOT RECOGNIZED
-Lexeme : lipon			:	STRING_KW
-Lexeme : ny_identifier	:	IDENTIFIER
-Lexeme : =			:	ASS_OPR
-Lexeme : Mabuhay			:	STRING LITERAL
-Lexeme: ;			:	SEMI_COLON
-Lexeme : lipon			:	STRING_KW
-Lexeme : ny_character	:	IDENTIFIER
-Lexeme : =			:	ASS_OPR
-Lexeme : 'M'			:	STRING LITERAL
-Lexeme: ;			:	SEMI_COLON
-Lexeme : lipon			:	STRING_KW
-Lexeme : wrongIdentifier	:	LEXEME NOT RECOGNIZED
-Lexeme: ;			:	SEMI_COLON
-Lexeme : numero		:	INT_KW
-Lexeme : ny_integer	:	IDENTIFIER
-Lexeme : =			:	ASS_OPR
-Lexeme : 69			:	INTEGER
-Lexeme: ;			:	SEMI_COLON
-Lexeme : punto			:	FLOAT_KW
-Lexeme : ny_float	:	IDENTIFIER
-Lexeme : =			:	ASS_OPR
-Lexeme : 69.69			:	REAL_NUMBER
-Lexeme: ;			:	SEMI_COLON
-Lexeme : bulyan		:	BOOLEAN_KW
-Lexeme : ny_boolean11			:	LEXEME NOT RECOGNIZED
-Lexeme : =			:	ASS_OPR
-Lexeme : tama		:	TRUE_KW
-Lexeme: ;			:	SEMI_COLON
-Lexeme : |ny			:	OPENING_CMNT
-Lexeme : KUMENTO		:	CMNT_CONTENT
-Lexeme : ny|			:	CLOSING_CMNT
-Lexeme : 6..9.9			:	INVALID REAL_NUMBER
-Lexeme : 1.2.3			:	INVALID REAL_NUMBER
-Lexeme : @			:	LEXEME NOT RECOGNIZED
-Lexeme : inva@lid			:	LEXEME NOT RECOGNIZED
-Lexeme : ny_abcdefghijklmnopqrstuvwxyz1234567890			:	LEXEME NOT RECOGNIZED
+
++++				INVALID OPERATOR
+
+(				LEFT_PARENTHESIS
+
+)				RIGHT_PARENTHESIS
+
+{				LEFT_CURLY_BRACES
+
+}				RIGHT_CURLY_BRACES
+
+[				LEFT_SQUARE_BRACES
+
+]				RIGHT_SQUARE_BRACES
+
+;				SEMI_COLON
+
+,				COMMA
+
+:				COLON
+
+=				ASS_OPR
+
++				ADD_OPR
+
+-				SUB_OPR
+
+*				MULT_OPR
+
+/				DIV_OPR
+
+%				MOD_OPR
+
+~				INT_DIV_OPR
+
+^				EXP_OPR
+
+!				NOT_OPR
+
+&&				AND_OPR
+
+||				OR_OPR
+
+==				EQ_TO_OPR
+
+>				GREAT_OPR
+
+<				LESS_OPR
+
+>=				GRTR_THAN_OR_EQ_TO_OPR
+
+<=				LESS_THAN_OR_EQ_TO_OPR
+
+!=				NOT_EQUAL_TO_OPR
+
+1				INTEGER
+
+2				INTEGER
+
+3				INTEGER
+
+4				INTEGER
+
+5				INTEGER
+
+6				INTEGER
+
+7				INTEGER
+
+8				INTEGER
+
+9				INTEGER
+
+10				INTEGER
+
+11				INTEGER
+
+1.25			REAL_NUMBER
+
+3.4			REAL_NUMBER
+
+5.6			REAL_NUMBER
+
+69.69			REAL_NUMBER
+
+56.79			REAL_NUMBER
+
+pumunta			GO_KW
+
+sa				NOISE_WORD
+
+ibalik			RETURN_KW
+
+hinto				BREAK_KW
+
+habang			WHILE_KW
+
+gawin				DO_KW
+
+lipat				SWITCH_KW
+
+isama				INCLUDE_KW
+
+kakulangan			DEFAULT_KW
+
+bulyan			BOOLEAN_KW
+
+case				CASE_KW
+
+kawalan			VOID_KW
+
+edi				ELSE_KW
+
+bawat				FOR_KW
+
+kapag				IF_KW
+
+numero			INT_KW
+
+punto				FLOAT_KW
+
+lipon				STRING_KW
+
+titik				CHAR_KW
+
+basahin			SCANF_KW
+
+ipakita			PRINTF_KW
+
+testKeyword			STRING_LITERAL
+
+mali			FALSE_KW
+
+prinsipal		MAIN_KW
+
+tuloy			CONTINUE_KW
+
+tama			TRUE_KW
+
+tanggalin			DELETE_KW
+
+checkReservedWord			STRING_LITERAL
+
+lipon				STRING_KW
+
+ny_identifier		IDENTIFIER
+
+=				ASS_OPR
+
+Mabuhay			STRING_LITERAL
+
+;				SEMI_COLON
+
+lipon				STRING_KW
+
+ny_character		IDENTIFIER
+
+=				ASS_OPR
+
+'M'			STRING_LITERAL
+
+;				SEMI_COLON
+
+lipon				STRING_KW
+
+wrongIdentifier			STRING_LITERAL
+
+;				SEMI_COLON
+
+numero			INT_KW
+
+ny_integer		IDENTIFIER
+
+=				ASS_OPR
+
+69				INTEGER
+
+;				SEMI_COLON
+
+punto				FLOAT_KW
+
+ny_float		IDENTIFIER
+
+=				ASS_OPR
+
+69.69			REAL_NUMBER
+
+;				SEMI_COLON
+
+bulyan			BOOLEAN_KW
+
+ny_boolean11		IDENTIFIER
+
+=				ASS_OPR
+
+tama			TRUE_KW
+
+;				SEMI_COLON
+
+|ny				OPENING_CMNT
+
+KUMENTO			CMNT_CONTENT
+
+ny|				CLOSING_CMNT
+
+6..9.9			INVALID_LEXEME
+
+1.2.3			INVALID_LEXEME
+
+@			INVALID_LEXEME
+
+inva@lid			INVALID_LEXEME
+
+ny_abcdefghijklmnopqrstuvwxyz1234567890		INVALID_LEXEME
+
+ny___test		INVALID_IDENTIFIER

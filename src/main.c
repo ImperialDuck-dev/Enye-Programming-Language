@@ -1,4 +1,3 @@
-
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
@@ -24,7 +23,9 @@ int main() {
       // Checks if file extension is invalid
       if(in_filepath[len-1] == 'y' && in_filepath[len-2] == 'n' && in_filepath[len-3] == '.'){
         inputfptr = fopen(in_filepath, "r"); // opens input file
-        outputfptr = fopen(out_filepath, "w"); 
+        outputfptr = fopen(out_filepath, "w");
+        outputfptr2 = fopen("example/SymbolTable.txt", "r");
+         
         }
       else if(in_filepath[len-1] != 'y' && in_filepath[len-2] != 'n' && in_filepath[len-3] != '.'){
         printf("Invalid file extension\n.\n.\nProgram will now close");
@@ -33,18 +34,19 @@ int main() {
         printf("Invalid input!\n.\n.\nProgram will now close");
         return 0;
       }
-      
-    char contents[1000]; // variable to store contents of input file
+    char content;
+    char data[1000];  // variable to store contents of input file
     printf("GENERATING SYMBOL TABLE...\n");
     fprintf(outputfptr,"LEXEMES\t\t\t\t\tTOKENS\n"); 
-    while(fgets(contents,sizeof(contents), inputfptr)){ 
-      outputTokens(contents); // Parses input file
-      }
-    getch();
-    getch();
-    printf("SYMBOL TABLE GENERATED...\n");
-    printf("Symbol Table can be found at %s",out_filepath);
-
+    for(int i=0; i<sizeof(data); i++) {
+        content = fgetc(inputfptr); // reads input file
+        if(content == EOF) {
+            break;
+        }
+        data[i] = content;
+    }
+    outputTokens(data); // calls outputTokens function
+    printf("\nSYMBOL TABLE GENERATED...\n");
     fclose(inputfptr); // closes input file
     fclose(outputfptr); // closes output file
     return 0;

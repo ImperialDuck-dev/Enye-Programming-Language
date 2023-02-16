@@ -38,3 +38,5 @@ bulyan ny_boolean11 = tama;
 inva@lid 
 
 ny_abcdefghijklmnopqrstuvwxyz1234567890
+
+ny___test
